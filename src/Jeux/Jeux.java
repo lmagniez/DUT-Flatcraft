@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
+import Main.MineUtils;
 import Map.Map;
 
 public class Jeux {
@@ -24,8 +25,7 @@ public class Jeux {
 	}
 	
 	private void prepare() {
-		frame.add(BorderLayout.EAST, map.grid);
-		
+		frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
 		/*		
 		frame.add(BorderLayout.WEST, outils);
 		frame.add(BorderLayout.SOUTH, inv);

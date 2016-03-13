@@ -10,7 +10,9 @@ import Main.MineUtils;
 
 public class Map<T extends JComponent> {
 	public JPanel grid;
-
+	public int row=8;
+	public int col=12;
+	
 	public Map() {
 		super();
 		grid=new JPanel();
@@ -18,8 +20,9 @@ public class Map<T extends JComponent> {
 	}
 
 	private void create() {
-		int cells = 8*12;
-		grid.setLayout(new GridLayout(8, 12));
+		int cells = row*col;
+		int a = 0,b=0;
+		grid.setLayout(new GridLayout(row, col));
 		ColonneDeRessources j=null;
 		for(int i=0;i<cells;i++){
 			j=new ColonneDeRessources();
