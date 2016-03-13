@@ -26,24 +26,25 @@ public class MineUtils {
 		// pas possible de créer des instances de cette classe
 	}
 	
-	public static final ImageIcon GRASS = scaled("/textures/default_grass.png");
-
-	public static final ImageIcon JUNGLEGRASS = scaled("/textures/default_junglegrass.png");
-	
-	public static final ImageIcon DIRT = scaled("/textures/default_dirt.png");
-
+	//ressource necessaire pour la map 
+	public static final ImageIcon DIAMOND = scaled("/textures/default_mineral_diamond.png");
+	public static final ImageIcon GRASS = scaled("/textures/default_grass.png");	
+	public static final ImageIcon IRON= scaled("/textures/default_mineral_iron.png");
+	public static final ImageIcon LAVA=scaled("/texture/default_lava.png");
+	public static final ImageIcon OBSIDIAN=scaled("/texture/default_obsidian.png");
 	public static final ImageIcon STONE = scaled("/textures/default_stone.png");
+	public static final ImageIcon WOOD = scaled("/textures/default_tree.png");
 	
+/*
+	public static final ImageIcon JUNGLEGRASS = scaled("/textures/default_junglegrass.png");
+	public static final ImageIcon DIRT = scaled("/textures/default_dirt.png");
 	public static final ImageIcon BRICK = scaled("/textures/default_brick.png");
-	
 	public static final ImageIcon CLAY = scaled("/textures/default_clay.png");
-	
 	public static final ImageIcon CLOUD = scaled("/textures/default_cloud.png");
-	
 	public static final ImageIcon COBBLE = scaled("/textures/default_cobble.png");
-	
 	public static final ImageIcon ICE = scaled("/textures/default_ice.png");
-
+*/
+	
 	public static final DataFlavor MINE_FLAVOR = new DataFlavor(JComponent.class, "MineFlavor");
 	
 	/**
