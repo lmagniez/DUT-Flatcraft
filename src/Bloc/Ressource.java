@@ -13,5 +13,12 @@ public class Ressource extends JLabel{
 		this.image = image;
 		this.vie = vie;
 		this.propriete=p;
+	}
+
+	@Override
+	public String toString() {
+		return "Ressource [image=" + image + ", vie=" + vie + ", propriete=" + propriete + "]";
 	}	
+	
+	
 }

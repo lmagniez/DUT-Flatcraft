@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 import Main.MineUtils;
 
-public class Map {
+public class Map<T extends JComponent> {
 	public JPanel grid;
 
 	public Map() {
@@ -20,10 +20,6 @@ public class Map {
 	private void create() {
 		int cells = 8*12;
 		grid.setLayout(new GridLayout(8, 12));
-		JComponent jcomp = null;
-		for (int i = 0; i < cells; i++) {
-			jcomp = new JLabel(MineUtils.STONE);
-			grid.add(jcomp);
-		}	
+	
 	}
 }
