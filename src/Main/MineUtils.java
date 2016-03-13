@@ -30,8 +30,8 @@ public class MineUtils {
 	public static final ImageIcon DIAMOND = scaled("/textures/default_mineral_diamond.png");
 	public static final ImageIcon GRASS = scaled("/textures/default_grass.png");	
 	public static final ImageIcon IRON= scaled("/textures/default_mineral_iron.png");
-	public static final ImageIcon LAVA=scaled("/texture/default_lava.png");
-	public static final ImageIcon OBSIDIAN=scaled("/texture/default_obsidian.png");
+	public static final ImageIcon LAVA=scaled("/textures/default_lava.png");
+	public static final ImageIcon OBSIDIAN=scaled("/textures/default_obsidian.png");
 	public static final ImageIcon STONE = scaled("/textures/default_stone.png");
 	public static final ImageIcon WOOD = scaled("/textures/default_tree.png");
 	

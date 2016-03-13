@@ -4,12 +4,15 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
+import Map.Map;
+
 public class Jeux {
 	Map map;
 	Inventaire inv;
 	Outils outils;
 	Craft craft;
-	JFrame frame;
+	JFrame frame=new JFrame();
+	
 	public Jeux() {
 		super();
 		this.map = new Map();
@@ -19,11 +22,17 @@ public class Jeux {
 		this.frame= new JFrame("Jeux");
 		prepare();
 	}
+	
 	private void prepare() {
-		//frame.add(BorderLayout.WEST, outils.lit);
-		//frame.add(BorderLayout.SOUTH, inv.lit);
-		//frame.add(BorderLayout.EAST, map.list);
-	}
-	
-	
+		frame.add(BorderLayout.EAST, map.grid);
+		
+		/*		
+		frame.add(BorderLayout.WEST, outils);
+		frame.add(BorderLayout.SOUTH, inv);
+		*/
+		
+		frame.pack();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+	}	
 }

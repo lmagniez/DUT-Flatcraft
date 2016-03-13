@@ -6,7 +6,7 @@ import Main.MineUtils;
 
 public class Iron extends Ressource {
 
-	public Iron(ImageIcon image, int vie) {
+	public Iron() {
 		super(MineUtils.IRON, 10, "pioche");
 	}
 }

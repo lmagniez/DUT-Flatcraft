@@ -6,7 +6,7 @@ import Main.MineUtils;
 
 public class Wood extends Ressource {
 
-	public Wood(ImageIcon image, int vie) {
+	public Wood() {
 		super(MineUtils.WOOD, 5, "hache");
 		// TODO Auto-generated constructor stub
 	}
