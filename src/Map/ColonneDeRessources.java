@@ -24,19 +24,19 @@ public class ColonneDeRessources{
 			if(i==4)
 				col.add(new Grass());
 			else if(i<4){
-				if(r<0.4)
+				if(r<0.15)
 					col.add(new Wood());
 				else 
 					continue;
 			}
 			else if(i>4 && r<8){
-				if(r<0.4)
+				if(r<0.10)
 					col.add(new Iron() );
 				else
 					col.add(new Stone() );
 			}
 			else if(i>8 && r<=13){
-				if(r<0.4)
+				if(r<0.01)
 					col.add(new Diamond() );
 				else 
 					col.add(new Stone() );
