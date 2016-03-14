@@ -18,5 +18,15 @@ public class RessourceInstance implements MineElementInstance{
 	public Ressource getType() {
 		return this.ressource;
 	}
+
+	public int getVie() {
+		return vie;
+	}
+
+	public void setVie(int vie) {
+		this.vie = vie;
+	}
+	
+	
 	
 }
