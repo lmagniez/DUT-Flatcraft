@@ -23,7 +23,7 @@ public class Jeux {
 	private JFrame frame=new JFrame();
 	
 	public static final int NB_RESSOURCES=7;
-	private Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
+	public static Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
 	
 	public Jeux() {
 		super();

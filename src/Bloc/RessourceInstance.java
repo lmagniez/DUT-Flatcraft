@@ -5,7 +5,6 @@ import Jeux.MineElementInstance;
 
 public class RessourceInstance implements MineElementInstance{
 
-	
 	private Ressource ressource;
 	private int vie; // vie de la ressource
 	
