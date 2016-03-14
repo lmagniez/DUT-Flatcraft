@@ -1,12 +1,14 @@
 package Bloc;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import Jeux.MineElement;
 import Jeux.MineElementInstance;
 
-public class Ressource implements MineElement{
+public class Ressource  extends JButton implements MineElement{
 	ImageIcon image; //image de la ressource
 	int vie; // vie de la ressource
 	String propriete; //outils pour le detruire rapidement
@@ -16,6 +18,8 @@ public class Ressource implements MineElement{
 		this.image = image;
 		this.vie = vie;
 		this.propriete=p;
+		this.setIcon(image);
+		this.setBorder(BorderFactory.createEmptyBorder());
 	}
 
 	@Override

@@ -12,6 +12,7 @@ public class Map<T extends JComponent> {
 	public JPanel grid;
 	public int row=8;
 	public int col=12;
+	public ColonneDeRessources[] gridC= new ColonneDeRessources[row*col] ;
 	
 	public Map() {
 		super();
@@ -25,8 +26,8 @@ public class Map<T extends JComponent> {
 		grid.setLayout(new GridLayout(row, col));
 		ColonneDeRessources j=null;
 		for(int i=0;i<cells;i++){
-			j=new ColonneDeRessources();
-			grid.add(new JLabel(j.col.get(0).getImage()));
+			gridC[i]=new ColonneDeRessources();
+			grid.add(gridC[i].col.get(0));
 		}
 	}
 }
