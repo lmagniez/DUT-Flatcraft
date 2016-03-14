@@ -3,7 +3,10 @@ package Bloc;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Ressource{
+import Jeux.MineElement;
+import Jeux.MineElementInstance;
+
+public class Ressource implements MineElement{
 	ImageIcon image; //image de la ressource
 	int vie; // vie de la ressource
 	String propriete; //outils pour le detruire rapidement
@@ -42,6 +45,12 @@ public class Ressource{
 
 	public void setPropriete(String propriete) {
 		this.propriete = propriete;
+	}
+
+	@Override
+	public RessourceInstance newInstance() {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 	
 	
