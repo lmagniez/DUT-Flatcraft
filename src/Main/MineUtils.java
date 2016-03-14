@@ -34,6 +34,7 @@ public class MineUtils {
 	public static final ImageIcon OBSIDIAN=scaled("/textures/default_obsidian.png");
 	public static final ImageIcon STONE = scaled("/textures/default_stone.png");
 	public static final ImageIcon WOOD = scaled("/textures/default_tree.png");
+	public static final ImageIcon COAL = scaled("/textures/default_coal_block.png");
 	
 /*
 	public static final ImageIcon JUNGLEGRASS = scaled("/textures/default_junglegrass.png");

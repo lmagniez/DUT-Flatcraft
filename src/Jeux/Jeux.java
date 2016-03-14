@@ -23,7 +23,7 @@ public class Jeux {
 		this.frame= new JFrame("Jeux");
 		prepare();
 	}
-	
+		
 	private void prepare() {
 		frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
 		/*		

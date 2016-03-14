@@ -6,13 +6,15 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Bloc.Ressource;
 import Main.MineUtils;
 
 public class Map<T extends JComponent> {
 	public JPanel grid;
-	public int row=8;
-	public int col=12;
-	public ColonneDeRessources[] gridC= new ColonneDeRessources[row*col] ;
+	private int row=8;
+	private int col=12;
+	public static final int NOMBRE_RESSOURCES=7;
+	private ColonneDeRessources[] gridC= new ColonneDeRessources[row*col] ;
 	
 	public Map() {
 		super();
