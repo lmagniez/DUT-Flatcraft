@@ -135,7 +135,52 @@ On supposera simplement que l'on dispose du nombre de ressources disponibles. Le
 
 ## Semaine 7 : création de la table de craft
 
-*Utilisation avancée du glissé/déplacé*
+### Avant de commencer
+
+Pour mettre à jour votre copie du projet `flatcraft` avec ces nouvelles instructions, vous devez effectuer ces commandes dans votre copie locale du projet :
+
+```
+git remote add upstream https://forge.univ-artois.fr/dut2-2016/flatcraft.git
+git pull upstream master
+```
+
+### Principe
+
+Creuser le monde permet de trouver des ressources naturelles. Il est nécessaire de manufacturer ces produits pour confectionner de nouvelles ressources ou des outils.
+
+La table de craft est une grille 3x3 qui permet de créer des ressources à l'aide de motifs. Voir sur [la page dédiée de MineTest](http://wiki.minetest.com/wiki/Crafting) pour des exemples de motifs. Chaque groupe a le droit de s'inspirer des motifs originaux (cela améliore la jouabilité du jeu) mais peut aussi en inventer des nouveaux (mais il faut les documenter).
+
+On notera simplement que :
+
+- la grille ne peut recevoir que des ressources (pas des outils)
+- la table de craft peut fournir soit un outil, soit une certaine quantité de ressources.
+
+### Réalisation
+
+D'un point de vue graphique, la table de craft peut être réalisée à l'aide d'un `JPanel` utilisant un `BorderLayout`. Au centre, on place la grille de craft (un autre `JPanel` avec un `GridLayout` 3x3) et à l'est on place le produit manufacturé. Voici un exemple de réalisation avec ces composants graphiques.
+
+![Une réalisation possible de table de craft](crafttable.png)
+
+La réalisation de la table de craft est essentiellement basée sur la gestion du glissé/déplacé. Il faudra être attentif aux règles suivantes pour utiliser au mieux cette fonctionnalité de Java/Swing.
+
+1. On utilisera comme pour la semaine 3 de `JPanel` comme receptacles de composants graphiques : ils seront associés à des `TransferHandler` de type "To".
+1. On utilisera des composants graphiques (`JLabel`, `JButton`, `JToggleButton`) comme source du glissé/déplacé : ils seront associés à des `TransferHandler` de type "From" et à un écouteur de type `MouseListener` pour reconnaître l'action de glissé/déplacé.
+1. On utilisera soit des actions de type `MOVE`(toutes les ressources sont déplacées) soit des actions de type `COPY` (la moitié des ressources sont déplacées). On affectera par exemple un bouton particulier de la souris pour gérer chacune des actions.
+
+Pour permettre de filtrer les objets graphiques selon leur type, et n'accepter que des ressources dans la grille de craft, on définira des "saveurs" particulières pour les ressources et les outils. Ces saveurs seront utilisées dans les objets `TransfertHandler` pour définir le type des objets transportés. 
+
+```java
+public static final DataFlavor RESOURCE_FLAVOR = new DataFlavor(ResourceContainer.class, "resourcecontainer");
+public static final DataFlavor TOOL_FLAVOR = new DataFlavor(Tool.class,"tool");
+```
+
+**Par défaut, avec ces contraintes, il ne sera pas possible de déposer une nouvelle ressource sur une ressource existante dans la table de craft, car le transfer handler est sur un `JPanel`, pas sur l'objet graphique représentant la ressource. Il faudra donc vider la cellule avant de la réutiliser. Cela peut se faire de deux façons : par glissé/déplacé ou quand la quantité de ressources devient nulle.**
+
+Chaque groupe est libre de gérer son inventaire comme il le souhaite :
+
+- accès à un sac avec un nombre d'éléments limité (généralement 9) et gestion du transfert entre le sac et un inventaire complet.
+- accès à un inventaire unique, sans limite
+- mélange des outils et des ressources dans l'inventaire
 
 ## Semaine 8 : analyse automatique du code produit, finitions
 
