@@ -28,18 +28,19 @@ public class Jeux {
 
 
 	public static final int NB_RESSOURCES=8;
-	private Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
+	public static Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
 
 	
 	public Jeux() {
 		super();
+		prepareRessource();
 		this.map = new Map();
 		this.inv = new Inventaire();
 		this.outils = new Outils();
 		this.craft = new Craft();
 		this.frame= new JFrame("Jeux");
 		prepare();
-		prepareRessource();
+		
 	}
 	
 	
