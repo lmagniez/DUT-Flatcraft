@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import Jeux.MineElement;
 import Jeux.MineElementInstance;
 
-public class Ressource  extends JButton implements MineElement{
+public class Ressource  implements MineElement{
 	ImageIcon image; //image de la ressource
 	private final int valeurVie;
 	String propriete; //outils pour le detruire rapidement
@@ -17,9 +17,7 @@ public class Ressource  extends JButton implements MineElement{
 		super();
 		this.image = image;
 		this.propriete=p;
-		this.setIcon(image);
 		this.valeurVie=valeurVie;
-		this.setBorder(BorderFactory.createEmptyBorder());
 	}
 
 	@Override

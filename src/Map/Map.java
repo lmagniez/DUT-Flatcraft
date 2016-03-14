@@ -27,7 +27,7 @@ public class Map<T extends JComponent> {
 		ColonneDeRessources j=null;
 		for(int i=0;i<cells;i++){
 			gridC[i]=new ColonneDeRessources();
-			grid.add(gridC[i].col.get(0));
+			grid.add(gridC[i]);
 		}
 	}
 }

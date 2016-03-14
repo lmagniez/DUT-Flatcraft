@@ -16,7 +16,7 @@ public class RessourceInstance implements MineElementInstance{
 	}
 
 	@Override
-	public MineElement getType() {
+	public Ressource getType() {
 		return this.ressource;
 	}
 	

@@ -2,19 +2,25 @@ package Map;
 
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+
 import Bloc.Diamond;
 import Bloc.Grass;
 import Bloc.Iron;
 import Bloc.Lava;
 import Bloc.Ressource;
+import Bloc.RessourceInstance;
 import Bloc.Stone;
 import Bloc.Wood;
 
-public class ColonneDeRessources{
-	public ArrayList<Ressource> col=new ArrayList<Ressource>();
+public class ColonneDeRessources  extends JButton{
+	public ArrayList<RessourceInstance> col=new ArrayList<RessourceInstance>();
 	
 	public ColonneDeRessources(){
 		create();
+		this.setIcon(col.get(0).getType().getImage());
+		this.setBorder(BorderFactory.createEmptyBorder());
 	}
 
 	private void create() {
