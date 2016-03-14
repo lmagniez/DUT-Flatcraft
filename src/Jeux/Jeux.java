@@ -4,15 +4,26 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
+import Bloc.Diamond;
+import Bloc.Grass;
+import Bloc.Iron;
+import Bloc.Lava;
+import Bloc.Obsidian;
+import Bloc.Ressource;
+import Bloc.Stone;
+import Bloc.Wood;
 import Main.MineUtils;
 import Map.Map;
 
 public class Jeux {
-	Map map;
-	Inventaire inv;
-	Outils outils;
-	Craft craft;
-	JFrame frame=new JFrame();
+	private Map map;
+	private Inventaire inv;
+	private Outils outils;
+	private Craft craft;
+	private JFrame frame=new JFrame();
+	
+	public static final int NB_RESSOURCES=7;
+	private Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
 	
 	public Jeux() {
 		super();
@@ -23,7 +34,20 @@ public class Jeux {
 		this.frame= new JFrame("Jeux");
 		prepare();
 	}
+	
+	
+	public void prepareRessource()
+	{
+		tabRessources[0]=new Grass();
+		tabRessources[1]=new Stone();
+		tabRessources[2]=new Wood();
+		tabRessources[3]=new Iron();
+		tabRessources[4]=new Obsidian();
+		tabRessources[5]=new Diamond();
+		tabRessources[6]=new Lava();
 		
+	}
+	
 	private void prepare() {
 		frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
 		/*		
