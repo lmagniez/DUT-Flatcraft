@@ -33,13 +33,14 @@ public class Jeux {
 	
 	public Jeux() {
 		super();
+		prepareRessource();
 		this.map = new Map();
 		this.inv = new Inventaire();
 		this.outils = new Outils();
 		this.craft = new Craft();
 		this.frame= new JFrame("Jeux");
 		prepare();
-		prepareRessource();
+		
 	}
 	
 	
