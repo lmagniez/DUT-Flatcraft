@@ -10,21 +10,21 @@ import Jeux.MineElementInstance;
 
 public class Ressource  extends JButton implements MineElement{
 	ImageIcon image; //image de la ressource
-	int vie; // vie de la ressource
+	private final int valeurVie;
 	String propriete; //outils pour le detruire rapidement
 	
-	public Ressource(ImageIcon image, int vie,String p) {
+	public Ressource(ImageIcon image, int valeurVie,String p) {
 		super();
 		this.image = image;
-		this.vie = vie;
 		this.propriete=p;
 		this.setIcon(image);
+		this.valeurVie=valeurVie;
 		this.setBorder(BorderFactory.createEmptyBorder());
 	}
 
 	@Override
 	public String toString() {
-		return "Ressource [image=" + image + ", vie=" + vie + ", propriete=" + propriete + "]";
+		return "Ressource [image=" + image + ",propriete=" + propriete + "]";
 	}
 
 	public ImageIcon getImage() {
@@ -35,13 +35,7 @@ public class Ressource  extends JButton implements MineElement{
 		this.image = image;
 	}
 
-	public int getVie() {
-		return vie;
-	}
 
-	public void setVie(int vie) {
-		this.vie = vie;
-	}
 
 	public String getPropriete() {
 		return propriete;
@@ -51,10 +45,15 @@ public class Ressource  extends JButton implements MineElement{
 		this.propriete = propriete;
 	}
 
+	
+	
+	public int getValeurVie() {
+		return valeurVie;
+	}
+
 	@Override
 	public RessourceInstance newInstance() {
-		// TODO Auto-generated method stub
-		return null;
+		return new RessourceInstance(this);
 	}	
 	
 	
