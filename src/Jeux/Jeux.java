@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
+import Bloc.Coal;
 import Bloc.Diamond;
 import Bloc.Grass;
 import Bloc.Iron;
@@ -22,7 +23,7 @@ public class Jeux {
 	private Craft craft;
 	private JFrame frame=new JFrame();
 	
-	public static final int NB_RESSOURCES=7;
+	public static final int NB_RESSOURCES=8;
 	private Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
 	
 	public Jeux() {
@@ -33,6 +34,7 @@ public class Jeux {
 		this.craft = new Craft();
 		this.frame= new JFrame("Jeux");
 		prepare();
+		prepareRessource();
 	}
 	
 	
@@ -45,6 +47,8 @@ public class Jeux {
 		tabRessources[4]=new Obsidian();
 		tabRessources[5]=new Diamond();
 		tabRessources[6]=new Lava();
+		tabRessources[7]=new Coal();
+		
 		
 	}
 	
