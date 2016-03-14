@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+import Bloc.RessourceContainer;
 import Bloc.RessourceInstance;
 
 public class ColonneDeRessources  extends JButton implements ActionListener{
@@ -61,8 +62,9 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 		
 		ColonneDeRessources button=(ColonneDeRessources) e.getSource();
 		button.col.get(0).setVie(button.col.get(0).getVie()-10);
+		//lave a gerer!!!!
 		if(button.col.get(0).getVie()<=0){
-			
+			Jeux.Jeux.getInv().inventaire.add(new RessourceContainer(1,button.col.get(0).getType()));
 			button.col.remove(0);
 			button.setIcon(col.get(0).getType().getImage());
 		}

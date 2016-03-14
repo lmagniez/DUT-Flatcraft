@@ -18,15 +18,11 @@ import Map.Map;
 
 public class Jeux {
 	private Map map;
-	private Inventaire inv;
+	private static Inventaire inv;
 	private Outils outils;
 	private Craft craft;
 	private JFrame frame=new JFrame();
 	
-
-
-
-
 	public static final int NB_RESSOURCES=8;
 	public static Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
 
@@ -60,13 +56,19 @@ public class Jeux {
 	
 	private void prepare() {
 		frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
+		
 		/*		
 		frame.add(BorderLayout.WEST, outils);
-		frame.add(BorderLayout.SOUTH, inv);
+		frame.add(BorderLayout.SOUTH, MineUtils.scrollPane(inv.inventaire));
 		*/
 		
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-	}	
+	}
+
+	public static Inventaire getInv() {
+		return inv;
+	}
+	
 }
