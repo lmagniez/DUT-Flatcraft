@@ -1,5 +1,6 @@
 package Bloc;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public class RessourceContainer extends JButton{
@@ -12,6 +13,19 @@ public class RessourceContainer extends JButton{
 		this.quantity=quantity;
 		this.ressource=r;
 		this.setIcon(r.image);
+		this.setBorder(BorderFactory.createEmptyBorder());
+	}
+
+	public Ressource getRessource() {
+		return ressource;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 }

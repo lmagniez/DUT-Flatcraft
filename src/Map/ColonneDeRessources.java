@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+import Bloc.Ressource;
 import Bloc.RessourceContainer;
 import Bloc.RessourceInstance;
 
@@ -64,10 +65,21 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 		button.col.get(0).setVie(button.col.get(0).getVie()-10);
 		//lave a gerer!!!!
 		if(button.col.get(0).getVie()<=0){
-			Jeux.Jeux.getInv().add(new RessourceContainer(1,button.col.get(0).getType()));
+			ajoutinventaire(button.col.get(0).getType());
 			button.col.remove(0);
 			button.setIcon(col.get(0).getType().getImage());
 		}
-		
+	}
+
+	private void ajoutinventaire(Ressource r) {
+		for(int i=0;i<Jeux.Jeux.getInv().getinv().size();i++){
+			if(Jeux.Jeux.getInv().getinv().get(i).getIcon()==r.getImage()){
+				Jeux.Jeux.getInv().getinv().get(i).setQuantity(Jeux.Jeux.getInv().getinv().get(i).getQuantity()+1);
+				return;
+			}
+		}
+		RessourceContainer c=new RessourceContainer(1,r);
+		Jeux.Jeux.getInv().getinv().add(c);
+		Jeux.Jeux.getInv().add(c);
 	}
 }
