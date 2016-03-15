@@ -7,11 +7,6 @@ import javax.swing.JPanel;
 
 import Bloc.RessourceContainer;
 
-public class Inventaire extends JComponent{
+public class Inventaire extends JPanel{
 	
-	public JPanel inv;
-	
-	public ArrayList<RessourceContainer> inventaire = new ArrayList<RessourceContainer>();
-	
-
 }

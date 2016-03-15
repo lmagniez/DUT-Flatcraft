@@ -1,6 +1,8 @@
 package Bloc;
 
-public class RessourceContainer {
+import javax.swing.JButton;
+
+public class RessourceContainer extends JButton{
 	
 	private int quantity;
 	private Ressource ressource;
@@ -9,7 +11,7 @@ public class RessourceContainer {
 	{
 		this.quantity=quantity;
 		this.ressource=r;
-		
+		this.setIcon(r.image);
 	}
 	
 }

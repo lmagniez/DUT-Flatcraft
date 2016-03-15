@@ -64,7 +64,7 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 		button.col.get(0).setVie(button.col.get(0).getVie()-10);
 		//lave a gerer!!!!
 		if(button.col.get(0).getVie()<=0){
-			Jeux.Jeux.getInv().inventaire.add(new RessourceContainer(1,button.col.get(0).getType()));
+			Jeux.Jeux.getInv().add(new RessourceContainer(1,button.col.get(0).getType()));
 			button.col.remove(0);
 			button.setIcon(col.get(0).getType().getImage());
 		}

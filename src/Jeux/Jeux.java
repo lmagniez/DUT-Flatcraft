@@ -56,10 +56,10 @@ public class Jeux {
 	
 	private void prepare() {
 		frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
-		
+		frame.add(BorderLayout.SOUTH, MineUtils.scrollPane(inv));
 		/*		
 		frame.add(BorderLayout.WEST, outils);
-		frame.add(BorderLayout.SOUTH, MineUtils.scrollPane(inv.inventaire));
+		
 		*/
 		
 		frame.pack();
