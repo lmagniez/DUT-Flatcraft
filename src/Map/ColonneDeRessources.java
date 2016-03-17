@@ -1,15 +1,18 @@
 package Map;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import Bloc.Ressource;
 import Bloc.RessourceContainer;
 import Bloc.RessourceInstance;
+import Jeux.Jeux;
 
 public class ColonneDeRessources  extends JButton implements ActionListener{
 	public ArrayList<RessourceInstance> col=new ArrayList<RessourceInstance>();
@@ -26,34 +29,34 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 		for(int i=0;i<30;i++){
 			r= (float) (Math.random() * 1);
 			if(i==4)
-				col.add(new RessourceInstance(Jeux.Jeux.tabRessources[0])); //grass -> sol
+				col.add(new RessourceInstance(Jeux.tabRessources[0])); //grass -> sol
 			
 			else if(i<4){
 				if(r<0.1)
-					col.add(new RessourceInstance(Jeux.Jeux.tabRessources[2])); //wood
+					col.add(new RessourceInstance(Jeux.tabRessources[2])); //wood
 				else 
 					continue;
 			}
 			else if(i>4 && i<15){
 				if(r<0.03)
-					col.add(new RessourceInstance(Jeux.Jeux.tabRessources[3]) ); //iron
+					col.add(new RessourceInstance(Jeux.tabRessources[3]) ); //iron
 				else if(r<0.09)
-					col.add(new RessourceInstance(Jeux.Jeux.tabRessources[7])); //coal
+					col.add(new RessourceInstance(Jeux.tabRessources[7])); //coal
 				else
-					col.add(new RessourceInstance(Jeux.Jeux.tabRessources[1]) ); //stone
+					col.add(new RessourceInstance(Jeux.tabRessources[1]) ); //stone
 			}
 			else if(i>15 && i<=28){
 				if(r<0.005)
-					col.add(new RessourceInstance(Jeux.Jeux.tabRessources[5]) ); //diamond
+					col.add(new RessourceInstance(Jeux.tabRessources[5]) ); //diamond
 				else if (r< 0.09)
-					col.add(new RessourceInstance(Jeux.Jeux.tabRessources[3])); //iron
+					col.add(new RessourceInstance(Jeux.tabRessources[3])); //iron
 				else if (r< 0.15)
-					col.add(new RessourceInstance(Jeux.Jeux.tabRessources[7])); //coal
+					col.add(new RessourceInstance(Jeux.tabRessources[7])); //coal
 				else 
-					col.add(new RessourceInstance(Jeux.Jeux.tabRessources[1])); //stone
+					col.add(new RessourceInstance(Jeux.tabRessources[1])); //stone
 			}
 			else if(i==29)
-				col.add(new RessourceInstance(Jeux.Jeux.tabRessources[6]) ); //lava
+				col.add(new RessourceInstance(Jeux.tabRessources[6]) ); //lava
 		}
 	}
 
@@ -72,14 +75,20 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 	}
 
 	private void ajoutinventaire(Ressource r) {
-		for(int i=0;i<Jeux.Jeux.getInv().getinv().size();i++){
-			if(Jeux.Jeux.getInv().getinv().get(i).getIcon()==r.getImage()){
-				Jeux.Jeux.getInv().getinv().get(i).setQuantity(Jeux.Jeux.getInv().getinv().get(i).getQuantity()+1);
+		Component[] components = Jeux.getInv().getComponents();
+		for(int i=0; i<components.length; i++){
+			JButton elt= (JButton) Jeux.getInv().getComponent(i);
+			if(elt.getIcon()==r.getImage())
+			{
+				((RessourceContainer) elt).setQuantity(((RessourceContainer) elt).getQuantity()+1);
 				return;
 			}
 		}
 		RessourceContainer c=new RessourceContainer(1,r);
-		Jeux.Jeux.getInv().getinv().add(c);
-		Jeux.Jeux.getInv().add(c);
+		Jeux.getInv().add(c);
+		Jeux.getInv().repaint();
+		
+		Jeux.getInv().setVisible(true);
+		
 	}
 }

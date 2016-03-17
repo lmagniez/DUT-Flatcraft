@@ -2,6 +2,7 @@ package Jeux;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import Bloc.Coal;
@@ -56,15 +57,18 @@ public class Jeux {
 	
 	private void prepare() {
 		frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
-		frame.add(BorderLayout.SOUTH, MineUtils.scrollPane(inv));
-		/*		
-		frame.add(BorderLayout.WEST, outils);
+		frame.add(BorderLayout.SOUTH, MineUtils.scrollPane(inv));		
+		frame.add(BorderLayout.WEST, MineUtils.scrollPane(outils));
 		
-		*/
+	
 		
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		
+		
+		
+		
 	}
 
 	public static Inventaire getInv() {
