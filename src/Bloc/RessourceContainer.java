@@ -7,11 +7,13 @@ import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JToggleButton;
 
-public class RessourceContainer extends JButton{
+public class RessourceContainer extends JToggleButton {
 	
 	private int quantity;
 	private Ressource ressource;
+	private boolean select=false;
 	
 	public RessourceContainer(int quantity, Ressource r)
 	{
@@ -49,4 +51,17 @@ public class RessourceContainer extends JButton{
 	            }
 	        }
 	    }
+
+	
+	public boolean isSelect()
+	{
+		return select;
+	}
+	
+	public void setSelect(boolean s)
+	{
+		select=s;
+	}
+	
+	
 }
