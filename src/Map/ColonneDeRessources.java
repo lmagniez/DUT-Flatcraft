@@ -86,6 +86,7 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 		}
 		RessourceContainer c=new RessourceContainer(1,r);
 		Jeux.getInv().add(c);
+		Jeux.getInv().revalidate();
 		Jeux.getInv().repaint();
 		
 		Jeux.getInv().setVisible(true);
