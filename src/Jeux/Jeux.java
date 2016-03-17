@@ -38,6 +38,7 @@ public class Jeux {
 		this.frame= new JFrame("Jeux");
 		prepare();
 		
+		
 	}
 	
 	
@@ -60,7 +61,6 @@ public class Jeux {
 		frame.add(BorderLayout.SOUTH, MineUtils.scrollPane(inv));		
 		frame.add(BorderLayout.WEST, MineUtils.scrollPane(outils));
 		
-	
 		
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

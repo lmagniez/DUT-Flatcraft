@@ -35,9 +35,10 @@ public class MineUtils {
 	public static final ImageIcon STONE = scaled("/textures/default_stone.png");
 	public static final ImageIcon WOOD = scaled("/textures/default_tree.png");
 	public static final ImageIcon COAL = scaled("/textures/default_coal_block.png");
+	public static final ImageIcon BRICOLAGE = scaled("/textures/roumain.png");
 	
-/*
-	public static final ImageIcon JUNGLEGRASS = scaled("/textures/default_junglegrass.png");
+
+	/*public static final ImageIcon JUNGLEGRASS = scaled("/textures/default_junglegrass.png");
 	public static final ImageIcon DIRT = scaled("/textures/default_dirt.png");
 	public static final ImageIcon BRICK = scaled("/textures/default_brick.png");
 	public static final ImageIcon CLAY = scaled("/textures/default_clay.png");

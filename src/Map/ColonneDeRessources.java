@@ -64,6 +64,7 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
+		
 		ColonneDeRessources button=(ColonneDeRessources) e.getSource();
 		button.col.get(0).setVie(button.col.get(0).getVie()-10);
 		//lave a gerer!!!!
@@ -81,6 +82,8 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 			if(elt.getIcon()==r.getImage())
 			{
 				((RessourceContainer) elt).setQuantity(((RessourceContainer) elt).getQuantity()+1);
+				Jeux.getInv().revalidate();
+				Jeux.getInv().repaint();
 				return;
 			}
 		}
@@ -88,6 +91,9 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 		Jeux.getInv().add(c);
 		Jeux.getInv().revalidate();
 		Jeux.getInv().repaint();
+		Jeux.getInv().setSize(500, 60);;
+		
+		
 		
 		Jeux.getInv().setVisible(true);
 		
