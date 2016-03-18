@@ -16,9 +16,16 @@ import Bloc.Stone;
 import Bloc.Wood;
 import Main.MineUtils;
 import Map.Map;
-import Outils.Main;
+
+
+import Outils.MainOutils;
 import Outils.PiocheBois;
+import Outils.PiocheDiamond;
+import Outils.PiocheIron;
 import Outils.PiochePierre;
+import Outils.Tool;
+
+
 
 public class Jeux {
 	private Map map;
@@ -30,12 +37,13 @@ public class Jeux {
 	public static final int NB_RESSOURCES=8;
 	private static final int NB_OUTILS = 13;
 	public static Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
-	public static Outils[ ] tabOutils= new Outils[NB_OUTILS];
+	public static Tool[ ] tabOutils= new Tool[NB_OUTILS];
 
 	
 	public Jeux() {
 		super();
 		prepareRessource();
+		prepareOutils();
 		this.map = new Map();
 		this.inv = new Inventaire();
 		this.outils = new Outils();
@@ -63,14 +71,13 @@ public class Jeux {
 	
 	public void prepareOutils()
 	{
-		/* Charger les images pour les outils et ensuite modifier constructeur des outils 
-		 
-		tabRessources[0]=new Main();
-		tabRessources[1]=new PiocheBois();
-		tabRessources[2]=new PiochePierre();
-		tabRessources[3]=new PiocheIron();
-		tabRessources[4]=new PiocheDiamond();
+		tabOutils[0]=new MainOutils();
+		tabOutils[1]=new PiocheBois();
+		tabOutils[2]=new PiochePierre();
+		tabOutils[3]=new PiocheIron();
+		tabOutils[4]=new PiocheDiamond();
 	
+		/*
 		tabRessources[5]=new PelleBois();
 		tabRessources[6]=new PellePierre();
 		tabRessources[7]=new PelleIron();

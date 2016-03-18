@@ -1,5 +1,6 @@
 package Jeux;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
@@ -42,7 +43,7 @@ public class Inventaire extends JPanel {
 		this.add(b);
 		*/
 		
-		
+
 		
 		
 	}
@@ -61,7 +62,6 @@ public class Inventaire extends JPanel {
     };
     
     public void ajout(JComponent c){
-    	
     	c.addMouseListener(mouselistener);
     	this.add(c);
     }

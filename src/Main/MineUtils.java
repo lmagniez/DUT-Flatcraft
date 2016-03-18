@@ -37,7 +37,23 @@ public class MineUtils {
 	public static final ImageIcon COAL = scaled("/textures/default_coal_block.png");
 	public static final ImageIcon BRICOLAGE = scaled("/textures/roumain.png");
 	
+	public static final ImageIcon PIOCHE_BOIS=scaled("/textures/default_tool_woodpick.png");
+	public static final ImageIcon PIOCHE_PIERRE=scaled("/textures/default_tool_stonepick.png");
+	public static final ImageIcon PIOCHE_FER=scaled("/textures/default_tool_steelpick.png");
+	public static final ImageIcon PIOCHE_DIAMOND=scaled("/textures/default_tool_diamondpick.png");
 
+	public static final ImageIcon HACHE_BOIS=scaled("/textures/default_tool_woodaxe.png");
+	public static final ImageIcon HACHE_PIERRE=scaled("/textures/default_tool_stoneaxe.png");
+	public static final ImageIcon HACHE_FER=scaled("/textures/default_tool_steelaxe.png");
+	public static final ImageIcon HACHE_DIAMOND=scaled("/textures/default_tool_diamondaxe.png");
+	
+	public static final ImageIcon PELLE_BOIS=scaled("/textures/default_tool_woodshovel.png");
+	public static final ImageIcon PELLE_PIERRE=scaled("/textures/default_tool_stoneshovel.png");
+	public static final ImageIcon PELLE_FER=scaled("/textures/default_tool_steelshovel.png");
+	public static final ImageIcon PELLE_DIAMOND=scaled("/textures/default_tool_diamondshovel.png");
+	
+	public static final ImageIcon MAIN=scaled("/textures/default_nc_front.png");
+	
 	/*public static final ImageIcon JUNGLEGRASS = scaled("/textures/default_junglegrass.png");
 	public static final ImageIcon DIRT = scaled("/textures/default_dirt.png");
 	public static final ImageIcon BRICK = scaled("/textures/default_brick.png");

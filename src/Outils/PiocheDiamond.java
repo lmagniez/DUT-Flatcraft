@@ -4,10 +4,10 @@ import javax.swing.ImageIcon;
 
 import Main.MineUtils;
 
-public class PiochePierre extends Tool {
+public class PiocheDiamond extends Tool {
 
-	public PiochePierre() {
-		super(MineUtils.PIOCHE_PIERRE, 25, 2,false);
+	public PiocheDiamond() {
+		super(MineUtils.PIOCHE_DIAMOND, 35, 4,false);
 		// TODO Auto-generated constructor stub
 	}
 

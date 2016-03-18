@@ -4,11 +4,12 @@ import javax.swing.ImageIcon;
 
 import Main.MineUtils;
 
-public class PiochePierre extends Tool {
+public class PelleBois extends Tool {
 
-	public PiochePierre() {
-		super(MineUtils.PIOCHE_PIERRE, 25, 2,false);
+	public PelleBois() {
+		super(MineUtils.PELLE_BOIS, 20, 1, false);
 		// TODO Auto-generated constructor stub
 	}
 
 }
+

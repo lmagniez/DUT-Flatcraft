@@ -1,11 +1,11 @@
 package Outils;
 
-import javax.swing.ImageIcon;
+import Main.MineUtils;
 
 public class PiocheBois extends Tool {
 
-	public PiocheBois(ImageIcon image, int valeurVie, int p) {
-		super(image, valeurVie, p);
+	public PiocheBois() {
+		super(MineUtils.PIOCHE_BOIS, 20, 1,false);
 		// TODO Auto-generated constructor stub
 	}
 

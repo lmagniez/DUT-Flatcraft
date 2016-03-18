@@ -4,10 +4,10 @@ import javax.swing.ImageIcon;
 
 import Main.MineUtils;
 
-public class PiochePierre extends Tool {
+public class HacheIron extends Tool{
 
-	public PiochePierre() {
-		super(MineUtils.PIOCHE_PIERRE, 25, 2,false);
+	public HacheIron() {
+		super(MineUtils.HACHE_FER, 30, 3, false);
 		// TODO Auto-generated constructor stub
 	}
 
