@@ -16,6 +16,9 @@ import Bloc.Stone;
 import Bloc.Wood;
 import Main.MineUtils;
 import Map.Map;
+import Outils.Main;
+import Outils.PiocheBois;
+import Outils.PiochePierre;
 
 public class Jeux {
 	private Map map;
@@ -25,7 +28,9 @@ public class Jeux {
 	private JFrame frame=new JFrame();
 	
 	public static final int NB_RESSOURCES=8;
+	private static final int NB_OUTILS = 13;
 	public static Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
+	public static Outils[ ] tabOutils= new Outils[NB_OUTILS];
 
 	
 	public Jeux() {
@@ -52,6 +57,30 @@ public class Jeux {
 		tabRessources[5]=new Diamond();
 		tabRessources[6]=new Lava();
 		tabRessources[7]=new Coal();
+		
+		
+	}
+	
+	public void prepareOutils()
+	{
+		/* Charger les images pour les outils et ensuite modifier constructeur des outils 
+		 
+		tabRessources[0]=new Main();
+		tabRessources[1]=new PiocheBois();
+		tabRessources[2]=new PiochePierre();
+		tabRessources[3]=new PiocheIron();
+		tabRessources[4]=new PiocheDiamond();
+	
+		tabRessources[5]=new PelleBois();
+		tabRessources[6]=new PellePierre();
+		tabRessources[7]=new PelleIron();
+		tabRessources[8]=new PelleDiamond();
+		tabRessources[9]=new HacheBois();
+		tabRessources[10]=new HachePierre();
+		tabRessources[11]=new HacheIron();
+		tabRessources[12]=new HacheDiamond();
+		*/
+
 		
 		
 	}
