@@ -17,11 +17,19 @@ import Bloc.Obsidian;
 import Bloc.Ressource;
 import Bloc.Stone;
 import Bloc.Wood;
+
 import Main.MineUtils;
 import Map.Map;
 
-
+import Outils.HacheBois;
+import Outils.HacheDiamond;
+import Outils.HacheIron;
+import Outils.HachePierre;
 import Outils.MainOutils;
+import Outils.PelleBois;
+import Outils.PelleDiamond;
+import Outils.PelleIron;
+import Outils.PellePierre;
 import Outils.PiocheBois;
 import Outils.PiocheDiamond;
 import Outils.PiocheIron;
@@ -81,8 +89,6 @@ public class Jeux {
 		tabRessources[5]=new Diamond();
 		tabRessources[6]=new Lava();
 		tabRessources[7]=new Coal();
-		
-		
 	}
 	
 	public void prepareOutils()
@@ -92,40 +98,24 @@ public class Jeux {
 		tabOutils[2]=new PiochePierre();
 		tabOutils[3]=new PiocheIron();
 		tabOutils[4]=new PiocheDiamond();
-	
-		/*
-		tabRessources[5]=new PelleBois();
-		tabRessources[6]=new PellePierre();
-		tabRessources[7]=new PelleIron();
-		tabRessources[8]=new PelleDiamond();
-		tabRessources[9]=new HacheBois();
-		tabRessources[10]=new HachePierre();
-		tabRessources[11]=new HacheIron();
-		tabRessources[12]=new HacheDiamond();
-		*/
-
-		
+		tabOutils[5]=new PelleBois();
+		tabOutils[6]=new PellePierre();
+		tabOutils[7]=new PelleIron();
+		tabOutils[8]=new PelleDiamond();
+		tabOutils[9]=new HacheBois();
+		tabOutils[10]=new HachePierre();
+		tabOutils[11]=new HacheIron();
+		tabOutils[12]=new HacheDiamond();
 		
 	}
 	
 	private void prepare() {
-		
-		
-		
 		frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
 		frame.add(BorderLayout.SOUTH, MineUtils.scrollPane(inv));		
 		frame.add(BorderLayout.WEST, MineUtils.scrollPane(outils));
-		
-		
-		
-		
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		
-		
-		
-		
 	}
 
 	public static Inventaire getInv() {

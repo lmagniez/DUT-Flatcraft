@@ -107,10 +107,6 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 				this.setIcon(col.get(positionCreuse-1).getType().getImage());
 			}
 	    }
-	    
-		
-		
-		
 	}
 
 	
