@@ -1,10 +1,12 @@
 package Jeux;
 
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 
 import Main.MineUtils;
@@ -21,7 +23,10 @@ public class Outils extends JPanel{
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.setSize(new Dimension(100,50));
-		this.add(new JButton("Table de craft"));
+		//this.add(new JButton("Table de craft"));
+	
+		
+		
 		
 		test();
 		this.add(MineUtils.scrollPane(Pioches));

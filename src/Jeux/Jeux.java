@@ -1,6 +1,9 @@
 package Jeux;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,7 +34,8 @@ public class Jeux {
 	private Map map;
 	private static Inventaire inv;
 	private Outils outils;
-	private Craft craft;
+	//private Craft craft;
+	private TableCraft craft;
 	private JFrame frame=new JFrame();
 	
 	public static final int NB_RESSOURCES=8;
@@ -47,7 +51,19 @@ public class Jeux {
 		this.map = new Map();
 		this.inv = new Inventaire();
 		this.outils = new Outils();
-		this.craft = new Craft();
+		this.craft = new TableCraft(frame, "Table de craft", false);
+		
+		JButton button = new JButton("Table de Craft");
+
+	    button.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent actionevent)
+	        {
+	        	
+	            craft.setVisible(true);
+	        }
+	    });
+		outils.add(button);
+		
 		this.frame= new JFrame("Jeux");
 		prepare();
 		
@@ -93,9 +109,14 @@ public class Jeux {
 	}
 	
 	private void prepare() {
+		
+		
+		
 		frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
 		frame.add(BorderLayout.SOUTH, MineUtils.scrollPane(inv));		
 		frame.add(BorderLayout.WEST, MineUtils.scrollPane(outils));
+		
+		
 		
 		
 		frame.pack();

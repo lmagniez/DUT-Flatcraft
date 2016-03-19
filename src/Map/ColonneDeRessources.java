@@ -64,7 +64,6 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		System.out.println("ACTION PERFORMED");
 		
 		ColonneDeRessources button=(ColonneDeRessources) e.getSource();
