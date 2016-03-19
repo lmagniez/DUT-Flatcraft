@@ -35,12 +35,12 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 		this.ressource = r;
 		if (r != null)
 			this.setIcon(r.image);
-		this.setBorder(BorderFactory.createEmptyBorder());
+		//this.setBorder(BorderFactory.createEmptyBorder());
 		
 
 		
-		this.addMouseListener(mouselistener);
-		this.setTransferHandler(createTransfertFrom());
+		//this.addMouseListener(mouselistener);
+		//this.setTransferHandler(createTransfertFrom());
 		
 		//this.createTransfertFrom();
 	}
@@ -90,7 +90,7 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 		select = s;
 	}
 
-    MouseListener mouselistener = new MouseAdapter() {
+    public MouseListener mouselistener = new MouseAdapter() {
         public void mousePressed(MouseEvent me) {
             JComponent comp = (JComponent) me.getSource();
             TransferHandler handler = comp.getTransferHandler();
@@ -128,7 +128,7 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 	
 	
 	
-	private TransferHandler createTransfertFrom() {
+	public TransferHandler createTransfertFrom() {
         return new TransferHandler() {
 
 			private static final long serialVersionUID = 1L;

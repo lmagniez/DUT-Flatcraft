@@ -102,7 +102,7 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 			col.get(positionCreuse).setVie(col.get(positionCreuse).getVie()-10);
 			//lave a gerer!!!!
 			if(col.get(positionCreuse).getVie()<=0){
-				ajoutinventaire(col.get(positionCreuse).getType());
+				Jeux.getInv().ajoutinventaire(col.get(positionCreuse).getType());
 				col.remove(positionCreuse);
 				this.setIcon(col.get(positionCreuse-1).getType().getImage());
 			}
@@ -113,27 +113,5 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 		
 	}
 
-	private void ajoutinventaire(Ressource r) {
-		Component[] components = Jeux.getInv().getComponents();
-		for(int i=0; i<components.length; i++){
-			JToggleButton elt= (JToggleButton) Jeux.getInv().getComponent(i);
-			if(elt.getIcon()==r.getImage())
-			{
-				((RessourceContainer) elt).setQuantity(((RessourceContainer) elt).getQuantity()+1);
-				Jeux.getInv().revalidate();
-				Jeux.getInv().repaint();
-				return;
-			}
-		}
-		RessourceContainer c=new RessourceContainer(1,r);
-		Jeux.getInv().ajout(c);
-		Jeux.getInv().revalidate();
-		Jeux.getInv().repaint();
-		Jeux.getInv().setSize(500, 60);;
-		
-		
-		
-		Jeux.getInv().setVisible(true);
-		
-	}
+	
 }

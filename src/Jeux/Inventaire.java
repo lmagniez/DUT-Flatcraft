@@ -16,10 +16,12 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 import javax.swing.TransferHandler;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import Bloc.Ressource;
 import Bloc.RessourceContainer;
 import Main.MineUtils;
 import Map.ColonneDeRessources;
@@ -88,7 +90,32 @@ public class Inventaire extends JPanel {
 	public JPanel getinv() {
 		return inventaire;
 	}*/
-	
+	public void ajoutinventaire(Ressource r) {
+		Component[] components = Jeux.getInv().getComponents();
+		for(int i=0; i<components.length; i++){
+			JToggleButton elt= (JToggleButton) Jeux.getInv().getComponent(i);
+			if(elt.getIcon()==r.getImage())
+			{
+				((RessourceContainer) elt).setQuantity(((RessourceContainer) elt).getQuantity()+1);
+				Jeux.getInv().revalidate();
+				Jeux.getInv().repaint();
+				return;
+			}
+		}
+		
+		RessourceContainer c=new RessourceContainer(1,r);
+		c.addMouseListener(c.mouselistener);
+		c.setTransferHandler(c.createTransfertFrom());
+		Jeux.getInv().ajout(c);
+		Jeux.getInv().revalidate();
+		Jeux.getInv().repaint();
+		Jeux.getInv().setSize(500, 60);;
+		
+		
+		
+		Jeux.getInv().setVisible(true);
+		
+	}
 	
 	
 	

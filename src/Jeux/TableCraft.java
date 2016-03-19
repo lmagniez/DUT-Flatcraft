@@ -46,7 +46,7 @@ public class TableCraft extends JDialog {
 		  
 		  for(int i=0;i<9;i++){
 				JPanel jp= new JPanel();
-				jp.add(new RessourceReceiver());
+				jp.add(new RessourceContainer(0,null));
 				jp.setTransferHandler(this.createTransfertTo());
 				p.add(jp);
 		  }
