@@ -84,7 +84,15 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 					setIcon(col.get(positionCreuse+1).getType().getImage());
 					Jeux.getInv().afficher();
 					System.out.println(col.size());
+					
+					elt.setQuantity(elt.getQuantity()-1);
+					if(elt.getQuantity()==0)
+						Jeux.getInv().remove(i);
+					Jeux.getInv().revalidate();
+					Jeux.getInv().repaint();
+					
 					return;
+					
 				}
 					
 			}
