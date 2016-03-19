@@ -8,6 +8,9 @@ import java.awt.Rectangle;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
@@ -34,6 +37,8 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 			this.setIcon(r.image);
 		this.setBorder(BorderFactory.createEmptyBorder());
 		
+
+		this.addMouseListener(mouselistener);
 		this.createTransfertFrom();
 	}
 
@@ -81,6 +86,19 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 		select = s;
 	}
 
+    MouseListener mouselistener = new MouseAdapter() {
+        public void mousePressed(MouseEvent me) {
+            JComponent comp = (JComponent) me.getSource();
+            TransferHandler handler = comp.getTransferHandler();
+            
+            System.out.println("comp: "+comp);
+            System.out.println("handler: "+comp.getTransferHandler());
+            
+            handler.exportAsDrag(comp, me, TransferHandler.COPY);
+        }
+    };
+	
+	
 	@Override
 	public DataFlavor[] getTransferDataFlavors() {
 		return new DataFlavor[] { MineUtils.MINE_FLAVOR };
@@ -104,8 +122,9 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 		return r;
 	}
 	
+	
+	
 	private TransferHandler createTransfertFrom() {
-		System.out.println("ok!!!!!");
         return new TransferHandler() {
 
 			private static final long serialVersionUID = 1L;

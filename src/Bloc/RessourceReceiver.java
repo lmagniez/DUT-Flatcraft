@@ -28,7 +28,7 @@ public class RessourceReceiver extends JButton {
 	{
 		//receiver non vide
 		if(ressource!=null)
-			Jeux.getInv().add(ressource);
+			Jeux.getInv().add(ressource);//On remet dans l'inventaire la ressource actuelle
 		this.ressource=r;
 			
 	}
