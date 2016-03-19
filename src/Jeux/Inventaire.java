@@ -54,10 +54,12 @@ public class Inventaire extends JPanel {
     	boolean craft=false;
         public void mousePressed(MouseEvent me) {
             System.out.println("MOUSE LISTENER ! ");
-        	
+        	System.out.println(me.getSource());
+            
             //A UTILISER AUSSI POUR LE GLISSER DEPOSER? 
             
         	setAllNotSelected();
+        	
         	
         	
         }
@@ -104,8 +106,9 @@ public class Inventaire extends JPanel {
 		}
 		
 		RessourceContainer c=new RessourceContainer(1,r);
-		c.addMouseListener(c.mouselistener);
-		c.setTransferHandler(c.createTransfertFrom());
+		//PROBLEME : ON NE PEUT PLUS SELECTIONNER LE JTOGGLE QUAND ON FAIT LE DRAG AND DROP!!
+		//c.addMouseListener(c.mouselistener);
+		//c.setTransferHandler(c.createTransfertFrom());
 		Jeux.getInv().ajout(c);
 		Jeux.getInv().revalidate();
 		Jeux.getInv().repaint();

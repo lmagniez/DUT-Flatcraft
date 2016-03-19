@@ -64,7 +64,7 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("ACTION PERFORMED");
+		System.out.println("ACTION PERFORMED!!");
 		
 		ColonneDeRessources button=(ColonneDeRessources) e.getSource();
 		int positionCreuse=button.col.size()-1;

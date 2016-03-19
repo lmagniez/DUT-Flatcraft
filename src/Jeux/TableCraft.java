@@ -32,6 +32,7 @@ public class TableCraft extends JDialog {
 	       super(parent,titre, modal);
 	       this.setSize(new Dimension(500, 400));
        	   this.setResizable(false);
+       	   this.setAlwaysOnTop(true);
 	       prepare();
 	  }
 
@@ -40,18 +41,19 @@ public class TableCraft extends JDialog {
 		  JPanel p = new JPanel();
 		  p.setLayout(new GridLayout(3, 3));
 		  
-		  
-		  
 		  RessourceReceiver result= new RessourceReceiver();
 		  
 		  for(int i=0;i<9;i++){
 				JPanel jp= new JPanel();
 				jp.add(new RessourceContainer(0,null));
+				jp.add(new RessourceContainer(0,null));
+				jp.add(new RessourceContainer(0,null));
+				jp.add(new RessourceContainer(0,null));
 				jp.setTransferHandler(this.createTransfertTo());
 				p.add(jp);
 		  }
-		  this.add(BorderLayout.CENTER, MineUtils.scrollPane(p));
-		  this.add(BorderLayout.EAST, MineUtils.scrollPane(result));
+		  this.add(BorderLayout.CENTER, p);
+		  this.add(BorderLayout.EAST, result);
 		  
 	  }
 	  

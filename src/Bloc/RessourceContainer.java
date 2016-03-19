@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -35,7 +36,7 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 		this.ressource = r;
 		if (r != null)
 			this.setIcon(r.image);
-		//this.setBorder(BorderFactory.createEmptyBorder());
+		this.setBorder(BorderFactory.createEmptyBorder());
 		
 
 		
@@ -89,11 +90,21 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 	public void setSelect(boolean s) {
 		select = s;
 	}
-
+	
     public MouseListener mouselistener = new MouseAdapter() {
         public void mousePressed(MouseEvent me) {
-            JComponent comp = (JComponent) me.getSource();
+        	
+        	System.out.println("Mouse Listener...");
+        	
+        	
+            JToggleButton comp = (JToggleButton) me.getSource();
+            
+            ((AbstractButton) me.getSource()).setSelected(true);
+            Jeux.Jeux.getInv().afficher();
+            
             TransferHandler handler = comp.getTransferHandler();
+            
+            
             
             System.out.println("comp: "+comp);
             System.out.println("handler: "+comp.getTransferHandler());
