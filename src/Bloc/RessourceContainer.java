@@ -38,10 +38,14 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 		this.setBorder(BorderFactory.createEmptyBorder());
 		
 
+		
 		this.addMouseListener(mouselistener);
-		this.createTransfertFrom();
+		this.setTransferHandler(createTransfertFrom());
+		
+		//this.createTransfertFrom();
 	}
 
+	
 	public Ressource getRessource() {
 		return ressource;
 	}

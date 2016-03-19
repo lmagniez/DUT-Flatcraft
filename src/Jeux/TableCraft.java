@@ -5,9 +5,12 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.TransferHandler;
+import javax.swing.TransferHandler.TransferSupport;
 
 import Bloc.RessourceContainer;
 import Bloc.RessourceReceiver;
@@ -30,7 +33,6 @@ public class TableCraft extends JDialog {
 	       this.setSize(new Dimension(500, 400));
        	   this.setResizable(false);
 	       prepare();
-
 	  }
 
 	  public void prepare()
@@ -38,16 +40,54 @@ public class TableCraft extends JDialog {
 		  JPanel p = new JPanel();
 		  p.setLayout(new GridLayout(3, 3));
 		  
+		  
+		  
 		  RessourceReceiver result= new RessourceReceiver();
 		  
 		  for(int i=0;i<9;i++){
-				
-				p.add(new RessourceReceiver());
+				JPanel jp= new JPanel();
+				jp.add(new RessourceReceiver());
+				jp.setTransferHandler(this.createTransfertTo());
+				p.add(jp);
 		  }
 		  this.add(BorderLayout.CENTER, MineUtils.scrollPane(p));
 		  this.add(BorderLayout.EAST, MineUtils.scrollPane(result));
 		  
 	  }
+	  
+	  private TransferHandler createTransfertTo() {
+	        return new TransferHandler() {
+
+	            @Override
+	            public boolean canImport(TransferSupport support) {
+	                return support.isDataFlavorSupported(MineUtils.MINE_FLAVOR);
+	            }
+
+	            @Override
+	            public boolean importData(TransferSupport support) {
+	                if (support.isDrop()) {
+	                    JPanel source = (JPanel) support.getComponent();
+	                    System.out.println("ok source : "+source);
+	                    try {
+	                    	System.out.println("ok try");
+	                    	System.out.println(support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR));
+	                        JComponent comp = (JComponent) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
+	                        System.out.println("ok comp: "+comp);
+	                        source.removeAll();
+	                        source.add(comp);
+	                        source.revalidate();
+	                        source.repaint();
+	                        return true;
+	                    } catch (Exception e) {
+	                        return false;
+	                    }
+	                } else {
+	                    return false;
+	                }
+	            }
+	        };
+	    }
+	  
 
 	 
 
