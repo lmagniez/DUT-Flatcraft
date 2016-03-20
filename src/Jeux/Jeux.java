@@ -36,12 +36,10 @@ import Outils.PiocheIron;
 import Outils.PiochePierre;
 import Outils.Tool;
 
-
-
 public class Jeux {
 	private Map map;
 	private static Inventaire inv;
-	private Outils outils;
+	private static Outils outils;
 	//private Craft craft;
 	private TableCraft craft;
 	private JFrame frame=new JFrame();
@@ -123,7 +121,7 @@ public class Jeux {
 	}
 
 
-	public Outils getOutils() {
+	public static Outils getOutils() {
 		return outils;
 	}
 	

@@ -2,6 +2,8 @@ package Outils;
 
 import java.awt.Color;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -14,8 +16,9 @@ import javax.swing.TransferHandler;
 
 import Jeux.MineElement;
 import Jeux.MineElementInstance;
+import Map.ColonneDeRessources;
 
-public class ToolInstance extends JToggleButton implements MineElementInstance{
+public class ToolInstance extends JToggleButton implements MineElementInstance,ActionListener{
 
 	private Tool outils;
 	private double coef; // vie de la ressource
@@ -31,6 +34,7 @@ public class ToolInstance extends JToggleButton implements MineElementInstance{
 		this.setIcon(t.image);
 		this.setBorder(BorderFactory.createEmptyBorder());
 		this.select=outils.isSelect();
+		this.addActionListener(this);
 	}
 	
 	@Override
@@ -63,5 +67,16 @@ public class ToolInstance extends JToggleButton implements MineElementInstance{
 					20);
         }
     }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		ToolInstance button=(ToolInstance) e.getSource();
+		if(button.select)
+			button.select=false;
+		else 
+			button.select=true;
+		
+		Jeux.Jeux.getOutils().repaint();
+	}
    
 }
