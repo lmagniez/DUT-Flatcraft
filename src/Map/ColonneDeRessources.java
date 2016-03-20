@@ -10,10 +10,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
 
+import Bloc.Lava;
 import Bloc.Ressource;
 import Bloc.RessourceContainer;
 import Bloc.RessourceInstance;
 import Jeux.Jeux;
+import Outils.MainOutils;
+import Outils.ToolInstance;
 
 public class ColonneDeRessources  extends JButton implements ActionListener{
 	public ArrayList<RessourceInstance> col=new ArrayList<RessourceInstance>();
@@ -99,8 +102,31 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 		} else {
 			//CREUSER
 			
-			col.get(positionCreuse).setVie(col.get(positionCreuse).getVie()-10);
-			//lave a gerer!!!!
+			Component[] components = Jeux.getOutils().getComponents();
+			for(int i=1;i<components.length;i++){ //commence a 1 car le premier element est le bouton pour la table 
+				ToolInstance tmp=(ToolInstance) Jeux.getOutils().getComponent(i);
+				if((tmp.getOutils() instanceof MainOutils)){ 
+					col.get(positionCreuse).setVie(col.get(positionCreuse).getVie()-tmp.getCoef()*1);
+				}
+				else if(col.get(positionCreuse).getType() instanceof Lava && !(tmp.getOutils() instanceof MainOutils) ) {
+					Jeux.getOutils().remove(tmp);
+					ToolInstance main=(ToolInstance) Jeux.getOutils().getComponent(1);
+					main.setSelect(true);
+				}
+				else if(tmp.isSelect()){ 
+					col.get(positionCreuse).setVie(col.get(positionCreuse).getVie()-tmp.getCoef()*1);
+					tmp.setVie(tmp.getVie()-1);
+				}
+				if(tmp.getVie()==0){ 
+					Jeux.getOutils().remove(tmp);
+					ToolInstance main=(ToolInstance) Jeux.getOutils().getComponent(1);
+					main.setSelect(true);
+				}
+			}
+			Jeux.getOutils().revalidate();
+			Jeux.getOutils().repaint();
+			
+			
 			if(col.get(positionCreuse).getVie()<=0){
 				Jeux.getInv().ajoutinventaire(col.get(positionCreuse).getType());
 				col.remove(positionCreuse);

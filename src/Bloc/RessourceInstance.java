@@ -6,7 +6,7 @@ import Jeux.MineElementInstance;
 public class RessourceInstance implements MineElementInstance{
 
 	private Ressource ressource;
-	private int vie; // vie de la ressource
+	private double vie; // vie de la ressource
 	
 	public RessourceInstance(Ressource r)
 	{
@@ -19,12 +19,12 @@ public class RessourceInstance implements MineElementInstance{
 		return this.ressource;
 	}
 
-	public int getVie() {
+	public double getVie() {
 		return vie;
 	}
 
-	public void setVie(int vie) {
-		this.vie = vie;
+	public void setVie(double d) {
+		this.vie = d;
 	}
 	
 	

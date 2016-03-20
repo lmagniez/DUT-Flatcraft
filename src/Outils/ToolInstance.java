@@ -53,36 +53,53 @@ public class ToolInstance extends JToggleButton implements MineElementInstance,A
             Rectangle rect = g.getClipBounds();
             g.setColor(Color.GRAY);
             g.fillRect(rect.x+5, rect.y+70, 70, 3);
-            g.setColor(Color.RED);
-            g.fillRect(rect.x+5, rect.y+70, (int)(this.outils.getVie()*70.0)/this.vie, 3);
+            int vie=(int)(this.vie*70.0)/this.outils.getVie();
+            
+            g.setColor(Color.GREEN);
+            g.fillRect(rect.x+5, rect.y+70,vie,3);
         }
         if (this.select) {
         	Rectangle rect = g.getClipBounds();
-			g.setColor(Color.YELLOW);
-			g.fillOval(rect.x + rect.width - 20, rect.y + rect.height - 20 , 20,
-					20);
+			g.setColor(Color.BLUE);
+			g.fillOval(rect.x + rect.width - 20, rect.y, 10,
+					10);
         }
     }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Component[] components = Jeux.getOutils().getComponents();
-		
-		for(int i=1;i<components.length;i++){
+		ToolInstance button=(ToolInstance) e.getSource();
+
+		for(int i=1;i<components.length;i++){ //commence a 1 car le premier element est le bouton pour la table 
 			ToolInstance tmp=(ToolInstance) Jeux.getOutils().getComponent(i);
 			if(tmp.select)
 				tmp.select=false;
 		}
 		
-		ToolInstance button=(ToolInstance) e.getSource();
-			if(button.select)
-				button.select=false;
-			else 
 				button.select=true;
-
 		Jeux.getOutils().revalidate();
 		Jeux.getOutils().repaint();
 		
 	}
-   
+
+	public boolean isSelect() {
+		return select;
+	}
+	
+	
+
+	public void setSelect(boolean select) {
+		this.select = select;
+	}
+
+	public double getCoef() {
+		return coef;
+	}
+
+	public Tool getOutils() {
+		return outils;
+	}
+	
+	
 }
