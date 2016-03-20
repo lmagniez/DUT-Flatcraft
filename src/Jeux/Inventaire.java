@@ -36,7 +36,7 @@ public class Inventaire extends JPanel {
 	{
 		//inventaire=new JPanel();
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-		this.setSize(new Dimension(100,50));
+		this.setSize(new Dimension(80, 75)); 
 		this.idSelect=-1;
 		
 		/*
@@ -44,10 +44,6 @@ public class Inventaire extends JPanel {
 		b.setIcon(MineUtils.BRICOLAGE);
 		this.add(b);
 		*/
-		
-
-		
-		
 	}
 	
     MouseListener mouselistener = new MouseAdapter() {
@@ -59,9 +55,6 @@ public class Inventaire extends JPanel {
             //A UTILISER AUSSI POUR LE GLISSER DEPOSER? 
             
         	setAllNotSelected();
-        	
-        	
-        	
         }
     };
     

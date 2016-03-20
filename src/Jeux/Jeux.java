@@ -46,6 +46,7 @@ public class Jeux {
 	private TableCraft craft;
 	private JFrame frame=new JFrame();
 	
+	
 	public static final int NB_RESSOURCES=8;
 	private static final int NB_OUTILS = 13;
 	public static Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
@@ -61,20 +62,19 @@ public class Jeux {
 		this.outils = new Outils();
 		this.craft = new TableCraft(frame, "Table de craft", false);
 		
-		JButton button = new JButton("Table de Craft");
+		JButton button = new JButton("Crafting");
 
 	    button.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent actionevent)
 	        {
-	        	
 	            craft.setVisible(true);
 	        }
 	    });
 		outils.add(button);
+		outils.Initialize();
 		
 		this.frame= new JFrame("Jeux");
 		prepare();
-		
 		
 	}
 	
@@ -110,9 +110,9 @@ public class Jeux {
 	}
 	
 	private void prepare() {
-		frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
-		frame.add(BorderLayout.SOUTH, MineUtils.scrollPane(inv));		
 		frame.add(BorderLayout.WEST, MineUtils.scrollPane(outils));
+		frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
+		frame.add(BorderLayout.SOUTH, MineUtils.scrollPane(inv));
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -121,5 +121,11 @@ public class Jeux {
 	public static Inventaire getInv() {
 		return inv;
 	}
+
+
+	public Outils getOutils() {
+		return outils;
+	}
+	
 	
 }

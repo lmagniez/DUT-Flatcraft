@@ -52,7 +52,7 @@ public class MineUtils {
 	public static final ImageIcon PELLE_FER=scaled("/textures/default_tool_steelshovel.png");
 	public static final ImageIcon PELLE_DIAMOND=scaled("/textures/default_tool_diamondshovel.png");
 	
-	public static final ImageIcon MAIN=scaled("/textures/default_nc_front.png");
+	public static final ImageIcon MAIN=scaled("/textures/main.png");
 	
 	/*public static final ImageIcon JUNGLEGRASS = scaled("/textures/default_junglegrass.png");
 	public static final ImageIcon DIRT = scaled("/textures/default_dirt.png");

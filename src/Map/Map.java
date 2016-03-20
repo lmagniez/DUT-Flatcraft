@@ -1,7 +1,9 @@
 package Map;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,13 +13,16 @@ import Main.MineUtils;
 
 public class Map<T extends JComponent> {
 	public JPanel grid;
-	private int row=8;
+	private int row=12;
 	private int col=12;
 	public static final int NOMBRE_RESSOURCES=7;
 	
 	public Map() {
-		super();
 		grid=new JPanel();
+
+		grid.setLayout(new BoxLayout(grid, BoxLayout.Y_AXIS));
+		grid.setSize(new Dimension(80, 75)); 
+		
 		create();
 	}
 

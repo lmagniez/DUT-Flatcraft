@@ -14,14 +14,16 @@ import Outils.MainOutils;
 import Outils.ToolInstance;
 
 public class Outils extends JPanel{
-
 	
 	public Outils(){
-		test();
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		this.setSize(new Dimension(80, 75)); 
 	}
 
-	private void test() {
+	void Initialize() {
 		this.add(new ToolInstance(Jeux.tabOutils[0]));
+		this.add(new ToolInstance(Jeux.tabOutils[1]));
+		this.add(new ToolInstance(Jeux.tabOutils[2]));
 	}
 
 }
