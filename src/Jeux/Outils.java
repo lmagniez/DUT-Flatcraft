@@ -25,7 +25,7 @@ public class Outils extends JPanel{
 		this.setSize(new Dimension(80, 75)); 
 
 	}
-
+	
 	void Initialize() {
 		this.add(new ToolInstance(Jeux.tabOutils[0]));
 		this.add(new ToolInstance(Jeux.tabOutils[1]));

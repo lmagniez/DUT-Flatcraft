@@ -1,22 +1,18 @@
 package Outils;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.Graphics;
 
-import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.JToggleButton;
-import javax.swing.TransferHandler;
 
+import Jeux.Jeux;
 import Jeux.MineElement;
 import Jeux.MineElementInstance;
-import Map.ColonneDeRessources;
 
 public class ToolInstance extends JToggleButton implements MineElementInstance,ActionListener{
 
@@ -70,13 +66,23 @@ public class ToolInstance extends JToggleButton implements MineElementInstance,A
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ToolInstance button=(ToolInstance) e.getSource();
-		if(button.select)
-			button.select=false;
-		else 
-			button.select=true;
+		Component[] components = Jeux.getOutils().getComponents();
 		
-		Jeux.Jeux.getOutils().repaint();
+		for(int i=1;i<components.length;i++){
+			ToolInstance tmp=(ToolInstance) Jeux.getOutils().getComponent(i);
+			if(tmp.select)
+				tmp.select=false;
+		}
+		
+		ToolInstance button=(ToolInstance) e.getSource();
+			if(button.select)
+				button.select=false;
+			else 
+				button.select=true;
+
+		Jeux.getOutils().revalidate();
+		Jeux.getOutils().repaint();
+		
 	}
    
 }
