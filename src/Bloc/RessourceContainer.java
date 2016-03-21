@@ -81,7 +81,14 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 				g.drawString(String.valueOf(qty), rect.x + rect.width - 21,
 						rect.y + rect.height - 10);
 			}
+		
 		}
+        if (this.isSelected()) {
+        	Rectangle rect = g.getClipBounds();
+			g.setColor(Color.PINK);
+			g.fillOval(rect.x + rect.width - 20, rect.y, 15,
+					15);
+        }
 	}
 
 	public boolean isSelect() {
@@ -94,7 +101,6 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 	
     public MouseListener mouselistener = new MouseAdapter() {
         public void mousePressed(MouseEvent me) {
-        
         	if ((me.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
 	        	System.out.println("Mouse Listener...");
 	        	
@@ -106,16 +112,11 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 	            
 	            TransferHandler handler = comp.getTransferHandler();
 	            
-	            
-	            
 	            System.out.println("comp: "+comp);
 	            System.out.println("handler: "+comp.getTransferHandler());
 	            
 	            handler.exportAsDrag(comp, me, TransferHandler.COPY);
-        	}
-        	
-        	
-        	
+        	}	
         }
     };
 	

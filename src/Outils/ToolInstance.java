@@ -8,13 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JToggleButton;
 
 import Jeux.Jeux;
 import Jeux.MineElement;
 import Jeux.MineElementInstance;
 
-public class ToolInstance extends JToggleButton implements MineElementInstance,ActionListener{
+public class ToolInstance extends JButton implements MineElementInstance,ActionListener{
 
 	private Tool outils;
 	private double coef; // vie de la ressource
@@ -80,6 +81,7 @@ public class ToolInstance extends JToggleButton implements MineElementInstance,A
 				button.select=true;
 		Jeux.getOutils().revalidate();
 		Jeux.getOutils().repaint();	
+		Jeux.changeCursorTo();
 	}
 
 	public boolean isSelect() {

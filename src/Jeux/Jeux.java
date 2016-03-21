@@ -1,10 +1,14 @@
 package Jeux;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -35,9 +39,10 @@ import Outils.PiocheDiamond;
 import Outils.PiocheIron;
 import Outils.PiochePierre;
 import Outils.Tool;
+import Outils.ToolInstance;
 
 public class Jeux {
-	private Map map;
+	private static Map map;
 	private static Inventaire inv;
 	private static Outils outils;
 	//private Craft craft;
@@ -125,5 +130,13 @@ public class Jeux {
 		return outils;
 	}
 	
-	
+	public static void changeCursorTo() {
+		Component[] components = Jeux.getOutils().getComponents();
+
+		for(int i=1;i<components.length;i++){ //commence a 1 car le premier element est le bouton pour la table 
+			ToolInstance tmp=(ToolInstance) Jeux.getOutils().getComponent(i);
+			if(tmp.isSelect())
+				map.grid.setCursor( Toolkit.getDefaultToolkit().createCustomCursor(tmp.getOutils().image.getImage(), new Point(40, 40), "")); 
+		}   
+	}
 }

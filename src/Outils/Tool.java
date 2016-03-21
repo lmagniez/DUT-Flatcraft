@@ -7,7 +7,7 @@ import Jeux.MineElement;
 import Jeux.MineElementInstance;
 
 public class Tool implements MineElement{
-	ImageIcon image; //image de la ressource
+	public ImageIcon image; //image de la ressource
 	private final int valeurVie;
 	private final double coef; //outils pour le detruire rapidement
 	public int vie;
