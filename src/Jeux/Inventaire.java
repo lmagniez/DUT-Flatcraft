@@ -75,7 +75,7 @@ public class Inventaire extends JPanel {
 	{
 		Component[] components = this.getComponents();
     	for(int i=0; i<components.length; i++){
-    		System.out.println(((RessourceContainer) this.getComponent(i)).isSelect()
+    		System.out.println(((RessourceContainer) this.getComponent(i)).isSelected()
     				);
     	}
 	}

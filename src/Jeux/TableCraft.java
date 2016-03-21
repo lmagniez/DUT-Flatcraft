@@ -19,7 +19,7 @@ import Map.ColonneDeRessources;
 
 public class TableCraft extends JDialog {
 
-	   // les données mises à jour par la boîte de dialogue
+	   // les donnï¿½es mises ï¿½ jour par la boï¿½te de dialogue
 
 	  Integer lEntier = new Integer(0);
 
@@ -45,9 +45,6 @@ public class TableCraft extends JDialog {
 		  
 		  for(int i=0;i<9;i++){
 				JPanel jp= new JPanel();
-				jp.add(new RessourceContainer(0,null));
-				jp.add(new RessourceContainer(0,null));
-				jp.add(new RessourceContainer(0,null));
 				jp.add(new RessourceContainer(0,null));
 				jp.setTransferHandler(this.createTransfertTo());
 				p.add(jp);
