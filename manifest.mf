@@ -1,2 +1,2 @@
-Main-Class: iut.dut2.archilog.Main
+Main-Class: Main.Main
 
