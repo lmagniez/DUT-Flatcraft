@@ -156,7 +156,7 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 
             @Override
             protected void exportDone(JComponent source, Transferable data, int action) {
-                // rien à faire
+                // rien ï¿½ faire
             }
 
         };

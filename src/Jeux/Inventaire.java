@@ -38,7 +38,7 @@ public class Inventaire extends JPanel {
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		this.setSize(new Dimension(80, 75)); 
 		this.idSelect=-1;
-		
+		this.add(new RessourceContainer(1,Jeux.tabRessources[0]));
 		/*
 		JLabel b = new JLabel();
 		b.setIcon(MineUtils.BRICOLAGE);

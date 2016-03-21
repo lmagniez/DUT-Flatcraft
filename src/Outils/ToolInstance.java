@@ -79,8 +79,7 @@ public class ToolInstance extends JToggleButton implements MineElementInstance,A
 		
 				button.select=true;
 		Jeux.getOutils().revalidate();
-		Jeux.getOutils().repaint();
-		
+		Jeux.getOutils().repaint();	
 	}
 
 	public boolean isSelect() {
