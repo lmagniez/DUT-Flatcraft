@@ -79,7 +79,7 @@ public class ToolInstance extends JButton implements MineElementInstance,ActionL
 		
 				button.select=true;
 		Jeux.getOutils().revalidate();
-		Jeux.getOutils().repaint();	
+		Jeux.getOutils().repaint();
 		Jeux.changeCursorTo();
 	}
 

@@ -109,6 +109,7 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 					Jeux.getOutils().remove(tmp);
 					ToolInstance main=(ToolInstance) Jeux.getOutils().getComponent(1);
 					main.setSelect(true);
+					Jeux.changeCursorTo();
 				}
 				else if(tmp.isSelect()){ 
 					col.get(positionCreuse).setVie(col.get(positionCreuse).getVie()-tmp.getCoef()*1);
@@ -118,6 +119,7 @@ public class ColonneDeRessources  extends JButton implements ActionListener{
 					Jeux.getOutils().remove(tmp);
 					ToolInstance main=(ToolInstance) Jeux.getOutils().getComponent(1);
 					main.setSelect(true);
+					Jeux.changeCursorTo();
 				}
 			}
 			Jeux.getOutils().revalidate();

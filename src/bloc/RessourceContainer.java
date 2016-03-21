@@ -103,9 +103,6 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 	            
 	            handler.exportAsDrag(comp, me, TransferHandler.COPY);
         	}
-        	
-        	
-        	
         }
     };
 	
