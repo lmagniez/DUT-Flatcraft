@@ -17,7 +17,7 @@ import jeux.MineElementInstance;
 public class ToolInstance extends JButton implements MineElementInstance, ActionListener {
 
     private Tool outils;
-    private double coef; // vie de la ressource
+    private double coef;
     private int vie;
     private boolean select;
 

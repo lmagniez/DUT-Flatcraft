@@ -28,22 +28,17 @@ import map.ColonneDeRessources;
 
 public class Inventaire extends JPanel {
 	
-	//private JPanel inventaire= new JPanel();
 	
 	private int idSelect;
 	
 	public Inventaire()
 	{
-		//inventaire=new JPanel();
+		
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		this.setSize(new Dimension(80, 75)); 
 		this.idSelect=-1;
 		this.add(new RessourceContainer(1,Jeux.tabRessources[0]));
-		/*
-		JLabel b = new JLabel();
-		b.setIcon(MineUtils.BRICOLAGE);
-		this.add(b);
-		*/
+
 	}
 	
     MouseListener mouselistener = new MouseAdapter() {
@@ -52,7 +47,7 @@ public class Inventaire extends JPanel {
             System.out.println("MOUSE LISTENER ! ");
         	System.out.println(me.getSource());
             
-            //A UTILISER AUSSI POUR LE GLISSER DEPOSER? 
+    
             
         	setAllNotSelected();
         }
@@ -80,11 +75,6 @@ public class Inventaire extends JPanel {
     	}
 	}
 
-	
-	/*
-	public JPanel getinv() {
-		return inventaire;
-	}*/
 	public void ajoutinventaire(Ressource r) {
 		Component[] components = Jeux.getInv().getComponents();
 		for(int i=0; i<components.length; i++){
@@ -99,8 +89,6 @@ public class Inventaire extends JPanel {
 		}
 		
 		RessourceContainer c=new RessourceContainer(1,r);
-		//PROBLEME : ON NE PEUT PLUS SELECTIONNER LE JTOGGLE QUAND ON FAIT LE DRAG AND DROP!!
-		//c.addMouseListener(Jeux.mouselistener);
 		c.addMouseListener(Jeux.mouselistener);
 		c.setTransferHandler(c.createTransfertFrom());
 		
