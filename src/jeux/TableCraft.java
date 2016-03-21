@@ -40,7 +40,10 @@ public class TableCraft extends JDialog {
 		  
 		  for(int i=0;i<9;i++){
 				JPanel jp= new JPanel();
+
 				jp.setPreferredSize(new Dimension(80,80));
+				jp.setSize(new Dimension(100,100));
+
 				jp.setTransferHandler(this.createTransfertTo());
 				p.add(jp);
 				

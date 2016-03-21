@@ -12,7 +12,6 @@ public class RessourceInstance implements MineElementInstance {
         this.vie = r.getValeurVie();
     }
 
-    @Override
     public Ressource getType() {
         return this.ressource;
     }
