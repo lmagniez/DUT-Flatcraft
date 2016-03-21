@@ -13,18 +13,10 @@ import javax.swing.TransferHandler;
 import javax.swing.TransferHandler.TransferSupport;
 
 import Bloc.RessourceContainer;
-import Bloc.RessourceReceiver;
 import Main.MineUtils;
 import Map.ColonneDeRessources;
 
 public class TableCraft extends JDialog {
-
-	   // les donn�es mises � jour par la bo�te de dialogue
-
-	  Integer lEntier = new Integer(0);
-
-	  String leNom;
-
 	 
 
 	  public TableCraft(JFrame parent, String titre, boolean modal) {
@@ -41,14 +33,27 @@ public class TableCraft extends JDialog {
 		  JPanel p = new JPanel();
 		  p.setLayout(new GridLayout(3, 3));
 		  
-		  RessourceReceiver result= new RessourceReceiver();
+		  RessourceContainer result= new RessourceContainer(0,null);
 		  
 		  for(int i=0;i<9;i++){
 				JPanel jp= new JPanel();
-				jp.add(new RessourceContainer(0,null));
+				//jp.add(new RessourceContainer(0,null));
+				jp.setSize(new Dimension(100,100));
 				jp.setTransferHandler(this.createTransfertTo());
 				p.add(jp);
+				
+				
+				
+				
 		  }
+		  
+		  p.setTransferHandler(this.createTransfertTo());
+			
+		  
+		  p.revalidate();
+		  p.repaint();
+		 
+		  
 		  this.add(BorderLayout.CENTER, p);
 		  this.add(BorderLayout.EAST, result);
 		  
@@ -70,7 +75,11 @@ public class TableCraft extends JDialog {
 	                    try {
 	                    	System.out.println("ok try");
 	                    	System.out.println(support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR));
-	                        JComponent comp = (JComponent) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
+	                        
+	                    	
+	                    	JComponent comp = (JComponent) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
+	                        
+	                        
 	                        System.out.println("ok comp: "+comp);
 	                        source.removeAll();
 	                        source.add(comp);
@@ -78,6 +87,7 @@ public class TableCraft extends JDialog {
 	                        source.repaint();
 	                        return true;
 	                    } catch (Exception e) {
+	                    	e.printStackTrace();
 	                        return false;
 	                    }
 	                } else {

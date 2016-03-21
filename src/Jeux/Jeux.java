@@ -7,10 +7,15 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JToggleButton;
+import javax.swing.TransferHandler;
 
 import Bloc.Coal;
 import Bloc.Diamond;
@@ -61,6 +66,8 @@ public class Jeux {
 		prepareOutils();
 		this.map = new Map();
 		this.inv = new Inventaire();
+		this.inv.addMouseListener(mouselistener);
+		
 		this.outils = new Outils();
 		this.craft = new TableCraft(frame, "Table de craft", false);
 		
@@ -138,4 +145,28 @@ public class Jeux {
 				map.grid.setCursor( Toolkit.getDefaultToolkit().createCustomCursor(tmp.getOutils().image.getImage(), new Point(40, 40), "")); 
 		}   
 	}
+	
+	
+    public static MouseListener mouselistener = new MouseAdapter() {
+        public void mousePressed(MouseEvent me) {
+        
+        	if ((me.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
+	        	System.out.println("Mouse Listener...");
+	        	
+	        	
+	            JToggleButton comp = (JToggleButton) me.getSource();
+	            TransferHandler handler = comp.getTransferHandler();
+	            
+	            System.out.println("comp: "+comp);
+	            System.out.println("handler: "+comp.getTransferHandler());
+	            
+	            handler.exportAsDrag(comp, me, TransferHandler.COPY);
+        	}
+        	
+        	
+        	
+        }
+    };
+
+    
 }

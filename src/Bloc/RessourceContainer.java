@@ -38,12 +38,6 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 			this.setIcon(r.image);
 		this.setBorder(BorderFactory.createEmptyBorder());
 		
-
-		
-		//this.addMouseListener(mouselistener);
-		//this.setTransferHandler(createTransfertFrom());
-		
-		//this.createTransfertFrom();
 	}
 
 	
@@ -90,32 +84,7 @@ public class RessourceContainer extends JToggleButton implements Prototype {
         }
 	}
 	
-    public MouseListener mouselistener = new MouseAdapter() {
-        public void mousePressed(MouseEvent me) {
-        
-        	if ((me.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
-	        	System.out.println("Mouse Listener...");
-	        	
-	        	
-	            JToggleButton comp = (JToggleButton) me.getSource();
-	            
-	            ((AbstractButton) me.getSource()).setSelected(true);
-	            Jeux.Jeux.getInv().afficher();
-	            
-	            TransferHandler handler = comp.getTransferHandler();
-	            
-	            
-	            
-	            System.out.println("comp: "+comp);
-	            System.out.println("handler: "+comp.getTransferHandler());
-	            
-	            handler.exportAsDrag(comp, me, TransferHandler.COPY);
-        	}
-        	
-        	
-        	
-        }
-    };
+
 	
 	
 	@Override

@@ -1,5 +1,7 @@
 package Bloc;
 
+import java.io.Serializable;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -8,7 +10,7 @@ import javax.swing.JLabel;
 import Jeux.MineElement;
 import Jeux.MineElementInstance;
 
-public class Ressource  implements MineElement{
+public class Ressource  implements MineElement, Serializable{
 	ImageIcon image; //image de la ressource
 	private final int valeurVie;
 	String propriete; //outils pour le detruire rapidement
