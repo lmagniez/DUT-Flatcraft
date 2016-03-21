@@ -1,7 +1,6 @@
 package jeux;
 
 public interface MineElement {
-	MineElementInstance newInstance();
+    MineElementInstance newInstance();
 
-	
 }
