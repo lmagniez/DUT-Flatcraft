@@ -73,7 +73,7 @@ public class Jeux {
 		
 		this.frame= new JFrame("Jeux");
 		prepare();
-		
+		changeCursorTo();
 	}
 	
 	

@@ -56,11 +56,6 @@ public class Inventaire extends JPanel {
     	}
 	}
 
-	
-	/*
-	public JPanel getinv() {
-		return inventaire;
-	}*/
 	public void ajoutinventaire(Ressource r) {
 		Component[] components = Jeux.getInv().getComponents();
 		for(int i=0; i<components.length; i++){
