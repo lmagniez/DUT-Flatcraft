@@ -15,7 +15,6 @@ public class RessourceReceiver extends JButton {
     }
 
     public void add(RessourceContainer r) {
-        // receiver non vide
         if (ressource != null)
             Jeux.getInv().add(ressource);
         this.ressource = r;
@@ -23,7 +22,6 @@ public class RessourceReceiver extends JButton {
     }
 
     public void retirer(int quantite) {
-        // on supprime tout
         if (ressource.getQuantity() - quantite <= 0)
             ressource = null;
         else
