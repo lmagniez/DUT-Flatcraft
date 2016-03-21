@@ -8,6 +8,7 @@ import java.awt.Rectangle;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -93,23 +94,28 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 	
     public MouseListener mouselistener = new MouseAdapter() {
         public void mousePressed(MouseEvent me) {
+        
+        	if ((me.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
+	        	System.out.println("Mouse Listener...");
+	        	
+	        	
+	            JToggleButton comp = (JToggleButton) me.getSource();
+	            
+	            ((AbstractButton) me.getSource()).setSelected(true);
+	            Jeux.Jeux.getInv().afficher();
+	            
+	            TransferHandler handler = comp.getTransferHandler();
+	            
+	            
+	            
+	            System.out.println("comp: "+comp);
+	            System.out.println("handler: "+comp.getTransferHandler());
+	            
+	            handler.exportAsDrag(comp, me, TransferHandler.COPY);
+        	}
         	
-        	System.out.println("Mouse Listener...");
         	
         	
-            JToggleButton comp = (JToggleButton) me.getSource();
-            
-            ((AbstractButton) me.getSource()).setSelected(true);
-            Jeux.Jeux.getInv().afficher();
-            
-            TransferHandler handler = comp.getTransferHandler();
-            
-            
-            
-            System.out.println("comp: "+comp);
-            System.out.println("handler: "+comp.getTransferHandler());
-            
-            handler.exportAsDrag(comp, me, TransferHandler.COPY);
         }
     };
 	
@@ -156,7 +162,7 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 
             @Override
             protected void exportDone(JComponent source, Transferable data, int action) {
-                // rien à faire
+                // rien ï¿½ faire
             }
 
         };
