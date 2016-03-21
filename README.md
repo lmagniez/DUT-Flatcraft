@@ -184,8 +184,35 @@ Chaque groupe est libre de gérer son inventaire comme il le souhaite :
 
 ## Semaine 8 : analyse automatique du code produit, finitions
 
-*Utilisation de l'analyseur de code SonarQube pour repérer les erreurs et les maladresses dans le code produit.
-Création automatique d'un jar autoexécutable pour exécuter le jeu.*
+> Vous devez mettre à jour votre copie du projet flatcraft pour obtenir les fichiers mentionnés ci-dessous.
+
+```
+git remote add upstream https://forge.univ-artois.fr/dut2-2016/flatcraft.git
+git pull upstream master
+```
+
+### Création d'un jar autoexecutable
+
+Un script `build.sh` est maintenant disponible pour créer un fichier jar exécutable `flatcraft.jar` (qui peut être exécuter en utilisant la commande `java -jar flatcraft.jar`).
+
+Ce script utilise un fichier `manifest.mf` dans lequel est déclaré le nom de la classe contenant la méthode `main()`.
+
+```
+Main-Class: iut.dut2.archilog.Main
+```
+**Modifiez ce fichier pour que la classe indiquée corresponde à celle de votre projet.**
+
+### Analyse statique de code
+
+Le projet est configuré pour être analysé automatiquement par l'outil SonarQube, disponible sur la forge de l'Artois : http://forge.univ-artois.fr/sonar/
+
+Les étudiants de DUT2 doivent utiliser un login et mot de passe spécifique donné en cours pour y accéder.
+
+Chaque groupe doit définir un identifiant unique dans le fichier `sonar-project.properties` dans l'entrée ``sonar.projectKey=xxxxflatcraft`
+
+### Intégration continue
+
+Dès que vous déposez du code sur votre dépôt partagé, le jar exécutable est créé, et l'analyse de votre code est publiée.
 
 ## Résultat attendu
 
