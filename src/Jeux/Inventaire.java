@@ -100,8 +100,8 @@ public class Inventaire extends JPanel {
 		
 		RessourceContainer c=new RessourceContainer(1,r);
 		//PROBLEME : ON NE PEUT PLUS SELECTIONNER LE JTOGGLE QUAND ON FAIT LE DRAG AND DROP!!
-		//c.addMouseListener(c.mouselistener);
-		//c.setTransferHandler(c.createTransfertFrom());
+		c.addMouseListener(c.mouselistener);
+		c.setTransferHandler(c.createTransfertFrom());
 		Jeux.getInv().ajout(c);
 		Jeux.getInv().revalidate();
 		Jeux.getInv().repaint();
