@@ -98,22 +98,22 @@ public class RessourceContainer extends JToggleButton implements Prototype {
         }
     };
 
-    @Override
+   
     public DataFlavor[] getTransferDataFlavors() {
         return new DataFlavor[] { MineUtils.MINE_FLAVOR };
     }
 
-    @Override
+
     public boolean isDataFlavorSupported(DataFlavor flavor) {
         return MineUtils.MINE_FLAVOR.equals(flavor);
     }
 
-    @Override
+
     public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
         return this;
     }
 
-    @Override
+ 
     public Prototype clone() {
         RessourceContainer r = new RessourceContainer(this.quantity, this.ressource);
         return r;
@@ -124,17 +124,17 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 
             private static final long serialVersionUID = 1L;
 
-            @Override
+        
             public int getSourceActions(JComponent c) {
                 return COPY;
             }
 
-            @Override
+            
             protected Transferable createTransferable(JComponent c) {
                 return ((Prototype) c).clone();
             }
 
-            @Override
+      
             protected void exportDone(JComponent source, Transferable data, int action) {
             }
 
