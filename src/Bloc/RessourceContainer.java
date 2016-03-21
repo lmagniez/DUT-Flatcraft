@@ -28,7 +28,6 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 
 	private int quantity;
 	private Ressource ressource;
-	private boolean select = false;
 
 	public RessourceContainer(int quantity, Ressource r) {
 		this.setSize(new Dimension(100, 100));
@@ -39,12 +38,6 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 			this.setIcon(r.image);
 		this.setBorder(BorderFactory.createEmptyBorder());
 		
-
-		
-		//this.addMouseListener(mouselistener);
-		//this.setTransferHandler(createTransfertFrom());
-		
-		//this.createTransfertFrom();
 	}
 
 	
@@ -65,8 +58,8 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 	}
 
 	protected void paintComponent(Graphics g) {
-		int qty = this.quantity;
-		if (qty > 0) {
+			int qty = this.quantity;
+		
 			super.paintComponent(g);
 			Rectangle rect = g.getClipBounds();
 			g.setColor(Color.YELLOW);
@@ -81,41 +74,26 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 				g.drawString(String.valueOf(qty), rect.x + rect.width - 21,
 						rect.y + rect.height - 10);
 			}
-		}
 	}
-
-	public boolean isSelect() {
-		return select;
-	}
-
-	public void setSelect(boolean s) {
-		select = s;
-	}
+	
 	
     public MouseListener mouselistener = new MouseAdapter() {
         public void mousePressed(MouseEvent me) {
         
-        	if ((me.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
+        	//Si on appuie pas sur CTRL, permet drag and drop
+        	if (!me.isControlDown()) {
 	        	System.out.println("Mouse Listener...");
 	        	
 	        	
-	            JToggleButton comp = (JToggleButton) me.getSource();
-	            
-	            ((AbstractButton) me.getSource()).setSelected(true);
-	            Jeux.Jeux.getInv().afficher();
-	            
+	            JToggleButton comp = (JToggleButton) me.getSource();  
 	            TransferHandler handler = comp.getTransferHandler();
-	            
-	            
+	           
 	            
 	            System.out.println("comp: "+comp);
 	            System.out.println("handler: "+comp.getTransferHandler());
 	            
 	            handler.exportAsDrag(comp, me, TransferHandler.COPY);
-        	}
-        	
-        	
-        	
+        	}	
         }
     };
 	

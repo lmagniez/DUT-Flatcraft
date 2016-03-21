@@ -40,7 +40,6 @@ public class Jeux {
 	private Map map;
 	private static Inventaire inv;
 	private static Outils outils;
-	//private Craft craft;
 	private TableCraft craft;
 	private JFrame frame=new JFrame();
 	
