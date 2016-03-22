@@ -65,7 +65,7 @@ public class ColonneDeRessources extends JButton implements ActionListener {
         System.out.println("ACTION PERFORMED!!");
 
         ColonneDeRessources button = (ColonneDeRessources) e.getSource();
-        int positionCreuse = button.col.size() - 1;
+        int positionCreuse = button.col.size() - 2;
 
         if ((e.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
             // DEPOSER
@@ -108,13 +108,17 @@ public class ColonneDeRessources extends JButton implements ActionListener {
                         Jeux.getOutils().remove(tmp);
                         ((ToolInstance) Jeux.getOutils().getComponent(1)).setSelect(true);
                         Jeux.changeCursorTo();
+                        Jeux.getOutils().revalidate();
+                        Jeux.getOutils().repaint();
                         return;
                     }
                     //----------------
                     
                     if (tmp.isSelect()) {
+                    	
                         col.get(positionCreuse).setVie(col.get(positionCreuse).getVie() - tmp.getCoef() * 1);
-                        tmp.setVie(tmp.getVie() - 1);
+                        if(!(tmp.getType() instanceof MainOutils))
+                        	tmp.setVie(tmp.getVie() - 1);
                     }
                     
                     System.out.println(col.get(positionCreuse).getVie());
