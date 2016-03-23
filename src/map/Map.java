@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 
 public class Map<T extends JComponent> {
     public JPanel grid;
-    private int row = 30;
-    private int col = 30;
+    private int row = 15;
+    private int col = 15;
     public static final int NOMBRE_RESSOURCES = 7;
 
     public Map() {
@@ -21,10 +21,28 @@ public class Map<T extends JComponent> {
     }
 
     private void create() {
+        int ligne = 0 ,coll=0;
         int cells = row * col;
         grid.setLayout(new GridLayout(row, col));
         for (int i = 0; i < cells; i++) {
-            grid.add(new ColonneDeRessources());
+            if(ligne < row/2){
+                if(coll < col/2 ){
+                    grid.add(new ColonneDeRessourcesNormal());
+                }
+                else{
+                    grid.add(new ColonneDeRessourceDesert());
+                }
+            }
+            else {
+                if(coll < col/2 ){
+                    grid.add(new ColonneDeRessourcesIce());
+                }
+                else{
+                    grid.add(new ColonneDeRessourcesNormal());
+                }
+            }
+            coll++;
+            if(coll%col==0){ligne++;coll=0 ;}
         }
     }
 }

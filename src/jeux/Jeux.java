@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JToggleButton;
 import javax.swing.TransferHandler;
 
+import bloc.Cactus;
 import bloc.Coal;
 import bloc.Diamond;
 import bloc.Grass;
@@ -24,6 +25,8 @@ import bloc.Iron;
 import bloc.Lava;
 import bloc.Obsidian;
 import bloc.Ressource;
+import bloc.Sand;
+import bloc.Snow;
 import bloc.Stone;
 import bloc.Wood;
 
@@ -54,7 +57,7 @@ public class Jeux {
 	private JFrame frame=new JFrame();
 	
 	
-	public static final int NB_RESSOURCES=8;
+	public static final int NB_RESSOURCES=11;
 	private static final int NB_OUTILS = 13;
 	public static Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
 	public static Tool[ ] tabOutils= new Tool[NB_OUTILS];
@@ -98,6 +101,9 @@ public class Jeux {
 		tabRessources[5]=new Diamond();
 		tabRessources[6]=new Lava();
 		tabRessources[7]=new Coal();
+		tabRessources[8]=new Sand();
+		tabRessources[9]=new Cactus();
+		tabRessources[10]=new Snow();
 	}
 	
 	public void prepareOutils()

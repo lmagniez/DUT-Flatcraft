@@ -15,9 +15,11 @@ import jeux.Jeux;
 import outils.MainOutils;
 import outils.ToolInstance;
 
-public class ColonneDeRessources extends JButton implements ActionListener {
+public abstract class ColonneDeRessources extends JButton implements ActionListener {
     public ArrayList<RessourceInstance> col = new ArrayList<RessourceInstance>();
-
+    
+    protected abstract void sol(int index);
+    
     public ColonneDeRessources() {
         create();
         this.setIcon(col.get(col.size() - 1).getType().getImage());
@@ -27,7 +29,8 @@ public class ColonneDeRessources extends JButton implements ActionListener {
 
     private void create() {
         float r;
-        for (int i = 0; i < 25; i++) {
+        int i;
+        for (i = 0; i < 25; i++) {
             r = (float) (Math.random() * 1);
 
 
@@ -49,8 +52,9 @@ public class ColonneDeRessources extends JButton implements ActionListener {
                     col.add(new RessourceInstance(Jeux.tabRessources[1])); // stone
             } else if (i == 0)
                 col.add(new RessourceInstance(Jeux.tabRessources[6])); // lava
-         //  this.sol(i);
+           
         }
+        sol(i);
     }
 
     @Override
