@@ -46,17 +46,10 @@ public class TableCraft extends JDialog {
 
 				jp.setTransferHandler(this.createTransfertTo());
 				p.add(jp);
-				
-				
-				
-				
 		  }
 		  
 		  p.setTransferHandler(this.createTransfertTo());
 			
-		  
-		
-		  
 		  this.add(BorderLayout.CENTER, p);
 		  this.add(BorderLayout.EAST, result);
 		  

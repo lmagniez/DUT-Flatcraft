@@ -11,8 +11,7 @@ public class Outils extends JPanel {
 
     public Outils() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setSize(new Dimension(80, 75));
-
+        this.setPreferredSize(new Dimension(80,80));
     }
 
     void Initialize() {

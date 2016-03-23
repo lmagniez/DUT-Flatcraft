@@ -9,16 +9,14 @@ import javax.swing.JPanel;
 
 public class Map<T extends JComponent> {
     public JPanel grid;
-    private int row = 12;
-    private int col = 12;
+    private int row = 30;
+    private int col = 30;
     public static final int NOMBRE_RESSOURCES = 7;
 
     public Map() {
         grid = new JPanel();
-
         grid.setLayout(new BoxLayout(grid, BoxLayout.Y_AXIS));
         grid.setSize(new Dimension(80, 75));
-
         create();
     }
 

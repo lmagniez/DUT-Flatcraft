@@ -27,19 +27,11 @@ public class ColonneDeRessources extends JButton implements ActionListener {
 
     private void create() {
         float r;
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 25; i++) {
             r = (float) (Math.random() * 1);
 
-            if (i == 26) {
-                if (r < 0.1)
-                    col.add(new RessourceInstance(Jeux.tabRessources[2])); // wood
-                else
-                    continue;
-            } else if (i == 25)
-                col.add(new RessourceInstance(Jeux.tabRessources[0])); // grass
-                                                                       // -> sol
 
-            else if (i > 15 && i < 25) {
+           if (i > 15 && i < 25) {
                 if (r < 0.03)
                     col.add(new RessourceInstance(Jeux.tabRessources[3])); // iron
                 else if (r < 0.09)
@@ -57,6 +49,7 @@ public class ColonneDeRessources extends JButton implements ActionListener {
                     col.add(new RessourceInstance(Jeux.tabRessources[1])); // stone
             } else if (i == 0)
                 col.add(new RessourceInstance(Jeux.tabRessources[6])); // lava
+         //  this.sol(i);
         }
     }
 
@@ -65,7 +58,7 @@ public class ColonneDeRessources extends JButton implements ActionListener {
         System.out.println("ACTION PERFORMED!!");
 
         ColonneDeRessources button = (ColonneDeRessources) e.getSource();
-        int positionCreuse = button.col.size() - 2;
+        int positionCreuse = button.col.size()-1;
 
         if ((e.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
             // DEPOSER
@@ -121,7 +114,6 @@ public class ColonneDeRessources extends JButton implements ActionListener {
                         	tmp.setVie(tmp.getVie() - 1);
                     }
                     
-                    System.out.println(col.get(positionCreuse).getVie());
                     if (col.get(positionCreuse).getVie() < 0) {
                         Jeux.getInv().ajoutinventaire(col.get(positionCreuse).getType());
                         col.remove(positionCreuse);

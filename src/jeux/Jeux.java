@@ -122,9 +122,9 @@ public class Jeux {
 		frame.add(BorderLayout.WEST, MineUtils.scrollPane(outils));
 		frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
 		frame.add(BorderLayout.SOUTH, MineUtils.scrollPane(inv));
-		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+	    frame.pack();
 	}
 
 	public static Inventaire getInv() {
