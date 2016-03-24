@@ -94,15 +94,20 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
         } else {
             // CREUSER
                 for (int i = 1; i < Jeux.getOutils().getComponents().length; i++) { 
-                    ToolInstance tmp = (ToolInstance) Jeux.getOutils().getComponent(i);
-                   
+                	ToolInstance outilsSelected = (ToolInstance) Jeux.getOutils().getComponent(i);
+                    
                     //lave
-                    if ((tmp.getOutils() instanceof MainOutils) && tmp.isSelect() && col.get(positionCreuse).getType() instanceof Lava) {
+                    if ((outilsSelected.getOutils() instanceof MainOutils) 
+                    		&& outilsSelected.isSelect() 
+                    		&& col.get(positionCreuse).getType() instanceof Lava) 
+                    {
                         return;
                     }
                     
-                    else if(tmp.isSelect() && col.get(positionCreuse).getType() instanceof Lava){
-                        Jeux.getOutils().remove(tmp);
+                    else if(outilsSelected.isSelect() 
+                    		&& col.get(positionCreuse).getType() instanceof Lava)
+                    {
+                        Jeux.getOutils().remove(outilsSelected);
                         ((ToolInstance) Jeux.getOutils().getComponent(1)).setSelect(true);
                         Jeux.changeCursorTo();
                         Jeux.getOutils().revalidate();
@@ -111,25 +116,34 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                     }
                     //----------------
                     
-                    if (tmp.isSelect()) {
+                    //Si l'outil est selectionné
+                    if (outilsSelected.isSelect()) {
                     	
-                        col.get(positionCreuse).setVie(col.get(positionCreuse).getVie() - tmp.getCoef() * 1);
-                        if(!(tmp.getType() instanceof MainOutils))
-                        	tmp.setVie(tmp.getVie() - 1);
+                        col.get(positionCreuse).setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1);
+                        if(!(outilsSelected.getType() instanceof MainOutils))
+                        	outilsSelected.setVie(outilsSelected.getVie() - 1);
+                    
+                    
+	                    //Retirer l'outil si vie =0
+	                    if (outilsSelected.getVie() == 0) {
+	                        Jeux.getOutils().remove(outilsSelected);
+	                        ToolInstance main = (ToolInstance) Jeux.getOutils().getComponent(1);
+	                        main.setSelect(true);
+	                        Jeux.changeCursorTo();
+	                    }
+	                    
+	                    //Retire la ressource si vie=0
+	                    if (col.get(positionCreuse).getVie() <= 0) {
+	                        Jeux.getInv().ajoutinventaire(col.get(positionCreuse).getType());
+	                        col.remove(positionCreuse);
+	                        this.setIcon(col.get(positionCreuse - 1).getType().getImage());
+	                        
+	                    }
+	                    
+	                    //il faut break quand on a trouvé l'outil selectionné
+	                    break;
                     }
                     
-                    if (col.get(positionCreuse).getVie() < 0) {
-                        Jeux.getInv().ajoutinventaire(col.get(positionCreuse).getType());
-                        col.remove(positionCreuse);
-                        this.setIcon(col.get(positionCreuse - 1).getType().getImage());
-                    }
-                    
-                    if (tmp.getVie() == 0) {
-                        Jeux.getOutils().remove(tmp);
-                        ToolInstance main = (ToolInstance) Jeux.getOutils().getComponent(1);
-                        main.setSelect(true);
-                        Jeux.changeCursorTo();
-                    }
                 }
             Jeux.getOutils().revalidate();
             Jeux.getOutils().repaint();

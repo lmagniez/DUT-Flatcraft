@@ -25,6 +25,7 @@ public class TableCraft extends JDialog {
 	       this.setSize(new Dimension(300, 400));
        	   this.setResizable(false);
        	   this.setAlwaysOnTop(true);
+       	   
 	       prepare();
 	  }
 
