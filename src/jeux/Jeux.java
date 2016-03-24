@@ -157,14 +157,11 @@ public class Jeux {
         public void mousePressed(MouseEvent me) {
         
         	if ((me.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
-	        	System.out.println("Mouse Listener...");
 	        	
 	        	
 	            JToggleButton comp = (JToggleButton) me.getSource();
 	            TransferHandler handler = comp.getTransferHandler();
 	            
-	            System.out.println("comp: "+comp);
-	            System.out.println("handler: "+comp.getTransferHandler());
 	            
 	            handler.exportAsDrag(comp, me, TransferHandler.COPY);
         	}

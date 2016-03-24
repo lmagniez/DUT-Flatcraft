@@ -77,20 +77,20 @@ public class TableCraft extends JDialog {
 	            public boolean importData(TransferSupport support) {
 	                if (support.isDrop()) {
 	                    JPanel source = (JPanel) support.getComponent();
-	                    System.out.println("ok source : "+source);
 	                    try {
-	                    	System.out.println("ok try");
 	                    	System.out.println(support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR));
 	                        
 	                    	
 	                    	JComponent comp = (JComponent) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
 	                        
 	                        
-	                        System.out.println("ok comp: "+comp);
 	                        source.removeAll();
 	                        source.add(comp);
 	                        source.revalidate();
 	                        source.repaint();
+	                        
+	                        Jeux.getInv().supprimerInventaire((RessourceContainer) comp);
+	                        
 	                        return true;
 	                    } catch (Exception e) {
 	                    	e.printStackTrace();

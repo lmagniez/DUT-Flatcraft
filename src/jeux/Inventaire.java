@@ -12,6 +12,7 @@ import java.util.LinkedList;
 
 import javax.swing.AbstractButton;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -75,12 +76,12 @@ public class Inventaire extends JPanel {
 	public void ajoutinventaire(Ressource r) {
 		Component[] components = Jeux.getInv().getComponents();
 		for(int i=0; i<components.length; i++){
-			JToggleButton elt= (JToggleButton) Jeux.getInv().getComponent(i);
+			JToggleButton elt= (JToggleButton) this.getComponent(i);
 			if(elt.getIcon()==r.getImage())
 			{
 				((RessourceContainer) elt).setQuantity(((RessourceContainer) elt).getQuantity()+1);
-				Jeux.getInv().revalidate();
-				Jeux.getInv().repaint();
+				this.revalidate();
+				this.repaint();
 				return;
 			}
 		}
@@ -90,16 +91,32 @@ public class Inventaire extends JPanel {
 		c.setTransferHandler(c.createTransfertFrom());
 		
 		
-		Jeux.getInv().ajout(c);
-		Jeux.getInv().revalidate();
-		Jeux.getInv().repaint();
-		Jeux.getInv().setSize(500, 60);;
-		
-		
-		
-		Jeux.getInv().setVisible(true);
+		this.ajout(c);
+		this.revalidate();
+		this.repaint();
+		this.setSize(500, 60);
+		this.setVisible(true);
 		
 	}
+	
+	public void supprimerInventaire(RessourceContainer r)
+	{
+		System.out.println("SUPPRIMER INVENTAIRE");
+		Component[] components = Jeux.getInv().getComponents();
+		for(int i=0; i<components.length; i++){
+			JToggleButton elt= (JToggleButton) Jeux.getInv().getComponent(i);
+			if(elt.getIcon()==r.getIcon())//trouvé, on supprime
+			{
+				System.out.println("TROUVE !!");
+				elt.remove(i);
+				this.revalidate();
+				this.repaint();
+				return;
+			}
+		}
+		
+	}
+	
 	
 	
 	

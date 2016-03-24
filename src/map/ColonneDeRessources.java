@@ -59,7 +59,6 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("ACTION PERFORMED!!");
 
         ColonneDeRessources button = (ColonneDeRessources) e.getSource();
         int positionCreuse = button.col.size()-1;
@@ -77,7 +76,6 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                     col.add(new RessourceInstance(elt.getRessource()));
                     setIcon(col.get(positionCreuse + 1).getType().getImage());
                     Jeux.getInv().afficher();
-                    System.out.println(col.size());
 
                     elt.setQuantity(elt.getQuantity() - 1);
                     if (elt.getQuantity() == 0)
