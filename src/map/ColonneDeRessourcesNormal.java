@@ -11,7 +11,7 @@ public class ColonneDeRessourcesNormal extends ColonneDeRessources{
         for(int a=index;a<index+5;a++){
             r = (float) (Math.random() * 1);
         if (a >= index+1) {
-            if (r < 0.1)
+            if (r < 0.08)
                 col.add(new RessourceInstance(Jeux.tabRessources[2])); // wood
             else
                 continue;

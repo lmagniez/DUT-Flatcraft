@@ -24,6 +24,7 @@ import bloc.Grass;
 import bloc.Iron;
 import bloc.Lava;
 import bloc.Obsidian;
+import bloc.Pick;
 import bloc.Ressource;
 import bloc.Sand;
 import bloc.Snow;
@@ -57,7 +58,7 @@ public class Jeux {
 	private JFrame frame=new JFrame();
 	
 	
-	public static final int NB_RESSOURCES=11;
+	public static final int NB_RESSOURCES=12;
 	private static final int NB_OUTILS = 13;
 	public static Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
 	public static Tool[ ] tabOutils= new Tool[NB_OUTILS];
@@ -104,6 +105,7 @@ public class Jeux {
 		tabRessources[8]=new Sand();
 		tabRessources[9]=new Cactus();
 		tabRessources[10]=new Snow();
+		tabRessources[11]=new Pick();
 	}
 	
 	public void prepareOutils()

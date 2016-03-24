@@ -37,7 +37,8 @@ public class MineUtils {
     public static final ImageIcon SAND = scaled("/textures/default_sand.png");
     public static final ImageIcon CACTUS = scaled("/textures/default_cactus_top.png");
     public static final ImageIcon SNOW = scaled("/textures/default_snow.png");
-    
+    public static final ImageIcon PICK = scaled("/textures/default_stick.png");
+    public static final ImageIcon WOOD_PLANKS = scaled("/textures/default_wood.png");
 
     public static final ImageIcon PIOCHE_BOIS = scaled("/textures/default_tool_woodpick.png");
     public static final ImageIcon PIOCHE_PIERRE = scaled("/textures/default_tool_stonepick.png");
