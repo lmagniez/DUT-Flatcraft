@@ -1,12 +1,22 @@
 package outils;
 
+import bloc.RessourceInstance;
+import jeux.Jeux;
 import run.MineUtils;
 
 public class PiocheIron extends Tool {
 
     public PiocheIron() {
         super(MineUtils.PIOCHE_FER, 30, 3, false);
-        // TODO Auto-generated constructor stub
+        this.pattern.add(new RessourceInstance(Jeux.tabRessources[3]));
+        this.pattern.add(new RessourceInstance(Jeux.tabRessources[3]));
+        this.pattern.add(new RessourceInstance(Jeux.tabRessources[3]));
+        this.pattern.add(null);
+        this.pattern.add(new RessourceInstance(Jeux.tabRessources[11]));
+        this.pattern.add(null);
+        this.pattern.add(null);
+        this.pattern.add(new RessourceInstance(Jeux.tabRessources[11]));
+        this.pattern.add(null);
     }
 
 }

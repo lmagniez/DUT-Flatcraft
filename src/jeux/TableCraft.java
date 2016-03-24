@@ -3,18 +3,15 @@ package jeux;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
-import javax.swing.TransferHandler.TransferSupport;
 
 import bloc.RessourceContainer;
 import run.MineUtils;
-import map.ColonneDeRessources;
 
 public class TableCraft extends JDialog {
 	 

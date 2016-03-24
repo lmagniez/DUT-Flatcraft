@@ -8,15 +8,9 @@ import java.awt.Rectangle;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 
-import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JToggleButton;
 import javax.swing.TransferHandler;

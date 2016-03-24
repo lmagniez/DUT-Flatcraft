@@ -1,31 +1,18 @@
 package jeux;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.EventListener;
-import java.util.LinkedList;
 
-import javax.swing.AbstractButton;
 import javax.swing.BoxLayout;
-import javax.swing.Icon;
-import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-import javax.swing.TransferHandler;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import bloc.Ressource;
 import bloc.RessourceContainer;
-import run.MineUtils;
-import map.ColonneDeRessources;
 
 public class Inventaire extends JPanel {
 	

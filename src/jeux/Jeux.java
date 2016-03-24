@@ -2,7 +2,6 @@ package jeux;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -11,7 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JToggleButton;
@@ -30,10 +28,8 @@ import bloc.Sand;
 import bloc.Snow;
 import bloc.Stone;
 import bloc.Wood;
-
-import run.MineUtils;
+import bloc.WoodPlanks;
 import map.Map;
-
 import outils.HacheBois;
 import outils.HacheDiamond;
 import outils.HacheIron;
@@ -49,6 +45,7 @@ import outils.PiocheIron;
 import outils.PiochePierre;
 import outils.Tool;
 import outils.ToolInstance;
+import run.MineUtils;
 
 public class Jeux {
 	private static Map map;
@@ -58,7 +55,7 @@ public class Jeux {
 	private JFrame frame=new JFrame();
 	
 	
-	public static final int NB_RESSOURCES=12;
+	public static final int NB_RESSOURCES=13;
 	private static final int NB_OUTILS = 13;
 	public static Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
 	public static Tool[ ] tabOutils= new Tool[NB_OUTILS];
@@ -106,6 +103,7 @@ public class Jeux {
 		tabRessources[9]=new Cactus();
 		tabRessources[10]=new Snow();
 		tabRessources[11]=new Pick();
+		tabRessources[12]=new WoodPlanks();
 	}
 	
 	public void prepareOutils()

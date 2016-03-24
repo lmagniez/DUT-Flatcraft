@@ -1,7 +1,5 @@
 package bloc;
 
-import javax.swing.ImageIcon;
-
 import run.MineUtils;
 
 public class Snow extends Ressource {
