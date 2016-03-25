@@ -14,6 +14,35 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
 
+import bloc.Cactus;
+import bloc.Coal;
+import bloc.Diamond;
+import bloc.Grass;
+import bloc.Iron;
+import bloc.Lava;
+import bloc.Obsidian;
+import bloc.Pick;
+import bloc.Ressource;
+import bloc.Sand;
+import bloc.Snow;
+import bloc.Stone;
+import bloc.Wood;
+import bloc.WoodPlanks;
+import outils.HacheBois;
+import outils.HacheDiamond;
+import outils.HacheIron;
+import outils.HachePierre;
+import outils.MainOutils;
+import outils.PelleBois;
+import outils.PelleDiamond;
+import outils.PelleIron;
+import outils.PellePierre;
+import outils.PiocheBois;
+import outils.PiocheDiamond;
+import outils.PiocheIron;
+import outils.PiochePierre;
+import outils.Tool;
+
 /**
  * Classe utilitaire permettant d'accéder facilement aux images de MineTest dans
  * un programme Java.
@@ -55,6 +84,10 @@ public class MineUtils {
     public static final ImageIcon PELLE_DIAMOND = scaled("/textures/default_tool_diamondshovel.png");
 
     public static final ImageIcon MAIN = scaled("/textures/main.png");
+    public  static final int NB_RESSOURCES=13;
+    public static final int NB_OUTILS = 13;
+    public static Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
+    public static Tool[ ] tabOutils= new Tool[NB_OUTILS];
 
     /*
      * public static final ImageIcon JUNGLEGRASS =
@@ -68,6 +101,43 @@ public class MineUtils {
      * ImageIcon ICE = scaled("/textures/default_ice.png");
      */
 
+    
+    
+    public static void prepareRessource()
+    {
+        tabRessources[0]=new Grass();
+        tabRessources[1]=new Stone();
+        tabRessources[2]=new Wood();
+        tabRessources[3]=new Iron();
+        tabRessources[4]=new Obsidian();
+        tabRessources[5]=new Diamond();
+        tabRessources[6]=new Lava();
+        tabRessources[7]=new Coal();
+        tabRessources[8]=new Sand();
+        tabRessources[9]=new Cactus();
+        tabRessources[10]=new Snow();
+        tabRessources[11]=new Pick();
+        tabRessources[12]=new WoodPlanks();
+    }
+    
+    public static void prepareOutils()
+    {
+        tabOutils[0]=new MainOutils();
+        tabOutils[1]=new PiocheBois();
+        tabOutils[2]=new PiochePierre();
+        tabOutils[3]=new PiocheIron();
+        tabOutils[4]=new PiocheDiamond();
+        tabOutils[5]=new PelleBois();
+        tabOutils[6]=new PellePierre();
+        tabOutils[7]=new PelleIron();
+        tabOutils[8]=new PelleDiamond();
+        tabOutils[9]=new HacheBois();
+        tabOutils[10]=new HachePierre();
+        tabOutils[11]=new HacheIron();
+        tabOutils[12]=new HacheDiamond();
+        
+    }
+    
     public static final DataFlavor MINE_FLAVOR = new DataFlavor(JComponent.class, "MineFlavor");
 
     /**

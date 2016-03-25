@@ -6,6 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import outils.ToolInstance;
+import run.MineUtils;
 
 public class Outils extends JPanel {
 
@@ -15,8 +16,8 @@ public class Outils extends JPanel {
     }
 
     void Initialize() {
-        this.add(new ToolInstance(Jeux.tabOutils[0]));
-        this.add(new ToolInstance(Jeux.tabOutils[1]));
-        this.add(new ToolInstance(Jeux.tabOutils[2]));
+        this.add(new ToolInstance(MineUtils.tabOutils[0]));
+        this.add(new ToolInstance(MineUtils.tabOutils[1]));
+        this.add(new ToolInstance(MineUtils.tabOutils[2]));
     }
 }

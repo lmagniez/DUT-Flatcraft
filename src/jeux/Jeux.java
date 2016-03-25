@@ -55,16 +55,10 @@ public class Jeux {
 	private JFrame frame=new JFrame();
 	
 	
-	public static final int NB_RESSOURCES=13;
-	private static final int NB_OUTILS = 13;
-	public static Ressource[] tabRessources=new Ressource[NB_RESSOURCES];
-	public static Tool[ ] tabOutils= new Tool[NB_OUTILS];
-
-	
 	public Jeux() {
 		super();
-		prepareRessource();
-		prepareOutils();
+		MineUtils.prepareRessource();
+		MineUtils.prepareOutils();
 		this.map = new Map();
 		this.inv = new Inventaire();
 		this.inv.addMouseListener(mouselistener);
@@ -86,42 +80,6 @@ public class Jeux {
 		this.frame= new JFrame("Jeux");
 		prepare();
 		changeCursorTo();
-	}
-	
-	
-	public void prepareRessource()
-	{
-		tabRessources[0]=new Grass();
-		tabRessources[1]=new Stone();
-		tabRessources[2]=new Wood();
-		tabRessources[3]=new Iron();
-		tabRessources[4]=new Obsidian();
-		tabRessources[5]=new Diamond();
-		tabRessources[6]=new Lava();
-		tabRessources[7]=new Coal();
-		tabRessources[8]=new Sand();
-		tabRessources[9]=new Cactus();
-		tabRessources[10]=new Snow();
-		tabRessources[11]=new Pick();
-		tabRessources[12]=new WoodPlanks();
-	}
-	
-	public void prepareOutils()
-	{
-		tabOutils[0]=new MainOutils();
-		tabOutils[1]=new PiocheBois();
-		tabOutils[2]=new PiochePierre();
-		tabOutils[3]=new PiocheIron();
-		tabOutils[4]=new PiocheDiamond();
-		tabOutils[5]=new PelleBois();
-		tabOutils[6]=new PellePierre();
-		tabOutils[7]=new PelleIron();
-		tabOutils[8]=new PelleDiamond();
-		tabOutils[9]=new HacheBois();
-		tabOutils[10]=new HachePierre();
-		tabOutils[11]=new HacheIron();
-		tabOutils[12]=new HacheDiamond();
-		
 	}
 	
 	private void prepare() {
@@ -170,6 +128,8 @@ public class Jeux {
         	
         }
     };
+    
+    
 
     
 }

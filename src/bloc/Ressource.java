@@ -10,8 +10,8 @@ import jeux.MineElement;
 public class Ressource implements MineElement, Serializable{
     ImageIcon image;
     private final int valeurVie;
-    String propriete;
-    public ArrayList<RessourceInstance> pattern=new ArrayList<RessourceInstance>();
+    private String propriete;
+    protected ArrayList<RessourceInstance> pattern=new ArrayList<RessourceInstance>();
 
     public Ressource(ImageIcon image, int valeurVie, String p) {
         super();
@@ -50,4 +50,7 @@ public class Ressource implements MineElement, Serializable{
         return new RessourceInstance(this);
     }
 
+    public ArrayList<RessourceInstance> getPattern() {
+        return pattern;
+    }
 }

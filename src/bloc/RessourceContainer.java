@@ -33,24 +33,8 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 		this.setBorder(BorderFactory.createEmptyBorder());
 		
 	}
-
 	
-	public Ressource getRessource() {
-		return ressource;
-	}
-
-	public void setRessource(Ressource r) {
-		this.ressource = r;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
+	@Override
 	protected void paintComponent(Graphics g) {
 		int qty = this.quantity;
 		if (qty > 0) {
@@ -101,27 +85,43 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 		return r;
 	}
 	
-
+	
 	public TransferHandler createTransfertFrom() {
         return new TransferHandler() {
 
 			private static final long serialVersionUID = 1L;
 
-
+			@Override
             public int getSourceActions(JComponent c) {
                 return COPY;
             }
 
-
+			@Override
             protected Transferable createTransferable(JComponent c) {
                 return ((Prototype) c).clone();
             }
 
-   
+			@Override
             protected void exportDone(JComponent source, Transferable data, int action) {
             }
 
         };
+    }
+	
+    public Ressource getRessource() {
+        return ressource;
+    }
+
+    public void setRessource(Ressource r) {
+        this.ressource = r;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
 }

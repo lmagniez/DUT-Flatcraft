@@ -14,6 +14,7 @@ import bloc.RessourceInstance;
 import jeux.Jeux;
 import outils.MainOutils;
 import outils.ToolInstance;
+import run.MineUtils;
 
 public abstract class ColonneDeRessources extends JButton implements ActionListener {
     public ArrayList<RessourceInstance> col = new ArrayList<RessourceInstance>();
@@ -36,22 +37,22 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
 
            if (i > 15 && i < 25) {
                 if (r < 0.03)
-                    col.add(new RessourceInstance(Jeux.tabRessources[3])); // iron
+                    col.add(new RessourceInstance(MineUtils.tabRessources[3])); // iron
                 else if (r < 0.09)
-                    col.add(new RessourceInstance(Jeux.tabRessources[7])); // coal
+                    col.add(new RessourceInstance(MineUtils.tabRessources[7])); // coal
                 else
-                    col.add(new RessourceInstance(Jeux.tabRessources[1])); // stone
+                    col.add(new RessourceInstance(MineUtils.tabRessources[1])); // stone
             } else if (i > 0 && i <= 15) {
                 if (r < 0.02)
-                    col.add(new RessourceInstance(Jeux.tabRessources[5])); // diamond
+                    col.add(new RessourceInstance(MineUtils.tabRessources[5])); // diamond
                 else if (r < 0.1)
-                    col.add(new RessourceInstance(Jeux.tabRessources[3])); // iron
+                    col.add(new RessourceInstance(MineUtils.tabRessources[3])); // iron
                 else if (r < 0.17)
-                    col.add(new RessourceInstance(Jeux.tabRessources[7])); // coal
+                    col.add(new RessourceInstance(MineUtils.tabRessources[7])); // coal
                 else
-                    col.add(new RessourceInstance(Jeux.tabRessources[1])); // stone
+                    col.add(new RessourceInstance(MineUtils.tabRessources[1])); // stone
             } else if (i == 0)
-                col.add(new RessourceInstance(Jeux.tabRessources[6])); // lava
+                col.add(new RessourceInstance(MineUtils.tabRessources[6])); // lava
            
         }
         sol(i);
