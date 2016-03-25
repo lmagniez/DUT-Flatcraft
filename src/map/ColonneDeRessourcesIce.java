@@ -3,7 +3,7 @@ package map;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
-public class ColonneDeRessourcesIce extends ColonneDeRessources{
+public class ColonneDeRessourcesIce extends ColonneDeRessources {
 
     @Override
     protected void sol(int index) {

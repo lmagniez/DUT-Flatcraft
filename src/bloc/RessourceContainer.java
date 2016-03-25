@@ -20,94 +20,87 @@ import run.MineUtils;
 
 public class RessourceContainer extends JToggleButton implements Prototype {
 
-	private int quantity;
-	private Ressource ressource;
+    private int quantity;
+    private Ressource ressource;
 
-	public RessourceContainer(int quantity, Ressource r) {
-		this.setSize(new Dimension(100, 100));
+    public RessourceContainer(int quantity, Ressource r) {
+        this.setSize(new Dimension(100, 100));
 
-		this.quantity = quantity;
-		this.ressource = r;
-		if (r != null)
-			this.setIcon(r.image);
-		this.setBorder(BorderFactory.createEmptyBorder());
-		
-	}
-	
-	@Override
-	protected void paintComponent(Graphics g) {
-		int qty = this.quantity;
-		if (qty > 0) {
-			super.paintComponent(g);
-			Rectangle rect = g.getClipBounds();
-			g.setColor(Color.YELLOW);
-			g.fillOval(rect.x + rect.width - 30, rect.y + rect.height - 30, 30,
-					30);
-			g.setColor(Color.BLACK);
-			g.setFont(g.getFont().deriveFont(Font.BOLD, g.getFont().getSize()));
-			if (qty < 10) {
-				g.drawString(String.valueOf(qty), rect.x + rect.width - 17,
-						rect.y + rect.height - 10);
-			} else {
-				g.drawString(String.valueOf(qty), rect.x + rect.width - 21,
-						rect.y + rect.height - 10);
-			}
-		
-		}
-        if (this.isSelected()) {
-        	Rectangle rect = g.getClipBounds();
-			g.setColor(Color.BLUE);
-			g.fillOval(rect.x + rect.width - 20, rect.y, 10,
-					10);
+        this.quantity = quantity;
+        this.ressource = r;
+        if (r != null)
+            this.setIcon(r.image);
+        this.setBorder(BorderFactory.createEmptyBorder());
+
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        int qty = this.quantity;
+        if (qty > 0) {
+            super.paintComponent(g);
+            Rectangle rect = g.getClipBounds();
+            g.setColor(Color.YELLOW);
+            g.fillOval(rect.x + rect.width - 30, rect.y + rect.height - 30, 30, 30);
+            g.setColor(Color.BLACK);
+            g.setFont(g.getFont().deriveFont(Font.BOLD, g.getFont().getSize()));
+            if (qty < 10) {
+                g.drawString(String.valueOf(qty), rect.x + rect.width - 17, rect.y + rect.height - 10);
+            } else {
+                g.drawString(String.valueOf(qty), rect.x + rect.width - 21, rect.y + rect.height - 10);
+            }
+
         }
-	}
-	
-	@Override
-	public DataFlavor[] getTransferDataFlavors() {
-		return new DataFlavor[] { MineUtils.MINE_FLAVOR };
-	}
+        if (this.isSelected()) {
+            Rectangle rect = g.getClipBounds();
+            g.setColor(Color.BLUE);
+            g.fillOval(rect.x + rect.width - 20, rect.y, 10, 10);
+        }
+    }
 
-	@Override
-	public boolean isDataFlavorSupported(DataFlavor flavor) {
-		return MineUtils.MINE_FLAVOR.equals(flavor);
-	}
+    @Override
+    public DataFlavor[] getTransferDataFlavors() {
+        return new DataFlavor[] { MineUtils.MINE_FLAVOR };
+    }
 
-	@Override
-	public Object getTransferData(DataFlavor flavor)
-			throws UnsupportedFlavorException, IOException {
-		return this;
-	}
+    @Override
+    public boolean isDataFlavorSupported(DataFlavor flavor) {
+        return MineUtils.MINE_FLAVOR.equals(flavor);
+    }
 
-	@Override
-	public Prototype clone() {
-		RessourceContainer r = new RessourceContainer(this.quantity,
-				this.ressource);
-		return r;
-	}
-	
-	
-	public TransferHandler createTransfertFrom() {
+    @Override
+    public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
+        return this;
+    }
+
+    @Override
+    public Prototype clone() {
+        RessourceContainer r = new RessourceContainer(this.quantity, this.ressource);
+        return r;
+    }
+
+    public TransferHandler createTransfertFrom() {
         return new TransferHandler() {
 
-			private static final long serialVersionUID = 1L;
+            private static final long serialVersionUID = 1L;
 
-			@Override
+            @Override
             public int getSourceActions(JComponent c) {
                 return COPY;
             }
 
-			@Override
+            @Override
             protected Transferable createTransferable(JComponent c) {
                 return ((Prototype) c).clone();
             }
 
-			@Override
+            @Override
             protected void exportDone(JComponent source, Transferable data, int action) {
             }
 
         };
     }
-	
+
     public Ressource getRessource() {
         return ressource;
     }

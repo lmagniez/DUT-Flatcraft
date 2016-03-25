@@ -18,9 +18,9 @@ import run.MineUtils;
 
 public abstract class ColonneDeRessources extends JButton implements ActionListener {
     public ArrayList<RessourceInstance> col = new ArrayList<RessourceInstance>();
-    
+
     protected abstract void sol(int index);
-    
+
     public ColonneDeRessources() {
         create();
         this.setIcon(col.get(col.size() - 1).getType().getImage());
@@ -34,8 +34,7 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
         for (i = 0; i < 25; i++) {
             r = (float) (Math.random() * 1);
 
-
-           if (i > 15 && i < 25) {
+            if (i > 15 && i < 25) {
                 if (r < 0.03)
                     col.add(new RessourceInstance(MineUtils.tabRessources[3])); // iron
                 else if (r < 0.09)
@@ -53,7 +52,7 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                     col.add(new RessourceInstance(MineUtils.tabRessources[1])); // stone
             } else if (i == 0)
                 col.add(new RessourceInstance(MineUtils.tabRessources[6])); // lava
-           
+
         }
         sol(i);
     }
@@ -62,7 +61,7 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
     public void actionPerformed(ActionEvent e) {
 
         ColonneDeRessources button = (ColonneDeRessources) e.getSource();
-        int positionCreuse = button.col.size()-1;
+        int positionCreuse = button.col.size() - 1;
 
         if ((e.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
             // DEPOSER
@@ -92,62 +91,56 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
             Jeux.getInv().afficher();
         } else {
             // CREUSER
-                for (int i = 1; i < Jeux.getOutils().getComponents().length; i++) { 
-                	ToolInstance outilsSelected = (ToolInstance) Jeux.getOutils().getComponent(i);
-                    
-                    //lave
-                    if ((outilsSelected.getOutils() instanceof MainOutils) 
-                    		&& outilsSelected.isSelect() 
-                    		&& col.get(positionCreuse).getType() instanceof Lava) 
-                    {
-                        return;
-                    }
-                    
-                    else if(outilsSelected.isSelect() 
-                    		&& col.get(positionCreuse).getType() instanceof Lava)
-                    {
-                        Jeux.getOutils().remove(outilsSelected);
-                        ((ToolInstance) Jeux.getOutils().getComponent(1)).setSelect(true);
-                        Jeux.changeCursorTo();
-                        Jeux.getOutils().revalidate();
-                        Jeux.getOutils().repaint();
-                        return;
-                    }
-                    //----------------
-                    
-                    //Si l'outil est selectionné
-                    if (outilsSelected.isSelect()) {
-                    	
-                        col.get(positionCreuse).setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1);
-                        if(!(outilsSelected.getType() instanceof MainOutils))
-                        	outilsSelected.setVie(outilsSelected.getVie() - 1);
-                    
-                    
-	                    //Retirer l'outil si vie =0
-	                    if (outilsSelected.getVie() == 0) {
-	                        Jeux.getOutils().remove(outilsSelected);
-	                        ToolInstance main = (ToolInstance) Jeux.getOutils().getComponent(1);
-	                        main.setSelect(true);
-	                        Jeux.changeCursorTo();
-	                    }
-	                    
-	                    //Retire la ressource si vie=0
-	                    if (col.get(positionCreuse).getVie() <= 0) {
-	                        Jeux.getInv().ajoutinventaire(col.get(positionCreuse).getType());
-	                        col.remove(positionCreuse);
-	                        this.setIcon(col.get(positionCreuse - 1).getType().getImage());
-	                        
-	                    }
-	                    
-	                    //il faut break quand on a trouvé l'outil selectionné
-	                    break;
-                    }
-                    
+            for (int i = 1; i < Jeux.getOutils().getComponents().length; i++) {
+                ToolInstance outilsSelected = (ToolInstance) Jeux.getOutils().getComponent(i);
+
+                // lave
+                if ((outilsSelected.getOutils() instanceof MainOutils) && outilsSelected.isSelect()
+                        && col.get(positionCreuse).getType() instanceof Lava) {
+                    return;
                 }
+
+                else if (outilsSelected.isSelect() && col.get(positionCreuse).getType() instanceof Lava) {
+                    Jeux.getOutils().remove(outilsSelected);
+                    ((ToolInstance) Jeux.getOutils().getComponent(1)).setSelect(true);
+                    Jeux.changeCursorTo();
+                    Jeux.getOutils().revalidate();
+                    Jeux.getOutils().repaint();
+                    return;
+                }
+                // ----------------
+
+                // Si l'outil est selectionné
+                if (outilsSelected.isSelect()) {
+
+                    col.get(positionCreuse).setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1);
+                    if (!(outilsSelected.getType() instanceof MainOutils))
+                        outilsSelected.setVie(outilsSelected.getVie() - 1);
+
+                    // Retirer l'outil si vie =0
+                    if (outilsSelected.getVie() == 0) {
+                        Jeux.getOutils().remove(outilsSelected);
+                        ToolInstance main = (ToolInstance) Jeux.getOutils().getComponent(1);
+                        main.setSelect(true);
+                        Jeux.changeCursorTo();
+                    }
+
+                    // Retire la ressource si vie=0
+                    if (col.get(positionCreuse).getVie() <= 0) {
+                        Jeux.getInv().ajoutinventaire(col.get(positionCreuse).getType());
+                        col.remove(positionCreuse);
+                        this.setIcon(col.get(positionCreuse - 1).getType().getImage());
+
+                    }
+
+                    // il faut break quand on a trouvé l'outil selectionné
+                    break;
+                }
+
+            }
             Jeux.getOutils().revalidate();
             Jeux.getOutils().repaint();
 
-            
         }
     }
 

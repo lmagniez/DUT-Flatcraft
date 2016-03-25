@@ -21,28 +21,28 @@ public class Map<T extends JComponent> {
     }
 
     private void create() {
-        int ligne = 0 ,coll=0;
+        int ligne = 0, coll = 0;
         int cells = row * col;
         grid.setLayout(new GridLayout(row, col));
         for (int i = 0; i < cells; i++) {
-            if(ligne < row/2){
-                if(coll < col/2 ){
+            if (ligne < row / 2) {
+                if (coll < col / 2) {
                     grid.add(new ColonneDeRessourcesNormal());
-                }
-                else{
+                } else {
                     grid.add(new ColonneDeRessourceDesert());
                 }
-            }
-            else {
-                if(coll < col/2 ){
+            } else {
+                if (coll < col / 2) {
                     grid.add(new ColonneDeRessourcesIce());
-                }
-                else{
+                } else {
                     grid.add(new ColonneDeRessourcesNormal());
                 }
             }
             coll++;
-            if(coll%col==0){ligne++;coll=0 ;}
+            if (coll % col == 0) {
+                ligne++;
+                coll = 0;
+            }
         }
     }
 }
