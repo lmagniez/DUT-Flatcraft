@@ -1,7 +1,9 @@
 package run;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.datatransfer.DataFlavor;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -26,14 +28,11 @@ public class MineUtils {
     }
 
     // ressource necessaire pour la map
-    public static final ImageIcon DIAMOND = scaled("/textures/default_mineral_diamond.png");
     public static final ImageIcon GRASS = scaled("/textures/default_grass.png");
-    public static final ImageIcon IRON = scaled("/textures/default_mineral_iron.png");
     public static final ImageIcon LAVA = scaled("/textures/default_lava.png");
     public static final ImageIcon OBSIDIAN = scaled("/textures/default_obsidian.png");
     public static final ImageIcon STONE = scaled("/textures/default_stone.png");
     public static final ImageIcon WOOD = scaled("/textures/default_tree_top.png");
-    public static final ImageIcon COAL = scaled("/textures/default_coal_block.png");
     public static final ImageIcon SAND = scaled("/textures/default_sand.png");
     public static final ImageIcon CACTUS = scaled("/textures/default_cactus_top.png");
     public static final ImageIcon SNOW = scaled("/textures/default_snow.png");
@@ -133,4 +132,29 @@ public class MineUtils {
         scroller.getHorizontalScrollBar().setUnitIncrement(20);
         return scroller;
     }
+    
+    /**
+     * Create a new scaled up version of the original icon, over an already
+     * scaled image (e.g. STONE).
+     * 
+     * @param background
+     *            a scaled up background image
+     * @param imageName
+     *            the new image to put on top of the background.
+     * @return an image consisting of imageName with the given background.
+     */
+    public static ImageIcon overlay(ImageIcon background, String imageName) {
+        try {
+            Image foreground = ImageIO.read(MineUtils.class.getResource(imageName)).getScaledInstance(80, 80,
+                    Image.SCALE_DEFAULT);
+            BufferedImage merged = new BufferedImage(80, 80, BufferedImage.TYPE_INT_ARGB);
+            Graphics g = merged.getGraphics();
+            g.drawImage(background.getImage(), 0, 0, null);
+            g.drawImage(foreground, 0, 0, null);
+            return new ImageIcon(merged);
+        } catch (IOException e) {
+            return new ImageIcon();
+        }
+    }
+
 }

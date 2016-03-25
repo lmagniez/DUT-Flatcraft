@@ -5,7 +5,6 @@ import run.MineUtils;
 public class Coal extends Ressource {
 
     public Coal() {
-        super(MineUtils.COAL, 7, "pioche");
+        super(MineUtils.overlay(MineUtils.STONE, "/textures/default_mineral_coal.png"), 7, "pioche");
     }
-
 }

@@ -42,11 +42,11 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                 else
                     col.add(new RessourceInstance(Jeux.tabRessources[1])); // stone
             } else if (i > 0 && i <= 15) {
-                if (r < 0.005)
+                if (r < 0.02)
                     col.add(new RessourceInstance(Jeux.tabRessources[5])); // diamond
-                else if (r < 0.09)
+                else if (r < 0.1)
                     col.add(new RessourceInstance(Jeux.tabRessources[3])); // iron
-                else if (r < 0.15)
+                else if (r < 0.17)
                     col.add(new RessourceInstance(Jeux.tabRessources[7])); // coal
                 else
                     col.add(new RessourceInstance(Jeux.tabRessources[1])); // stone
