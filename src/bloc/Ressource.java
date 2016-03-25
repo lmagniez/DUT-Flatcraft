@@ -1,6 +1,7 @@
 package bloc;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
@@ -10,6 +11,7 @@ public class Ressource implements MineElement, Serializable{
     ImageIcon image;
     private final int valeurVie;
     String propriete;
+    public ArrayList<RessourceInstance> pattern=new ArrayList<RessourceInstance>();
 
     public Ressource(ImageIcon image, int valeurVie, String p) {
         super();

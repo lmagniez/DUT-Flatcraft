@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -72,7 +73,6 @@ public class Inventaire extends JPanel {
 				return;
 			}
 		}
-		
 		RessourceContainer c=new RessourceContainer(1,r);
 		c.addMouseListener(Jeux.mouselistener);
 		c.setTransferHandler(c.createTransfertFrom());
