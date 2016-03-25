@@ -53,10 +53,8 @@ import outils.Tool;
 public class MineUtils {
 
     private MineUtils() {
-        // pas possible de créer des instances de cette classe
     }
 
-    // ressource necessaire pour la map
     public static final ImageIcon GRASS = scaled("/textures/default_grass.png");
     public static final ImageIcon LAVA = scaled("/textures/default_lava.png");
     public static final ImageIcon OBSIDIAN = scaled("/textures/default_obsidian.png");
@@ -86,22 +84,10 @@ public class MineUtils {
     public static final ImageIcon MAIN = scaled("/textures/main.png");
     public static final int NB_RESSOURCES = 13;
     public static final int NB_OUTILS = 13;
-    public static Ressource[] tabRessources = new Ressource[NB_RESSOURCES];
-    public static Tool[] tabOutils = new Tool[NB_OUTILS];
+    public static final Ressource[] tabRessources = new Ressource[NB_RESSOURCES];
+    public static final Tool[] tabOutils = new Tool[NB_OUTILS];
 
-    /*
-     * public static final ImageIcon JUNGLEGRASS =
-     * scaled("/textures/default_junglegrass.png"); public static final
-     * ImageIcon DIRT = scaled("/textures/default_dirt.png"); public static
-     * final ImageIcon BRICK = scaled("/textures/default_brick.png"); public
-     * static final ImageIcon CLAY = scaled("/textures/default_clay.png");
-     * public static final ImageIcon CLOUD =
-     * scaled("/textures/default_cloud.png"); public static final ImageIcon
-     * COBBLE = scaled("/textures/default_cobble.png"); public static final
-     * ImageIcon ICE = scaled("/textures/default_ice.png");
-     */
-
-    public static void prepareRessource() {
+   public static void prepareRessource() {
         tabRessources[0] = new Grass();
         tabRessources[1] = new Stone();
         tabRessources[2] = new Wood();

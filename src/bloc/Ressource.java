@@ -11,7 +11,7 @@ public class Ressource implements MineElement, Serializable{
     ImageIcon image;
     private final int valeurVie;
     private String propriete;
-    protected ArrayList<RessourceInstance> pattern=new ArrayList<RessourceInstance>();
+    protected ArrayList<RessourceInstance> pattern=new ArrayList<>();
 
     public Ressource(ImageIcon image, int valeurVie, String p) {
         super();

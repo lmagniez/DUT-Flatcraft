@@ -44,6 +44,7 @@ public class ToolInstance extends JButton implements MineElementInstance, Action
         this.vie = vie;
     }
 
+    @Override
     protected void paintComponent(Graphics g) {
         if (this.getVie() > 0) {
             super.paintComponent(g);
@@ -79,6 +80,7 @@ public class ToolInstance extends JButton implements MineElementInstance, Action
         Jeux.changeCursorTo();
     }
 
+    
     public boolean isSelect() {
         return select;
     }

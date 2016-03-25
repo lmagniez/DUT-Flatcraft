@@ -13,7 +13,7 @@ public class Tool implements MineElement {
     private final double coef;
     public int vie;
     public boolean select = false;
-    public ArrayList<RessourceInstance> pattern=new ArrayList<RessourceInstance>();
+    public ArrayList<RessourceInstance> pattern=new ArrayList<>();
 
     public Tool(ImageIcon image, int valeurVie, double d, boolean s) {
         super();
