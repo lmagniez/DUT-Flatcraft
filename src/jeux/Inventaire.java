@@ -63,10 +63,10 @@ public class Inventaire extends JPanel {
 	public void ajoutinventaire(Ressource r) {
 		Component[] components = Jeux.getInv().getComponents();
 		for(int i=0; i<components.length; i++){
-			JToggleButton elt= (JToggleButton) this.getComponent(i);
-			if(elt.getIcon()==r.getImage())
+		    RessourceContainer elt= (RessourceContainer) this.getComponent(i);
+			if(elt.getIcon()==r.getImage() && elt.getQuantity()<64)
 			{
-				((RessourceContainer) elt).setQuantity(((RessourceContainer) elt).getQuantity()+1);
+				elt.setQuantity(elt.getQuantity()+1);
 				this.revalidate();
 				this.repaint();
 				return;
