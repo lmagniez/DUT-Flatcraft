@@ -7,40 +7,37 @@ import javax.swing.ImageIcon;
 
 import jeux.MineElement;
 
-public abstract class Ressource implements MineElement, Serializable{
+public abstract class Ressource implements MineElement, Serializable {
     protected ImageIcon image;
     private String nom;
     private final int valeurVie;
     private String propriete;
-    protected ArrayList<RessourceInstance> pattern=new ArrayList<>();
+    protected ArrayList<RessourceInstance> pattern = new ArrayList<>();
     private int id;
-    protected boolean changement=false;
-   
+    protected boolean changement = false;
+
     public Ressource(String nom, ImageIcon image, int valeurVie, String p) {
-        this.nom=nom;
+        this.nom = nom;
         this.image = image;
         this.propriete = p;
         this.valeurVie = valeurVie;
     }
 
     public Ressource(String nom, ImageIcon image, int valeurVie, String p, boolean b) {
-        this.nom=nom;
+        this.nom = nom;
         this.image = image;
         this.propriete = p;
         this.valeurVie = valeurVie;
-        this.changement=b;
+        this.changement = b;
     }
 
     @Override
-	public String toString() {
-		return "Ressource [image=" + image + ", id=" + id + ", valeurVie="
-				+ valeurVie + ", propriete=" + propriete + ", pattern="
-				+ pattern + "]";
-	}
+    public String toString() {
+        return "Ressource [image=" + image + ", id=" + id + ", valeurVie=" + valeurVie + ", propriete=" + propriete
+                + ", pattern=" + pattern + "]";
+    }
 
-
-
-	public ImageIcon getImage() {
+    public ImageIcon getImage() {
         return image;
     }
 
@@ -59,7 +56,7 @@ public abstract class Ressource implements MineElement, Serializable{
     public int getValeurVie() {
         return valeurVie;
     }
-    
+
     @Override
     public RessourceInstance newInstance() {
         return new RessourceInstance(this);
@@ -69,7 +66,7 @@ public abstract class Ressource implements MineElement, Serializable{
         return pattern;
     }
 
-	public String getId() {
-		return this.nom;
-	}
+    public String getId() {
+        return this.nom;
+    }
 }
