@@ -15,15 +15,22 @@ import javax.swing.JComponent;
 import javax.swing.JToggleButton;
 import javax.swing.TransferHandler;
 
+import jeux.Jeux;
 import jeux.Prototype;
 import run.MineUtils;
 
 public class RessourceContainer extends JToggleButton implements Prototype {
 
+	protected int id;
     private int quantity;
     private Ressource ressource;
-
+    public static int ID=0;
+    
     public RessourceContainer(int quantity, Ressource r) {
+    	
+    	this.id=ID;
+        ID+=1;
+        
         this.setSize(new Dimension(100, 100));
 
         this.quantity = quantity;
@@ -31,7 +38,8 @@ public class RessourceContainer extends JToggleButton implements Prototype {
         if (r != null)
             this.setIcon(r.image);
         this.setBorder(BorderFactory.createEmptyBorder());
-
+        
+        
     }
 
     @Override
@@ -91,11 +99,14 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 
             @Override
             protected Transferable createTransferable(JComponent c) {
-                return ((Prototype) c).clone();
+                return (Transferable) c;
             }
 
             @Override
             protected void exportDone(JComponent source, Transferable data, int action) {
+            	
+            	
+            	
             }
 
         };
@@ -117,4 +128,9 @@ public class RessourceContainer extends JToggleButton implements Prototype {
         this.quantity = quantity;
     }
 
+    public int getID()
+    {
+    	return this.id;
+    }
+    
 }

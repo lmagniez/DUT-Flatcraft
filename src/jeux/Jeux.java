@@ -23,7 +23,7 @@ public class Jeux {
     private static Map map;
     private static Inventaire inv;
     private static Outils outils;
-    private TableCraft craft;
+    private static TableCraft craft;
     private JFrame frame = new JFrame();
 
     public Jeux() {
@@ -33,6 +33,7 @@ public class Jeux {
         this.map = new Map();
         this.inv = new Inventaire();
         this.inv.addMouseListener(mouselistener);
+        this.inv.setTransferHandler(this.inv.createTransfertTo());
 
         this.outils = new Outils();
         this.craft = new TableCraft(frame, "Table de craft", false);
@@ -67,6 +68,10 @@ public class Jeux {
 
     public static Outils getOutils() {
         return outils;
+    }
+    
+    public static TableCraft getTable(){
+    	return craft;
     }
 
     public static void changeCursorTo() {

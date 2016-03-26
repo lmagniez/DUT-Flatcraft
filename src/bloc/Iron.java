@@ -5,6 +5,6 @@ import run.MineUtils;
 public class Iron extends Ressource {
 
     public Iron() {
-        super(MineUtils.overlay(MineUtils.STONE, "/textures/default_mineral_iron.png"), 10, "pioche");
+        super("iron",MineUtils.overlay(MineUtils.STONE, "/textures/default_mineral_iron.png"), 10, "pioche");
     }
 }

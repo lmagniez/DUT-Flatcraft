@@ -10,7 +10,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import javax.swing.TransferHandler;
+import javax.swing.TransferHandler.TransferSupport;
 
+import run.MineUtils;
 import bloc.Ressource;
 import bloc.RessourceContainer;
 
@@ -49,7 +52,7 @@ public class Inventaire extends JPanel {
         }
     }
 
-    public void ajoutinventaire(Ressource r) {
+    public void ajoutinventaire(Ressource r, int nb) {
         Component[] components = Jeux.getInv().getComponents();
         for (int i = 0; i < components.length; i++) {
             RessourceContainer elt = (RessourceContainer) this.getComponent(i);
@@ -60,7 +63,7 @@ public class Inventaire extends JPanel {
                 return;
             }
         }
-        RessourceContainer c = new RessourceContainer(1, r);
+        RessourceContainer c = new RessourceContainer(nb, r);
         c.addMouseListener(Jeux.mouselistener);
         c.setTransferHandler(c.createTransfertFrom());
 
@@ -74,13 +77,18 @@ public class Inventaire extends JPanel {
 
     public void supprimerInventaire(RessourceContainer r) {
         System.out.println("SUPPRIMER INVENTAIRE");
+        RessourceContainer ressource1=r;
+        RessourceContainer ressource2;
+        
         Component[] components = Jeux.getInv().getComponents();
         for (int i = 0; i < components.length; i++) {
-            JToggleButton elt = (JToggleButton) Jeux.getInv().getComponent(i);
-            if (elt.getIcon() == r.getIcon())// trouvé, on supprime
+        	
+            ressource2 =  (RessourceContainer)(Jeux.getInv().getComponent(i));
+            
+            if (ressource1.getID()==(ressource2.getID()))// trouvé, on supprime
             {
                 System.out.println("TROUVE !!");
-                elt.remove(i);
+                Jeux.getInv().remove(i);
                 this.revalidate();
                 this.repaint();
                 return;
@@ -88,5 +96,50 @@ public class Inventaire extends JPanel {
         }
 
     }
+
+	public void ajoutinventaire(RessourceContainer comp) {
+		Ressource r = comp.getRessource();
+		ajoutinventaire(r,comp.getQuantity());
+	}
+	
+	TransferHandler createTransfertTo() {
+		return new TransferHandler() {
+
+			@Override
+			public boolean canImport(TransferSupport support) {
+				return support.isDataFlavorSupported(MineUtils.MINE_FLAVOR);
+			}
+
+			@Override
+			public boolean importData(TransferSupport support) {
+				if (support.isDrop()) {
+					JPanel source = (JPanel) support.getComponent();
+					try {
+
+						JComponent comp = (JComponent) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
+						comp.addMouseListener(Jeux.mouselistener);
+						comp.setTransferHandler(((RessourceContainer) comp).createTransfertFrom());
+					
+						Jeux.getInv().supprimerInventaire((RessourceContainer) comp);
+						Jeux.getTable().supprimerElement((RessourceContainer) comp);
+
+						
+						source.add(comp);
+						source.revalidate();
+						source.repaint();
+
+						
+						return true;
+
+					} catch (Exception e) {
+						e.printStackTrace();
+						return false;
+					}
+				} else {
+					return false;
+				}
+			}
+		};
+	}
 
 }
