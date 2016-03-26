@@ -23,12 +23,12 @@ public class RessourceContainer extends JToggleButton implements Prototype {
     protected int id;
     private int quantity;
     private Ressource ressource;
-    private static int ID = 0;
+    private static int Identifiant = 0;
 
     public RessourceContainer(int quantity, Ressource r) {
 
-        this.id = ID;
-        ID += 1;
+        this.id = Identifiant;
+        Identifiant += 1;
 
         this.setSize(new Dimension(100, 100));
 
@@ -81,8 +81,7 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 
     @Override
     public Prototype clone() {
-        RessourceContainer r = new RessourceContainer(this.quantity, this.ressource);
-        return r;
+        return new RessourceContainer(this.quantity, this.ressource);    
     }
 
     public TransferHandler createTransfertFrom() {

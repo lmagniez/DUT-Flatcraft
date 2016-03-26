@@ -9,13 +9,11 @@ import java.awt.event.MouseListener;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JToggleButton;
 import javax.swing.TransferHandler;
-import javax.swing.TransferHandler.TransferSupport;
 
-import run.MineUtils;
 import bloc.Ressource;
 import bloc.RessourceContainer;
+import run.MineUtils;
 
 public class Inventaire extends JPanel {
     public Inventaire() {
@@ -23,12 +21,11 @@ public class Inventaire extends JPanel {
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         this.setPreferredSize(new Dimension(80, 80));
     }
-
+   
+    
     MouseListener mouselistener = new MouseAdapter() {
+        @Override
         public void mousePressed(MouseEvent me) {
-            System.out.println("MOUSE LISTENER ! ");
-            System.out.println(me.getSource());
-
             setAllNotSelected();
         }
     };
@@ -77,15 +74,16 @@ public class Inventaire extends JPanel {
 
     public void supprimerInventaire(RessourceContainer r) {
         System.out.println("SUPPRIMER INVENTAIRE");
-        RessourceContainer ressource1=r;
+        RessourceContainer ressource1 = r;
         RessourceContainer ressource2;
-        
+
         Component[] components = Jeux.getInv().getComponents();
         for (int i = 0; i < components.length; i++) {
-        	
-            ressource2 =  (RessourceContainer)(Jeux.getInv().getComponent(i));
-            
-            if (ressource1.getID()==(ressource2.getID()))// trouvé, on supprime
+
+            ressource2 = (RessourceContainer) (Jeux.getInv().getComponent(i));
+
+            if (ressource1.getID() == (ressource2.getID()))// trouvé, on
+                                                           // supprime
             {
                 System.out.println("TROUVE !!");
                 Jeux.getInv().remove(i);
@@ -97,49 +95,47 @@ public class Inventaire extends JPanel {
 
     }
 
-	public void ajoutinventaire(RessourceContainer comp) {
-		Ressource r = comp.getRessource();
-		ajoutinventaire(r,comp.getQuantity());
-	}
-	
-	TransferHandler createTransfertTo() {
-		return new TransferHandler() {
+    public void ajoutinventaire(RessourceContainer comp) {
+        Ressource r = comp.getRessource();
+        ajoutinventaire(r, comp.getQuantity());
+    }
 
-			@Override
-			public boolean canImport(TransferSupport support) {
-				return support.isDataFlavorSupported(MineUtils.MINE_FLAVOR);
-			}
+    TransferHandler createTransfertTo() {
+        return new TransferHandler() {
 
-			@Override
-			public boolean importData(TransferSupport support) {
-				if (support.isDrop()) {
-					JPanel source = (JPanel) support.getComponent();
-					try {
+            @Override
+            public boolean canImport(TransferSupport support) {
+                return support.isDataFlavorSupported(MineUtils.MINE_FLAVOR);
+            }
 
-						JComponent comp = (JComponent) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
-						comp.addMouseListener(Jeux.mouselistener);
-						comp.setTransferHandler(((RessourceContainer) comp).createTransfertFrom());
-					
-						Jeux.getInv().supprimerInventaire((RessourceContainer) comp);
-						Jeux.getTable().supprimerElement((RessourceContainer) comp);
+            @Override
+            public boolean importData(TransferSupport support) {
+                if (support.isDrop()) {
+                    JPanel source = (JPanel) support.getComponent();
+                    try {
 
-						
-						source.add(comp);
-						source.revalidate();
-						source.repaint();
+                        JComponent comp = (JComponent) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
+                        comp.addMouseListener(Jeux.mouselistener);
+                        comp.setTransferHandler(((RessourceContainer) comp).createTransfertFrom());
 
-						
-						return true;
+                        Jeux.getInv().supprimerInventaire((RessourceContainer) comp);
+                        Jeux.getTable().supprimerElement((RessourceContainer) comp);
 
-					} catch (Exception e) {
-						e.printStackTrace();
-						return false;
-					}
-				} else {
-					return false;
-				}
-			}
-		};
-	}
+                        source.add(comp);
+                        source.revalidate();
+                        source.repaint();
+
+                        return true;
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
+        };
+    }
 
 }

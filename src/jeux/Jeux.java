@@ -88,6 +88,7 @@ public class Jeux {
     }
 
     public static MouseListener mouselistener = new MouseAdapter() {
+        @Override
         public void mousePressed(MouseEvent me) {
 
             if ((me.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
