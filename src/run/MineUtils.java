@@ -86,10 +86,13 @@ public class MineUtils {
     public static final ImageIcon COAL=scaled("/textures/default_coal_lump.png");
 
     public static final ImageIcon MAIN = scaled("/textures/main.png");
+    
     public static final int NB_RESSOURCES = 13;
     public static final int NB_OUTILS = 13;
     public static final Ressource[] tabRessources = new Ressource[NB_RESSOURCES];
     public static final Tool[] tabOutils = new Tool[NB_OUTILS];
+    
+    public static final DataFlavor MINE_FLAVOR = new DataFlavor(JComponent.class, "MineFlavor");
 
    public static void prepareRessource() {
         tabRessources[0] = new Grass();
@@ -121,11 +124,9 @@ public class MineUtils {
         tabOutils[10] = new HachePierre();
         tabOutils[11] = new HacheIron();
         tabOutils[12] = new HacheDiamond();
-
     }
 
-    public static final DataFlavor MINE_FLAVOR = new DataFlavor(JComponent.class, "MineFlavor");
-
+   
     /**
      * Create a scaled up version of the original icon, to have a MineCraft
      * effect.
