@@ -127,12 +127,12 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
 
                     // Retire la ressource si vie=0
                     if (col.get(positionCreuse).getVie() <= 0) {
-                        Jeux.getInv().ajoutinventaire(col.get(positionCreuse).getType(),1);
+                        Jeux.getInv().ajoutinventaire(col.get(positionCreuse).getType(), 1);
                         col.remove(positionCreuse);
                         this.setIcon(col.get(positionCreuse - 1).getType().getImage());
-                        
+
                     }
-                    
+
                     // il faut break quand on a trouvé l'outil selectionné
                     break;
                 }

@@ -13,7 +13,6 @@ public abstract class Ressource implements MineElement, Serializable{
     private final int valeurVie;
     private String propriete;
     protected ArrayList<RessourceInstance> pattern=new ArrayList<>();
-    public static int ID=0;
     private int id;
     protected boolean changement=false;
    

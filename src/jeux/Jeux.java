@@ -69,9 +69,9 @@ public class Jeux {
     public static Outils getOutils() {
         return outils;
     }
-    
-    public static TableCraft getTable(){
-    	return craft;
+
+    public static TableCraft getTable() {
+        return craft;
     }
 
     public static void changeCursorTo() {

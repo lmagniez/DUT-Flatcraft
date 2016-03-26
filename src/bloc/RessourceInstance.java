@@ -11,7 +11,7 @@ public class RessourceInstance implements MineElementInstance {
         this.ressource = r;
         this.vie = r.getValeurVie();
     }
- 
+
     public Ressource getType() {
         return this.ressource;
     }
