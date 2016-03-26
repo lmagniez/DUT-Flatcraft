@@ -7,25 +7,30 @@ import javax.swing.ImageIcon;
 
 import jeux.MineElement;
 
-public class Ressource implements MineElement, Serializable{
-    ImageIcon image;
+public abstract class Ressource implements MineElement, Serializable{
+    protected ImageIcon image;
     private String nom;
     private final int valeurVie;
     private String propriete;
     protected ArrayList<RessourceInstance> pattern=new ArrayList<>();
     public static int ID=0;
     private int id;
-
+    protected boolean changement=false;
+   
     public Ressource(String nom, ImageIcon image, int valeurVie, String p) {
-        super();
-        
         this.nom=nom;
         this.image = image;
         this.propriete = p;
         this.valeurVie = valeurVie;
     }
 
-    
+    public Ressource(String nom, ImageIcon image, int valeurVie, String p, boolean b) {
+        this.nom=nom;
+        this.image = image;
+        this.propriete = p;
+        this.valeurVie = valeurVie;
+        this.changement=b;
+    }
 
     @Override
 	public String toString() {
@@ -56,8 +61,6 @@ public class Ressource implements MineElement, Serializable{
         return valeurVie;
     }
     
-    
-
     @Override
     public RessourceInstance newInstance() {
         return new RessourceInstance(this);
@@ -66,8 +69,6 @@ public class Ressource implements MineElement, Serializable{
     public ArrayList<RessourceInstance> getPattern() {
         return pattern;
     }
-
-
 
 	public String getId() {
 		return this.nom;

@@ -7,5 +7,4 @@ public class Stone extends Ressource {
     public Stone() {
         super("stone",MineUtils.STONE, 6, "pioche");
     }
-
 }

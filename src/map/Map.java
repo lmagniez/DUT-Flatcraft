@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 
 public class Map<T extends JComponent> {
     public JPanel grid;
-    private int row = 5;
-    private int col = 5;
+    private int row = 15;
+    private int col = 15;
     public static final int NOMBRE_RESSOURCES = 7;
 
     public Map() {

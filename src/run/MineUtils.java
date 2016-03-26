@@ -80,6 +80,10 @@ public class MineUtils {
     public static final ImageIcon PELLE_PIERRE = scaled("/textures/default_tool_stoneshovel.png");
     public static final ImageIcon PELLE_FER = scaled("/textures/default_tool_steelshovel.png");
     public static final ImageIcon PELLE_DIAMOND = scaled("/textures/default_tool_diamondshovel.png");
+    
+    public static final ImageIcon DIAMOND=scaled("/textures/default_diamond.png");
+    public static final ImageIcon IRON=scaled("/textures/default_steel_ingot.png");
+    public static final ImageIcon COAL=scaled("/textures/default_coal_lump.png");
 
     public static final ImageIcon MAIN = scaled("/textures/main.png");
     public static final int NB_RESSOURCES = 13;
@@ -99,8 +103,8 @@ public class MineUtils {
         tabRessources[8] = new Sand();
         tabRessources[9] = new Cactus();
         tabRessources[10] = new Snow();
-        tabRessources[11] = new Pick();
         tabRessources[12] = new WoodPlanks();
+        tabRessources[11] = new Pick();
     }
 
     public static void prepareOutils() {

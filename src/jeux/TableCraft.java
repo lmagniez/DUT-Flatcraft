@@ -66,9 +66,6 @@ public class TableCraft extends JDialog {
 	}
 
 	public void supprimerElement(RessourceContainer r) {
-
-		
-		
 		System.out.println("SUPPRIMER TABLE");
 		RessourceContainer ressource1 = r;
 		RessourceContainer ressource2;
@@ -117,12 +114,12 @@ public class TableCraft extends JDialog {
 						
 						Jeux.getTable().supprimerElement((RessourceContainer) comp);
 						/*
-						// Il y a déjà une ressource
+						// Il y a dï¿½jï¿½ une ressource
 						if (source.getComponentCount() != 0) {
 							RessourceContainer ressource1 = ((RessourceContainer) source.getComponent(0));
 							RessourceContainer ressource2 = ((RessourceContainer) comp);
 
-							// même ressource
+							// mï¿½me ressource
 							if (ressource1.getRessource().getId().equals(ressource2.getRessource().getId())) {
 								ressource1.setQuantity(ressource1.getQuantity()+ ressource2.getQuantity());
 
