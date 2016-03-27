@@ -70,7 +70,7 @@ public class Inventaire extends JPanel {
         for (int i = 0; i < components.length; i++) {
             RessourceContainer elt = (RessourceContainer) this.getComponent(i);
             if (elt.getRessource().getId().equals(r.getId()) && elt.getQuantity() < 64) {
-                System.out.println("Trouvé! ");
+                System.out.println("Trouvï¿½! ");
                 elt.setQuantity(elt.getQuantity() + nb);
                 this.revalidate();
                 this.repaint();

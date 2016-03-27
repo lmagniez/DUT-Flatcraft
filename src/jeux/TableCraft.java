@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.JComponent;
 import javax.swing.JDialog;
@@ -11,7 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.TransferHandler;
 
+import bloc.Ressource;
 import bloc.RessourceContainer;
+import bloc.RessourceInstance;
+import outils.ToolInstance;
 import run.MineUtils;
 
 public class TableCraft extends JDialog {
@@ -99,7 +103,6 @@ public class TableCraft extends JDialog {
 
         Component[] components = grille.getComponents();
         for (int i = 0; i < components.length; i++) {
-
             JPanel p = (JPanel) (grille.getComponent(i));
             if (p.getComponentCount() != 0) {
                 ressource2 = (RessourceContainer) (p.getComponent(0));
@@ -161,7 +164,7 @@ public class TableCraft extends JDialog {
                         source.revalidate();
                         source.repaint();
 
-                        //supprime element inventaire (seulement si ça vient de l'inventaire)
+                        //supprime element inventaire (seulement si ï¿½a vient de l'inventaire)
                         Jeux.getInv().supprimerInventaire((RessourceContainer) origine);
 
                         return true;
@@ -176,5 +179,40 @@ public class TableCraft extends JDialog {
             }
         };
     }
+    
+    /*
+     * Pour les Outils
+     */
+   
+    private ToolInstance construireOutils(){
 
+        for(int i=0;i<MineUtils.NB_OUTILS;i++){
+            ArrayList<Ressource> patterntmp=MineUtils.tabOutils[i].getPattern();
+            for(int a=0;a<patterntmp.size();a++){
+                /*
+                 * if(non egal) break;
+                 * 
+                 * else if(a<patterntmp.size())return MineUtils.tabOutils[i]; //cela signifie que tout c'est tout etait identique
+                 */
+            }    
+        }
+        return null;
+    }
+
+    /*
+     * Pour les Ressources (batons,WoodPlancks)
+     */
+    private RessourceInstance construireRessource(){
+        for(int i=0;i<MineUtils.NB_OUTILS;i++){
+            ArrayList<Ressource> patterntmp=MineUtils.tabOutils[i].getPattern();
+            for(int a=0;a<patterntmp.size();a++){
+                /* VOIR POUR LES TAILLES CAR LES PATTERNS DES RESSOURCES CONSTRUCTIVE NE SONT PAS DE TAILLE 9
+                 * if(non egal) break;
+                 * 
+                 * else if(a<patterntmp.size())return MineUtils.tabOutils[i]; //cela signifie que tout c'est tout etait identique
+                 */
+            } 
+        }
+        return null;
+    }
 }
