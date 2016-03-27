@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
+import bloc.Ressource;
 import bloc.RessourceInstance;
 import jeux.MineElement;
 
@@ -13,7 +14,7 @@ public class Tool implements MineElement {
     private final double coef;
     public int vie;
     public boolean select = false;
-    public ArrayList<RessourceInstance> pattern=new ArrayList<>();
+    public ArrayList<Ressource> pattern=new ArrayList<>();
 
     public Tool(ImageIcon image, int valeurVie, double d, boolean s) {
         super();

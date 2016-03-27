@@ -12,7 +12,7 @@ public abstract class Ressource implements MineElement, Serializable {
     private String nom;
     private final int valeurVie;
     private String propriete;
-    protected ArrayList<RessourceInstance> pattern = new ArrayList<>();
+    protected ArrayList<Ressource> pattern = new ArrayList<>();
     private int id;
     protected boolean changement = false;
 
@@ -62,7 +62,7 @@ public abstract class Ressource implements MineElement, Serializable {
         return new RessourceInstance(this);
     }
 
-    public ArrayList<RessourceInstance> getPattern() {
+    public ArrayList<Ressource> getPattern() {
         return pattern;
     }
 

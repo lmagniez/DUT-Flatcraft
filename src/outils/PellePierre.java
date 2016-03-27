@@ -8,13 +8,13 @@ public class PellePierre extends Tool {
     public PellePierre() {
         super(MineUtils.PELLE_PIERRE, 25, 2, false);
         this.pattern.add(null);
-        this.pattern.add(new RessourceInstance(MineUtils.tabRessources[1]));
+        this.pattern.add(MineUtils.tabRessources[1]);
         this.pattern.add(null);
         this.pattern.add(null);
-        this.pattern.add(new RessourceInstance(MineUtils.tabRessources[11]));
+        this.pattern.add(MineUtils.tabRessources[11]);
         this.pattern.add(null);
         this.pattern.add(null);
-        this.pattern.add(new RessourceInstance(MineUtils.tabRessources[11]));
+        this.pattern.add(MineUtils.tabRessources[11]);
         this.pattern.add(null);
     }
 

@@ -7,14 +7,14 @@ public class PiocheBois extends Tool {
 
     public PiocheBois() {
         super(MineUtils.PIOCHE_BOIS, 20, 1, false);
-        this.pattern.add(new RessourceInstance(MineUtils.tabRessources[12]));
-        this.pattern.add(new RessourceInstance(MineUtils.tabRessources[12]));
-        this.pattern.add(new RessourceInstance(MineUtils.tabRessources[12]));
+        this.pattern.add(MineUtils.tabRessources[12]);
+        this.pattern.add(MineUtils.tabRessources[12]);
+        this.pattern.add(MineUtils.tabRessources[12]);
         this.pattern.add(null);
-        this.pattern.add(new RessourceInstance(MineUtils.tabRessources[11]));
+        this.pattern.add(MineUtils.tabRessources[11]);
         this.pattern.add(null);
         this.pattern.add(null);
-        this.pattern.add(new RessourceInstance(MineUtils.tabRessources[11]));
+        this.pattern.add(MineUtils.tabRessources[11]);
         this.pattern.add(null);
     }
 
