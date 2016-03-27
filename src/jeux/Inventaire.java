@@ -49,12 +49,29 @@ public class Inventaire extends JPanel {
         }
     }
 
-    public void ajoutinventaire(Ressource r, int nb) {
+    public boolean estDansLInventaire(RessourceContainer r)
+    {
+        RessourceContainer ressource1 = r;
+        RessourceContainer ressource2;
         Component[] components = Jeux.getInv().getComponents();
         for (int i = 0; i < components.length; i++) {
+            ressource2 = (RessourceContainer) (Jeux.getInv().getComponent(i));
+            if (ressource1.getID() == (ressource2.getID()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void ajoutinventaire(Ressource r, int nb) {
+        Component[] components = Jeux.getInv().getComponents();
+        System.out.println("AJOUT INVENTAIRE");
+        for (int i = 0; i < components.length; i++) {
             RessourceContainer elt = (RessourceContainer) this.getComponent(i);
-            if (elt.getIcon() == r.getImage() && elt.getQuantity() < 64) {
-                elt.setQuantity(elt.getQuantity() + 1);
+            if (elt.getRessource().getId().equals(r.getId()) && elt.getQuantity() < 64) {
+                System.out.println("Trouvé! ");
+                elt.setQuantity(elt.getQuantity() + nb);
                 this.revalidate();
                 this.repaint();
                 return;
@@ -114,14 +131,15 @@ public class Inventaire extends JPanel {
                     JPanel source = (JPanel) support.getComponent();
                     try {
 
-                        JComponent comp = (JComponent) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
+                        RessourceContainer comp = (RessourceContainer) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
                         comp.addMouseListener(Jeux.mouselistener);
-                        comp.setTransferHandler(((RessourceContainer) comp).createTransfertFrom());
+                        comp.setTransferHandler((comp).createTransfertFrom());
 
                         Jeux.getInv().supprimerInventaire((RessourceContainer) comp);
                         Jeux.getTable().supprimerElement((RessourceContainer) comp);
-
-                        source.add(comp);
+                        Jeux.getInv().ajoutinventaire(comp);
+                        
+                        //source.add(comp);
                         source.revalidate();
                         source.repaint();
 

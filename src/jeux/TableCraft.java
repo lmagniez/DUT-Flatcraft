@@ -88,6 +88,38 @@ public class TableCraft extends JDialog {
         }
 
     }
+    
+    //Modifie la quantite de l'element a nb (dans la table de craft)
+    public void modifierElement(RessourceContainer r, int nb) {
+        if(nb==0)return;
+        
+        System.out.println("SUPPRIMER TABLE");
+        RessourceContainer ressource1 = r;
+        RessourceContainer ressource2;
+
+        Component[] components = grille.getComponents();
+        for (int i = 0; i < components.length; i++) {
+
+            JPanel p = (JPanel) (grille.getComponent(i));
+            if (p.getComponentCount() != 0) {
+                ressource2 = (RessourceContainer) (p.getComponent(0));
+                System.out.println(ressource1.getID() + " " + ressource2.getID());
+
+                if (ressource1.getID() == (ressource2.getID()))// trouvÃ©, on
+                                                               // supprime
+                {
+                    System.out.println("TROUVE !! ON MODIFIE");
+                    ((RessourceContainer) p.getComponent(0)).setQuantity(nb);;
+                    this.revalidate();
+                    this.repaint();
+                    return;
+                }
+            }
+        }
+
+    }
+
+    
 
     private TransferHandler createTransfertTo() {
         return new TransferHandler() {
@@ -103,38 +135,34 @@ public class TableCraft extends JDialog {
                     JPanel source = (JPanel) support.getComponent();
                     try {
 
-                        JComponent comp = (JComponent) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
-                        comp.addMouseListener(Jeux.mouselistener);
-                        comp.setTransferHandler(((RessourceContainer) comp).createTransfertFrom());
+                        RessourceContainer origine = (RessourceContainer) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
+                        
+                        RessourceContainer nouvelle = new RessourceContainer(origine.getQuantity(),origine.getRessource());
+                        
+                        nouvelle.addMouseListener(Jeux.mouselistener);
+                        nouvelle.setTransferHandler(nouvelle.createTransfertFrom());
 
-                        Jeux.getTable().supprimerElement((RessourceContainer) comp);
-                        /*
-                         * // Il y a dï¿½jï¿½ une ressource if
-                         * (source.getComponentCount() != 0) {
-                         * RessourceContainer ressource1 = ((RessourceContainer)
-                         * source.getComponent(0)); RessourceContainer
-                         * ressource2 = ((RessourceContainer) comp);
-                         * 
-                         * // mï¿½me ressource if
-                         * (ressource1.getRessource().getId().equals(ressource2.
-                         * getRessource().getId())) {
-                         * ressource1.setQuantity(ressource1.getQuantity()+
-                         * ressource2.getQuantity());
-                         * 
-                         * }
-                         * 
-                         * } else {
-                         * 
-                         * source.removeAll(); source.add(comp); }
-                         */
-
-                        source.add(comp);
+                        //modifie ancien elements (/2)
+                        int divise= origine.getQuantity()/2;
+                        int reste = origine.getQuantity()-divise;
+                        
+                        if(divise==0)return false;
+                        if(reste==0)return false;
+                        
+                        //modification
+                        Jeux.getTable().modifierElement(origine, divise);                         
+                        if(!Jeux.getInv().estDansLInventaire(origine))//Si vient de l'inventaire, pas besoin de -1
+                            nouvelle.setQuantity(reste);
+                        
+                        if(nouvelle.getQuantity()==0)return true;
+                        
+                        
+                        source.add(nouvelle);
                         source.revalidate();
                         source.repaint();
 
-                        Jeux.getInv().supprimerInventaire((RessourceContainer) comp);
-                        // Jeux.getTable().supprimerElement((RessourceContainer)
-                        // comp);
+                        //supprime element inventaire (seulement si ça vient de l'inventaire)
+                        Jeux.getInv().supprimerInventaire((RessourceContainer) origine);
 
                         return true;
 
