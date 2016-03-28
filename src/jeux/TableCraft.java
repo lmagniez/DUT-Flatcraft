@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -380,7 +381,7 @@ public class TableCraft extends JDialog {
         return null;
                
     }
-    /*
+    
     public boolean estDansResult(JComponent r)
     {
         if(this.result.getComponentCount()==0)return false;
@@ -396,9 +397,9 @@ public class TableCraft extends JDialog {
         return false;
     }
 
-    */
-
     
+
+    /*
     public boolean estDansResult(RessourceContainer r)
     {
         System.out.println("result !");
@@ -413,6 +414,7 @@ public class TableCraft extends JDialog {
         
         return false;
     }
+    */
     
     public JPanel getGrille() {
         return grille;
