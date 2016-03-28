@@ -20,6 +20,7 @@ public class Inventaire extends JPanel {
 
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         this.setPreferredSize(new Dimension(80, 80));
+        this.setVisible(true);
     }
    
     

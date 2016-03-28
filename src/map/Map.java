@@ -18,6 +18,7 @@ public class Map<T extends JComponent> {
         grid.setLayout(new BoxLayout(grid, BoxLayout.Y_AXIS));
         grid.setSize(new Dimension(80, 75));
         create();
+         
     }
 
     private void create() {
