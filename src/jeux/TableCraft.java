@@ -185,34 +185,35 @@ public class TableCraft extends JDialog {
      */
    
     private ToolInstance construireOutils(){
-
+        RessourceContainer r;
         for(int i=0;i<MineUtils.NB_OUTILS;i++){
             ArrayList<Ressource> patterntmp=MineUtils.tabOutils[i].getPattern();
             for(int a=0;a<patterntmp.size();a++){
-                /*
-                 * if(non egal) break;
-                 * 
-                 * else if(a<patterntmp.size())return MineUtils.tabOutils[i]; //cela signifie que tout c'est tout etait identique
-                 */
+               r= (RessourceContainer) this.grille.getComponent(a);
+                 if( patterntmp.get(a) == r.getRessource()) break;
+                 else if(a<patterntmp.size())return new ToolInstance(MineUtils.tabOutils[i]); //cela signifie que tout c'est tout etait identique
             }    
         }
         return null;
     }
 
     /*
-     * Pour les Ressources (batons,WoodPlancks)
+     * Pour les Ressources (Pick,WoodPlancks)
      */
-    private RessourceInstance construireRessource(){
-        for(int i=0;i<MineUtils.NB_OUTILS;i++){
-            ArrayList<Ressource> patterntmp=MineUtils.tabOutils[i].getPattern();
+    private RessourceContainer construireRessource(){
+        /*
+        RessourceContainer r;
+        for(int i=0;i<MineUtils.NB_RESSOURCES;i++){
+            ArrayList<Ressource> patterntmp=MineUtils.tabRessources[i].getPattern();
             for(int a=0;a<patterntmp.size();a++){
-                /* VOIR POUR LES TAILLES CAR LES PATTERNS DES RESSOURCES CONSTRUCTIVE NE SONT PAS DE TAILLE 9
-                 * if(non egal) break;
-                 * 
-                 * else if(a<patterntmp.size())return MineUtils.tabOutils[i]; //cela signifie que tout c'est tout etait identique
-                 */
-            } 
+                if(patterntmp!=null){
+                    r= (RessourceContainer) this.grille.getComponent(a);
+                    if( patterntmp.get(a) == r.getRessource()) break;
+                }
+                else if(a<patterntmp.size())return new RessourceContainer(1,MineUtils.tabRessources[i]);
+            }    
         }
+        */
         return null;
     }
 }
