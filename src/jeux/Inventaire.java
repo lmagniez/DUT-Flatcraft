@@ -69,9 +69,10 @@ public class Inventaire extends JPanel {
     }
     
     public void ajoutinventaire(Ressource r, int nb) {
+        int i;
         Component[] components = Jeux.getInv().getComponents();
         System.out.println("AJOUT INVENTAIRE");
-        for (int i = 0; i < components.length; i++) {
+        for (i = 0; i < components.length; i++) {
             RessourceContainer elt = (RessourceContainer) this.getComponent(i);
             if (elt.getRessource().getId().equals(r.getId()) && elt.getQuantity() < 64) {
                 System.out.println("Trouv�! ");
@@ -84,7 +85,8 @@ public class Inventaire extends JPanel {
         RessourceContainer c = new RessourceContainer(nb, r);
         c.addMouseListener(Jeux.mouselistener);
         c.setTransferHandler(c.createTransfertFrom());
-
+        
+        Jeux.getInv().setPreferredSize(new Dimension(i*90,80));
         this.ajout(c);
         this.revalidate();
         this.repaint();
