@@ -1,6 +1,7 @@
 package jeux;
 
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -136,16 +137,36 @@ public class Inventaire extends JPanel {
 
                         RessourceContainer comp = (RessourceContainer) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
                         comp.addMouseListener(Jeux.mouselistener);
-                        comp.setTransferHandler((comp).createTransfertFrom());
+                        comp.setTransferHandler(((RessourceContainer) comp).createTransfertFrom());
 
                         Jeux.getInv().supprimerInventaire((RessourceContainer) comp);
                         Jeux.getTable().supprimerElement((RessourceContainer) comp);
-                        Jeux.getInv().ajoutinventaire(comp);
+                        Jeux.getInv().ajoutinventaire((RessourceContainer) comp);
                         
-                        //source.add(comp);
+                        
+                        
+                        if(Jeux.getTable().estDansResult(comp)){
+                            Jeux.getTable().getResult().removeAll();
+                            for(int i=0; i<9; i++)
+                            {
+                                JPanel element= ((JPanel) Jeux.getTable().getGrille().getComponent(i)); 
+                                if(element.getComponentCount()!=0){
+                                    RessourceContainer r = (RessourceContainer) element.getComponent(0);
+                                    if(r.getQuantity()==1)
+                                        element.removeAll();
+                                    else
+                                        r.setQuantity(r.getQuantity()-1);
+                                }
+                            }
+                            Jeux.getTable().revalidate();
+                            Jeux.getTable().repaint();
+                        }
+                        
                         source.revalidate();
                         source.repaint();
 
+                        Jeux.getTable().creation();
+                        
                         return true;
 
                     } catch (Exception e) {

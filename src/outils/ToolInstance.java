@@ -20,6 +20,7 @@ public class ToolInstance extends JButton implements MineElementInstance, Action
     private double coef;
     private int vie;
     private boolean select;
+    private int ID;
 
     public ToolInstance(Tool t) {
         this.outils = t;
@@ -97,4 +98,14 @@ public class ToolInstance extends JButton implements MineElementInstance, Action
         return outils;
     }
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int iD) {
+        ID = iD;
+    }
+
+    
+    
 }
