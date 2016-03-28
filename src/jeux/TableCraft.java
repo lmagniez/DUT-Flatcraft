@@ -241,10 +241,8 @@ public class TableCraft extends JDialog {
             ArrayList<Ressource> patterntmp = MineUtils.tabRessources[i].getPattern();
             for (int a = 0; a < patterntmp.size(); a++) {
                 jp = (JPanel) this.grille.getComponent(a);
-                
                 /*
-                if (patterntmp != null) {
-                    if (patterntmp.get(a) == r.getRessource())
+                if (patterntmp.get(a) == r.getRessource())
                         break;
                 } else if (a < patterntmp.size())
                     return new RessourceContainer(1, MineUtils.tabRessources[i]);
