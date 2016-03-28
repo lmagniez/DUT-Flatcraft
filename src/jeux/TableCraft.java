@@ -201,7 +201,7 @@ public class TableCraft extends JDialog {
      * Pour les Ressources (Pick,WoodPlancks)
      */
     private RessourceContainer construireRessource(){
-        /*
+        
         RessourceContainer r;
         for(int i=0;i<MineUtils.NB_RESSOURCES;i++){
             ArrayList<Ressource> patterntmp=MineUtils.tabRessources[i].getPattern();
@@ -213,7 +213,7 @@ public class TableCraft extends JDialog {
                 else if(a<patterntmp.size())return new RessourceContainer(1,MineUtils.tabRessources[i]);
             }    
         }
-        */
+       
         return null;
     }
 }
