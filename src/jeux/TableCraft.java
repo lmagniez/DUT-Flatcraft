@@ -92,11 +92,12 @@ public class TableCraft extends JDialog {
         }
 
     }
-    
-    //Modifie la quantite de l'element a nb (dans la table de craft)
+
+    // Modifie la quantite de l'element a nb (dans la table de craft)
     public void modifierElement(RessourceContainer r, int nb) {
-        if(nb==0)return;
-        
+        if (nb == 0)
+            return;
+
         System.out.println("SUPPRIMER TABLE");
         RessourceContainer ressource1 = r;
         RessourceContainer ressource2;
@@ -112,7 +113,8 @@ public class TableCraft extends JDialog {
                                                                // supprime
                 {
                     System.out.println("TROUVE !! ON MODIFIE");
-                    ((RessourceContainer) p.getComponent(0)).setQuantity(nb);;
+                    ((RessourceContainer) p.getComponent(0)).setQuantity(nb);
+                    ;
                     this.revalidate();
                     this.repaint();
                     return;
@@ -121,8 +123,6 @@ public class TableCraft extends JDialog {
         }
 
     }
-
-    
 
     private TransferHandler createTransfertTo() {
         return new TransferHandler() {
@@ -138,33 +138,44 @@ public class TableCraft extends JDialog {
                     JPanel source = (JPanel) support.getComponent();
                     try {
 
-                        RessourceContainer origine = (RessourceContainer) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
-                        
-                        RessourceContainer nouvelle = new RessourceContainer(origine.getQuantity(),origine.getRessource());
-                        
+                        RessourceContainer origine = (RessourceContainer) support.getTransferable()
+                                .getTransferData(MineUtils.MINE_FLAVOR);
+
+                        RessourceContainer nouvelle = new RessourceContainer(origine.getQuantity(),
+                                origine.getRessource());
+
                         nouvelle.addMouseListener(Jeux.mouselistener);
                         nouvelle.setTransferHandler(nouvelle.createTransfertFrom());
 
-                        //modifie ancien elements (/2)
-                        int divise= origine.getQuantity()/2;
-                        int reste = origine.getQuantity()-divise;
-                        
-                        if(divise==0)return false;
-                        if(reste==0)return false;
-                        
-                        //modification
-                        Jeux.getTable().modifierElement(origine, divise);                         
-                        if(!Jeux.getInv().estDansLInventaire(origine))//Si vient de l'inventaire, pas besoin de -1
+                        // modifie ancien elements (/2)
+                        int divise = origine.getQuantity() / 2;
+                        int reste = origine.getQuantity() - divise;
+
+                        if (divise == 0)
+                            return false;
+                        if (reste == 0)
+                            return false;
+
+                        // modification
+                        Jeux.getTable().modifierElement(origine, divise);
+                        if (!Jeux.getInv().estDansLInventaire(origine))// Si
+                                                                       // vient
+                                                                       // de
+                                                                       // l'inventaire,
+                                                                       // pas
+                                                                       // besoin
+                                                                       // de -1
                             nouvelle.setQuantity(reste);
-                        
-                        if(nouvelle.getQuantity()==0)return true;
-                        
-                        
+
+                        if (nouvelle.getQuantity() == 0)
+                            return true;
+
                         source.add(nouvelle);
                         source.revalidate();
                         source.repaint();
 
-                        //supprime element inventaire (seulement si �a vient de l'inventaire)
+                        // supprime element inventaire (seulement si �a vient de
+                        // l'inventaire)
                         Jeux.getInv().supprimerInventaire((RessourceContainer) origine);
 
                         return true;
@@ -179,20 +190,28 @@ public class TableCraft extends JDialog {
             }
         };
     }
-    
+
     /*
      * Pour les Outils
      */
-   
-    private ToolInstance construireOutils(){
+
+    private ToolInstance construireOutils() {
         RessourceContainer r;
-        for(int i=0;i<MineUtils.NB_OUTILS;i++){
-            ArrayList<Ressource> patterntmp=MineUtils.tabOutils[i].getPattern();
-            for(int a=0;a<patterntmp.size();a++){
-               r= (RessourceContainer) this.grille.getComponent(a);
-                 if( patterntmp.get(a) == r.getRessource()) break;
-                 else if(a<patterntmp.size())return new ToolInstance(MineUtils.tabOutils[i]); //cela signifie que tout c'est tout etait identique
-            }    
+        for (int i = 0; i < MineUtils.NB_OUTILS; i++) {
+            ArrayList<Ressource> patterntmp = MineUtils.tabOutils[i].getPattern();
+            for (int a = 0; a < patterntmp.size(); a++) {
+                r = (RessourceContainer) this.grille.getComponent(a);
+                if (patterntmp.get(a) == r.getRessource())
+                    break;
+                else if (a < patterntmp.size())
+                    return new ToolInstance(MineUtils.tabOutils[i]); // cela
+                                                                     // signifie
+                                                                     // que tout
+                                                                     // c'est
+                                                                     // tout
+                                                                     // etait
+                                                                     // identique
+            }
         }
         return null;
     }
@@ -200,20 +219,20 @@ public class TableCraft extends JDialog {
     /*
      * Pour les Ressources (Pick,WoodPlancks)
      */
-    private RessourceContainer construireRessource(){
-        
+    private RessourceContainer construireRessource() {
+
         RessourceContainer r;
-        for(int i=0;i<MineUtils.NB_RESSOURCES;i++){
-            ArrayList<Ressource> patterntmp=MineUtils.tabRessources[i].getPattern();
-            for(int a=0;a<patterntmp.size();a++){
-                if(patterntmp!=null){
-                    r= (RessourceContainer) this.grille.getComponent(a);
-                    if( patterntmp.get(a) == r.getRessource()) break;
-                }
-                else if(a<patterntmp.size())return new RessourceContainer(1,MineUtils.tabRessources[i]);
-            }    
+        for (int i = 0; i < MineUtils.NB_RESSOURCES; i++) {
+            ArrayList<Ressource> patterntmp = MineUtils.tabRessources[i].getPattern();
+            for (int a = 0; a < patterntmp.size(); a++) {
+                if (patterntmp != null) {
+                    r = (RessourceContainer) this.grille.getComponent(a);
+                    if (patterntmp.get(a) == r.getRessource())
+                        break;
+                } else if (a < patterntmp.size())
+                    return new RessourceContainer(1, MineUtils.tabRessources[i]);
+            }
         }
-       
         return null;
     }
 }
