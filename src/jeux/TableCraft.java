@@ -40,7 +40,7 @@ public class TableCraft extends JDialog {
         result = new JPanel();
         result.setPreferredSize(new Dimension(100, 100));
         result.add(new RessourceContainer(0, null));
-
+        
         for (int i = 0; i < 9; i++) {
             JPanel jp = new JPanel();
 
@@ -152,16 +152,16 @@ public class TableCraft extends JDialog {
                         int divise = origine.getQuantity() / 2;
                         int reste = origine.getQuantity() - divise;
 
-                        creation();
+                        
                         
                         if (divise == 0)
-                            return false;
+                            Jeux.getTable().supprimerElement(origine);
                         if (reste == 0)
                             return false;
 
                         // modification
                         Jeux.getTable().modifierElement(origine, divise);
-                        if (!Jeux.getInv().estDansLInventaire(origine))// Si
+                        if (!Jeux.getInv().estDansLInventaire(origine)&&!estDansResult(origine))// Si
                                                                        // vient
                                                                        // de
                                                                        // l'inventaire,
@@ -182,7 +182,11 @@ public class TableCraft extends JDialog {
                         // supprime element inventaire (seulement si ï¿½a vient de
                         // l'inventaire)
                         Jeux.getInv().supprimerInventaire((RessourceContainer) origine);
-
+                        if(estDansResult(origine))
+                            result.removeAll();
+                        
+                        creation();
+                        
                         return true;
 
                     } catch (Exception e) {
@@ -201,31 +205,66 @@ public class TableCraft extends JDialog {
      */
     
     private void creation() {
+        result.removeAll();
         ToolInstance newoutil=construireOutils();
-            if(newoutil!=null) result.add(newoutil); 
+            if(newoutil!=null) 
+            {
+                result.add(newoutil); 
+            }
+            
             else{
+                System.out.println("on y va");
                 RessourceContainer newressource=construireRessource();
-                if(newressource!=null)
+                if(newressource!=null){
+                    newressource.addMouseListener(Jeux.mouselistener);
+                    newressource.setTransferHandler(newressource.createTransfertFrom());
                     result.add(newressource);
+                }
             }
     }
 
+    
     private ToolInstance construireOutils() {
         JPanel jp;
         RessourceContainer r;
         Component[] components;
         ArrayList<Ressource> patterntmp;
+        
+        //Pour chaque pattern d'outils
         for (int i = 0; i < MineUtils.NB_OUTILS; i++) {
             patterntmp = MineUtils.tabOutils[i].getPattern();
+            
+            //Pour chaque case du pattern
             for (int a = 0; a < patterntmp.size(); a++) {
+                
+                Ressource casePattern=patterntmp.get(a);
+                
+                //Récupère la case de la table craft
                 jp = (JPanel) this.grille.getComponent(a);
-                components=jp.getComponents();
-                /*
-                if (patterntmp.get(a) == r.getRessource())
-                    break;
-                else if (a < patterntmp.size())
+                //case grille pleine
+                if(jp.getComponentCount()!=0)
+                {
+                    r=(RessourceContainer) jp.getComponent(0);
+                    Ressource caseGrille=r.getRessource();
+                    
+                    //si la case pattern = ressource grille 
+                    System.out.println("a: "+a+"i: "+i);
+                    
+                    if(casePattern==null)
+                        break;
+                    if (!casePattern.getId().equals(caseGrille.getId()))
+                        break;
+                    //si a = taille pattern, on créé l'outil
+                    
+                }
+                //Case grille vide
+                else
+                {
+                    if(casePattern!=null)
+                        break;//pattern suivant
+                }
+                if (a == patterntmp.size()-1)
                     return new ToolInstance(MineUtils.tabOutils[i]);
-                    */
             }
         }
         return null;
@@ -237,18 +276,61 @@ public class TableCraft extends JDialog {
     private RessourceContainer construireRessource() {
         JPanel jp;
         RessourceContainer r;
+        Component[] components;
+        ArrayList<Ressource> patterntmp;
+        
+        //Pour chaque pattern de ressources
         for (int i = 0; i < MineUtils.NB_RESSOURCES; i++) {
-            ArrayList<Ressource> patterntmp = MineUtils.tabRessources[i].getPattern();
+            patterntmp = MineUtils.tabRessources[i].getPattern();
+            
+            //Pour chaque case du pattern
             for (int a = 0; a < patterntmp.size(); a++) {
+                System.out.println("a: "+a+"i: "+i);
+                
+                Ressource casePattern=patterntmp.get(a);
+                
+                //Récupère la case de la table craft
                 jp = (JPanel) this.grille.getComponent(a);
-                /*
-                if (patterntmp.get(a) == r.getRessource())
+                if(jp.getComponentCount()!=0)
+                {
+                    r=(RessourceContainer) jp.getComponent(0);
+                    Ressource caseGrille=r.getRessource();
+                    
+                    //si la case pattern = ressource grille 
+                    
+                    
+                    if(casePattern==null)
                         break;
-                } else if (a < patterntmp.size())
-                    return new RessourceContainer(1, MineUtils.tabRessources[i]);
-                    */
-            }
+                    //si la case pattern = ressource grille 
+                    if (!casePattern.getId().equals(caseGrille.getId()))
+                        break;
+                    //si a = taille pattern, on créé l'outil
+                    
+                }
+                //Case grille vide
+                else
+                {
+                    if(casePattern!=null)
+                        break;//pattern suivant
+                }
+                if (a == patterntmp.size()-1){
+                    System.out.println("ok!!");
+                    return new RessourceContainer(MineUtils.tabRessources[i].getNbGenere(),MineUtils.tabRessources[i]);
+                    
+                }
+           }
         }
         return null;
+               
+    }
+    
+    public boolean estDansResult(RessourceContainer r)
+    {
+        if(this.result.getComponentCount()==0)return false;
+        
+        RessourceContainer r2= (RessourceContainer) this.result.getComponent(0);
+        if(r2.getID()==r.getID())
+            return true;
+        return false;
     }
 }

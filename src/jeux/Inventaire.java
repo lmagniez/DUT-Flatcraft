@@ -50,6 +50,8 @@ public class Inventaire extends JPanel {
         }
     }
 
+    
+    
     public boolean estDansLInventaire(RessourceContainer r)
     {
         RessourceContainer ressource1 = r;

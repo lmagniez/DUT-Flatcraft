@@ -13,6 +13,7 @@ public abstract class Ressource implements MineElement, Serializable {
     private final int valeurVie;
     private String propriete;
     protected ArrayList<Ressource> pattern = new ArrayList<>();
+    protected int nbGenere;
     private int id;
     protected boolean changement = false;
 
@@ -69,4 +70,14 @@ public abstract class Ressource implements MineElement, Serializable {
     public String getId() {
         return this.nom;
     }
+
+    public int getNbGenere() {
+        return nbGenere;
+    }
+
+    public void setNbGenere(int nbGenere) {
+        this.nbGenere = nbGenere;
+    }
+    
+    
 }
