@@ -2,25 +2,20 @@ package jeux;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JToggleButton;
 import javax.swing.TransferHandler;
 
 import bloc.Ressource;
 import bloc.RessourceContainer;
-import bloc.RessourceInstance;
 import outils.ToolInstance;
 import run.MineUtils;
 
@@ -146,9 +141,7 @@ public class TableCraft extends JDialog {
                         nouvelle.addMouseListener(Jeux.mouselistener);
                         nouvelle.setTransferHandler(nouvelle.createTransfertFrom());
 
-                        
-                        
-                        //Récupere ressource directement dans table de craft
+                        //Rï¿½cupere ressource directement dans table de craft
                         if(estDansResult(origine))
                         {
                             System.out.println("on y est!!");
@@ -189,7 +182,7 @@ public class TableCraft extends JDialog {
                         if (reste == 0)
                             return false;
 
-                        // modification: change la quantité de l'origine
+                        // modification: change la quantitï¿½ de l'origine
                         Jeux.getTable().modifierElement(origine, divise);
                         // Si vient de l'inventaire ou de result, pas besoin de /2 le nouveau (on transfere tout)
                         
@@ -236,7 +229,6 @@ public class TableCraft extends JDialog {
     public static MouseListener listener = new MouseAdapter() {
         @Override
         public void mousePressed(MouseEvent me) {
-
 
             for(int i=0; i<9; i++)
             {
@@ -307,7 +299,7 @@ public class TableCraft extends JDialog {
                 
                 Ressource casePattern=patterntmp.get(a);
                 
-                //Récupère la case de la table craft
+                //Rï¿½cupï¿½re la case de la table craft
                 jp = (JPanel) this.grille.getComponent(a);
                 //case grille pleine
                 if(jp.getComponentCount()!=0)
@@ -321,7 +313,7 @@ public class TableCraft extends JDialog {
                         break;
                     if (!casePattern.getId().equals(caseGrille.getId()))
                         break;
-                    //si a = taille pattern, on créé l'outil
+                    //si a = taille pattern, on crï¿½ï¿½ l'outil
                     
                 }
                 //Case grille vide
@@ -355,7 +347,7 @@ public class TableCraft extends JDialog {
                 
                 Ressource casePattern=patterntmp.get(a);
                 
-                //Récupère la case de la table craft
+                //Rï¿½cupï¿½re la case de la table craft
                 jp = (JPanel) this.grille.getComponent(a);
                 if(jp.getComponentCount()!=0)
                 {
@@ -370,7 +362,7 @@ public class TableCraft extends JDialog {
                     //si la case pattern = ressource grille 
                     if (!casePattern.getId().equals(caseGrille.getId()))
                         break;
-                    //si a = taille pattern, on créé l'outil
+                    //si a = taille pattern, on crï¿½ï¿½ l'outil
                     
                 }
                 //Case grille vide

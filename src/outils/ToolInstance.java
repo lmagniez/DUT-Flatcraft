@@ -57,11 +57,6 @@ public class ToolInstance extends JButton implements MineElementInstance, Action
             g.setColor(Color.GREEN);
             g.fillRect(rect.x + 5, rect.y + 70, vie, 3);
         }
-        if (this.select) {
-            Rectangle rect = g.getClipBounds();
-            g.setColor(Color.BLUE);
-            g.fillOval(rect.x + rect.width - 20, rect.y, 10, 10);
-        }
     }
 
     @Override
