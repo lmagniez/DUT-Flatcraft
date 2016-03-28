@@ -125,7 +125,7 @@ public class TableCraft extends JDialog {
     }
 
     private TransferHandler createTransfertTo() {
-        return new TransferHandler() {
+               return new TransferHandler() {
 
             @Override
             public boolean canImport(TransferSupport support) {
@@ -137,7 +137,7 @@ public class TableCraft extends JDialog {
                 if (support.isDrop()) {
                     JPanel source = (JPanel) support.getComponent();
                     try {
-
+                        
                         RessourceContainer origine = (RessourceContainer) support.getTransferable()
                                 .getTransferData(MineUtils.MINE_FLAVOR);
 
@@ -147,10 +147,13 @@ public class TableCraft extends JDialog {
                         nouvelle.addMouseListener(Jeux.mouselistener);
                         nouvelle.setTransferHandler(nouvelle.createTransfertFrom());
 
+                        creation();
+                        
                         // modifie ancien elements (/2)
                         int divise = origine.getQuantity() / 2;
                         int reste = origine.getQuantity() - divise;
 
+                        
                         if (divise == 0)
                             return false;
                         if (reste == 0)
@@ -169,7 +172,9 @@ public class TableCraft extends JDialog {
 
                         if (nouvelle.getQuantity() == 0)
                             return true;
-
+                        
+                        
+                        
                         source.add(nouvelle);
                         source.revalidate();
                         source.repaint();
@@ -188,6 +193,13 @@ public class TableCraft extends JDialog {
                     return false;
                 }
             }
+
+            private void creation() {
+
+                ToolInstance tmp=construireOutils();
+                    if(tmp!=null) result.add(tmp);
+                
+            }
         };
     }
 
@@ -196,22 +208,22 @@ public class TableCraft extends JDialog {
      */
 
     private ToolInstance construireOutils() {
+        System.out.println("Construire objet");
+        JPanel jp;
         RessourceContainer r;
+        Component[] components;
         for (int i = 0; i < MineUtils.NB_OUTILS; i++) {
             ArrayList<Ressource> patterntmp = MineUtils.tabOutils[i].getPattern();
             for (int a = 0; a < patterntmp.size(); a++) {
-                r = (RessourceContainer) this.grille.getComponent(a);
+                jp = (JPanel) this.grille.getComponent(a);
+                /*
                 if (patterntmp.get(a) == r.getRessource())
                     break;
                 else if (a < patterntmp.size())
-                    return new ToolInstance(MineUtils.tabOutils[i]); // cela
-                                                                     // signifie
-                                                                     // que tout
-                                                                     // c'est
-                                                                     // tout
-                                                                     // etait
-                                                                     // identique
+                    return new ToolInstance(MineUtils.tabOutils[i]);
+                    */
             }
+            break;
         }
         return null;
     }
@@ -220,17 +232,19 @@ public class TableCraft extends JDialog {
      * Pour les Ressources (Pick,WoodPlancks)
      */
     private RessourceContainer construireRessource() {
-
+        JPanel jp;
         RessourceContainer r;
         for (int i = 0; i < MineUtils.NB_RESSOURCES; i++) {
             ArrayList<Ressource> patterntmp = MineUtils.tabRessources[i].getPattern();
             for (int a = 0; a < patterntmp.size(); a++) {
+                jp = (JPanel) this.grille.getComponent(a);
+                /*
                 if (patterntmp != null) {
-                    r = (RessourceContainer) this.grille.getComponent(a);
                     if (patterntmp.get(a) == r.getRessource())
                         break;
                 } else if (a < patterntmp.size())
                     return new RessourceContainer(1, MineUtils.tabRessources[i]);
+                    */
             }
         }
         return null;
