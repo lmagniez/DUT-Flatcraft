@@ -18,30 +18,31 @@ import run.MineUtils;
 
 public abstract class ColonneDeRessources extends JButton implements ActionListener {
     public ArrayList<RessourceInstance> col = new ArrayList<RessourceInstance>();
-
+    public int taille=25;
     protected abstract void sol(int index);
 
     public ColonneDeRessources() {
         create();
         this.setIcon(col.get(col.size() - 1).getType().getImage());
         this.setBorder(BorderFactory.createEmptyBorder());
+        this.setToolTipText("Niveau: "+ (col.size()-taille) + "\n" + " Element : " + this.col.get(col.size()-1).getType().getNom());
         this.addActionListener(this);
     }
 
     private void create() {
         float r;
         int i;
-        for (i = 0; i < 25; i++) {
+        for (i = 0; i < taille; i++) {
             r = (float) (Math.random() * 1);
 
-            if (i > 15 && i < 25) {
+            if (i > taille-5 && i < taille) {
                 if (r < 0.03)
                     col.add(new RessourceInstance(MineUtils.tabRessources[3])); // iron
                 else if (r < 0.09)
                     col.add(new RessourceInstance(MineUtils.tabRessources[7])); // coal
                 else
                     col.add(new RessourceInstance(MineUtils.tabRessources[1])); // stone
-            } else if (i > 0 && i <= 15) {
+            } else if (i > 0 && i <= taille-5) {
                 if (r < 0.02)
                     col.add(new RessourceInstance(MineUtils.tabRessources[5])); // diamond
                 else if (r < 0.1)
@@ -130,7 +131,7 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                         Jeux.getInv().ajoutinventaire(col.get(positionCreuse).getType(), 1);
                         col.remove(positionCreuse);
                         this.setIcon(col.get(positionCreuse - 1).getType().getImage());
-
+                        this.setToolTipText("Niveau: "+ (col.size()-taille) + "\n" + " Element : " + this.col.get(col.size()-1).getType().getNom());
                     }
 
                     // il faut break quand on a trouvé l'outil selectionné

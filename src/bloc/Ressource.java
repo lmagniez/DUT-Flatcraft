@@ -79,5 +79,8 @@ public abstract class Ressource implements MineElement, Serializable {
         this.nbGenere = nbGenere;
     }
     
-    
+    public String getNom() {
+        return nom;
+    }
+
 }

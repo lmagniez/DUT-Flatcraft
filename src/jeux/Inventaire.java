@@ -87,6 +87,7 @@ public class Inventaire extends JPanel {
         c.setTransferHandler(c.createTransfertFrom());
         
         Jeux.getInv().setPreferredSize(new Dimension(i*90,80));
+        
         this.ajout(c);
         this.revalidate();
         this.repaint();
