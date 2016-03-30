@@ -81,7 +81,7 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 
     @Override
     public Prototype clone() {
-        return new RessourceContainer(this.quantity, this.ressource);    
+        return new RessourceContainer(this.quantity, this.ressource);
     }
 
     public TransferHandler createTransfertFrom() {

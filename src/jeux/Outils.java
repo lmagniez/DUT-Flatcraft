@@ -1,7 +1,5 @@
 package jeux;
 
-import java.awt.Dimension;
-
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
@@ -17,7 +15,5 @@ public class Outils extends JPanel {
 
     void Initialize() {
         this.add(new ToolInstance(MineUtils.tabOutils[0]));
-        this.add(new ToolInstance(MineUtils.tabOutils[1]));
-        this.add(new ToolInstance(MineUtils.tabOutils[2]));
     }
 }

@@ -14,7 +14,7 @@ public class Tool implements MineElement {
     private final double coef;
     public int vie;
     public boolean select = false;
-    protected ArrayList<Ressource> pattern=new ArrayList<>();
+    protected ArrayList<Ressource> pattern = new ArrayList<>();
 
     public Tool(ImageIcon image, int valeurVie, double d, boolean s) {
         super();
@@ -52,6 +52,5 @@ public class Tool implements MineElement {
     public ArrayList<Ressource> getPattern() {
         return pattern;
     }
-    
-    
+
 }

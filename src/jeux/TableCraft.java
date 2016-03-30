@@ -42,7 +42,7 @@ public class TableCraft extends JDialog {
         result = new JPanel();
         result.setPreferredSize(new Dimension(100, 100));
         result.add(new RessourceContainer(0, null));
-        
+
         for (int i = 0; i < 9; i++) {
             JPanel jp = new JPanel();
 
@@ -79,8 +79,10 @@ public class TableCraft extends JDialog {
             if (p.getComponentCount() != 0) {
                 ressource2 = (RessourceContainer) (p.getComponent(0));
 
-                if (ressource1.getID() == (ressource2.getID()))// trouvé, on
-                                                               // supprime
+                if (ressource1
+                        .getID() == (ressource2.getID()))/*
+                                                          * trouvé, on supprime
+                                                          */
                 {
                     ((JPanel) grille.getComponent(i)).removeAll();
                     this.revalidate();
@@ -92,7 +94,7 @@ public class TableCraft extends JDialog {
 
     }
 
-    // Modifie la quantite de l'element a nb (dans la table de craft)
+    /* Modifie la quantite de l'element a nb (dans la table de craft) */
     public void modifierElement(RessourceContainer r, int nb) {
         if (nb == 0)
             return;
@@ -106,8 +108,10 @@ public class TableCraft extends JDialog {
             if (p.getComponentCount() != 0) {
                 ressource2 = (RessourceContainer) (p.getComponent(0));
 
-                if (ressource1.getID() == (ressource2.getID()))// trouvé, on
-                                                               // supprime
+                if (ressource1
+                        .getID() == (ressource2.getID()))/*
+                                                          * trouvé, on supprime
+                                                          */
                 {
                     ((RessourceContainer) p.getComponent(0)).setQuantity(nb);
                     ;
@@ -121,7 +125,7 @@ public class TableCraft extends JDialog {
     }
 
     private TransferHandler createTransfertTo() {
-               return new TransferHandler() {
+        return new TransferHandler() {
 
             @Override
             public boolean canImport(TransferSupport support) {
@@ -133,7 +137,7 @@ public class TableCraft extends JDialog {
                 if (support.isDrop()) {
                     JPanel source = (JPanel) support.getComponent();
                     try {
-                        
+
                         RessourceContainer origine = (RessourceContainer) support.getTransferable()
                                 .getTransferData(MineUtils.MINE_FLAVOR);
 
@@ -142,22 +146,19 @@ public class TableCraft extends JDialog {
                         nouvelle.addMouseListener(Jeux.mouselistener);
                         nouvelle.setTransferHandler(nouvelle.createTransfertFrom());
 
-                        //R�cupere ressource directement dans table de craft
-                        if(estDansResult(origine))
-                        {
-                            System.out.println("on y est!!");
-                            
-                            for(int i=0; i<9; i++)
-                            {
-                                JPanel element= ((JPanel) grille.getComponent(i)); 
-                                if(element.getComponentCount()!=0){
+                        // R�cupere ressource directement dans table de craft
+                        if (estDansResult(origine)) {
+
+                            for (int i = 0; i < 9; i++) {
+                                JPanel element = ((JPanel) grille.getComponent(i));
+                                if (element.getComponentCount() != 0) {
                                     RessourceContainer r = (RessourceContainer) element.getComponent(0);
-                                    if(r.getQuantity()==1)
+                                    if (r.getQuantity() == 1)
                                         element.removeAll();
                                     else
-                                        r.setQuantity(r.getQuantity()-1);
+                                        r.setQuantity(r.getQuantity() - 1);
                                 }
-                                        
+
                             }
                             result.removeAll();
                             result.revalidate();
@@ -165,19 +166,18 @@ public class TableCraft extends JDialog {
                             source.add(nouvelle);
                             grille.revalidate();
                             grille.repaint();
-                            
-                            
+
                             return true;
                         }
-                        
+
                         result.removeAll();
                         result.revalidate();
                         result.repaint();
-                        
+
                         // modifie ancien elements (/2)
                         int divise = origine.getQuantity() / 2;
                         int reste = origine.getQuantity() - divise;
-                        
+
                         if (divise == 0)
                             Jeux.getTable().supprimerElement(origine);
                         if (reste == 0)
@@ -185,35 +185,37 @@ public class TableCraft extends JDialog {
 
                         // modification: change la quantit� de l'origine
                         Jeux.getTable().modifierElement(origine, divise);
-                        // Si vient de l'inventaire ou de result, pas besoin de /2 le nouveau (on transfere tout)
-                        
+                        /*
+                         * Si vient de l'inventaire ou de result, pas besoin de
+                         * 2 le nouveau (on transfere tout)
+                         */
+
                         System.out.println(estDansResult(origine));
-                        
-                        if (!Jeux.getInv().estDansLInventaire(origine)&&!estDansResult(origine))
+
+                        if (!Jeux.getInv().estDansLInventaire(origine) && !estDansResult(origine))
                             nouvelle.setQuantity(reste);
 
-                        //On ajoute pas le nouveau si quantite=0
-                        if (nouvelle.getQuantity() == 0) 
+                        /* On ajoute pas le nouveau si quantite=0 */
+                        if (nouvelle.getQuantity() == 0)
                             return true;
-                        
-                        
-                        
+
                         source.add(nouvelle);
                         source.revalidate();
                         source.repaint();
 
-                        // supprime element inventaire (seulement si �a vient de
-                        // l'inventaire)
+                        /*
+                         * supprime element inventaire (seulement si ca vient de
+                         * l'inventaire)
+                         */
                         Jeux.getInv().supprimerInventaire((RessourceContainer) origine);
-                        if(estDansResult(origine))
-                        {
+                        if (estDansResult(origine)) {
                             result.removeAll();
                             result.revalidate();
                             result.repaint();
                         }
-                        
+
                         creation();
-                        
+
                         return true;
 
                     } catch (Exception e) {
@@ -231,99 +233,93 @@ public class TableCraft extends JDialog {
         @Override
         public void mousePressed(MouseEvent me) {
 
-            for(int i=0; i<9; i++)
-            {
-                JPanel element= ((JPanel) Jeux.getTable().getGrille().getComponent(i)); 
-                if(element.getComponentCount()!=0){
+            for (int i = 0; i < 9; i++) {
+                JPanel element = ((JPanel) Jeux.getTable().getGrille().getComponent(i));
+                if (element.getComponentCount() != 0) {
                     RessourceContainer r = (RessourceContainer) element.getComponent(0);
-                    if(r.getQuantity()==1)
+                    if (r.getQuantity() == 1)
                         element.removeAll();
                     else
-                        r.setQuantity(r.getQuantity()-1);
+                        r.setQuantity(r.getQuantity() - 1);
                 }
-                        
+
             }
-            
+
             ToolInstance comp = (ToolInstance) me.getSource();
-                
+
             Jeux.getOutils().add(comp);
             Jeux.getOutils().revalidate();
             Jeux.getOutils().repaint();
-            
+
             Jeux.getTable().revalidate();
             Jeux.getTable().repaint();
-            
+
             Jeux.getTable().creation();
 
         }
     };
 
-    
     /*
      * Pour les Outils
      */
-    
+
     public void creation() {
         result.removeAll();
-        ToolInstance newoutil=construireOutils();
-            if(newoutil!=null) 
-            {
-                newoutil.addMouseListener(listener);
-                result.add(newoutil); 
+        ToolInstance newoutil = construireOutils();
+        if (newoutil != null) {
+            newoutil.addMouseListener(listener);
+            result.add(newoutil);
+        }
+
+        else {
+            RessourceContainer newressource = construireRessource();
+            if (newressource != null) {
+                newressource.addMouseListener(Jeux.mouselistener);
+                newressource.setTransferHandler(newressource.createTransfertFrom());
+                result.add(newressource);
             }
-            
-            else{
-                RessourceContainer newressource=construireRessource();
-                if(newressource!=null){
-                    newressource.addMouseListener(Jeux.mouselistener);
-                    newressource.setTransferHandler(newressource.createTransfertFrom());
-                    result.add(newressource);
-                }
-            }
-       result.revalidate();
-       result.repaint();
+        }
+        result.revalidate();
+        result.repaint();
     }
 
-    
     private ToolInstance construireOutils() {
         JPanel jp;
         RessourceContainer r;
         Component[] components;
         ArrayList<Ressource> patterntmp;
-        
-        //Pour chaque pattern d'outils
+
+        /* Pour chaque pattern d'outils */
         for (int i = 0; i < MineUtils.NB_OUTILS; i++) {
             patterntmp = MineUtils.tabOutils[i].getPattern();
-            
-            //Pour chaque case du pattern
+
+            /* Pour chaque case du pattern */
             for (int a = 0; a < patterntmp.size(); a++) {
-                
-                Ressource casePattern=patterntmp.get(a);
-                
-                //R�cup�re la case de la table craft
+
+                Ressource casePattern = patterntmp.get(a);
+
+                /* R�cup�re la case de la table craft */
                 jp = (JPanel) this.grille.getComponent(a);
-                //case grille pleine
-                if(jp.getComponentCount()!=0)
-                {
-                    r=(RessourceContainer) jp.getComponent(0);
-                    Ressource caseGrille=r.getRessource();
-                    
-                    //si la case pattern = ressource grille 
-                    
-                    if(casePattern==null)
+                /* case grille pleine */
+                if (jp.getComponentCount() != 0) {
+                    r = (RessourceContainer) jp.getComponent(0);
+                    Ressource caseGrille = r.getRessource();
+
+                    /* si la case pattern = ressource grille */
+
+                    if (casePattern == null)
                         break;
                     if (!casePattern.getId().equals(caseGrille.getId()))
                         break;
-                    //si a = taille pattern, on cr�� l'outil
-                    
+                    /* si a = taille pattern, on cr�� l'outil */
+
                 }
-                //Case grille vide
-                else
-                {
-                    if(casePattern!=null)
-                        break;//pattern suivant
+                /* Case grille vide */
+                else {
+                    if (casePattern != null)
+                        break;
                 }
-                if (a == patterntmp.size()-1)
+                if (a == patterntmp.size() - 1)
                     return new ToolInstance(MineUtils.tabOutils[i]);
             }
         }
@@ -338,84 +334,61 @@ public class TableCraft extends JDialog {
         RessourceContainer r;
         Component[] components;
         ArrayList<Ressource> patterntmp;
-        
-        //Pour chaque pattern de ressources
+
+        /* Pour chaque pattern de ressources */
         for (int i = 0; i < MineUtils.NB_RESSOURCES; i++) {
             patterntmp = MineUtils.tabRessources[i].getPattern();
-            
-            //Pour chaque case du pattern
+
+            /* Pour chaque case du pattern */
             for (int a = 0; a < patterntmp.size(); a++) {
-                
-                Ressource casePattern=patterntmp.get(a);
-                
-                //R�cup�re la case de la table craft
+
+                Ressource casePattern = patterntmp.get(a);
+
+                /* R�cup�re la case de la table craft */
                 jp = (JPanel) this.grille.getComponent(a);
-                if(jp.getComponentCount()!=0)
-                {
-                    r=(RessourceContainer) jp.getComponent(0);
-                    Ressource caseGrille=r.getRessource();
-                    
-                    //si la case pattern = ressource grille 
-                    
-                    
-                    if(casePattern==null)
+                if (jp.getComponentCount() != 0) {
+                    r = (RessourceContainer) jp.getComponent(0);
+                    Ressource caseGrille = r.getRessource();
+
+                    /* si la case pattern = ressource grille */
+
+                    if (casePattern == null)
                         break;
-                    //si la case pattern = ressource grille 
+                    /* si la case pattern = ressource grille */
                     if (!casePattern.getId().equals(caseGrille.getId()))
                         break;
-                    //si a = taille pattern, on cr�� l'outil
-                    
+                    /* si a = taille pattern, on cr�� l'outil */
+
                 }
-                //Case grille vide
-                else
-                {
-                    if(casePattern!=null)
-                        break;//pattern suivant
+                /* Case grille vide */
+                else {
+                    if (casePattern != null)
+                        break;
                 }
-                if (a == patterntmp.size()-1){
-                    return new RessourceContainer(MineUtils.tabRessources[i].getNbGenere(),MineUtils.tabRessources[i]);
-                    
+                if (a == patterntmp.size() - 1) {
+                    return new RessourceContainer(MineUtils.tabRessources[i].getNbGenere(), MineUtils.tabRessources[i]);
+
                 }
-           }
+            }
         }
         return null;
-               
+
     }
-    
-    public boolean estDansResult(JComponent r)
-    {
-        if(this.result.getComponentCount()==0)return false;
-        
-        JComponent r2= (JComponent) this.result.getComponent(0);
-        if(r instanceof RessourceContainer&&r2 instanceof RessourceContainer)
-            if(((RessourceContainer) r2).getID()==((RessourceContainer) r).getID())
+
+    public boolean estDansResult(JComponent r) {
+        if (this.result.getComponentCount() == 0)
+            return false;
+
+        JComponent r2 = (JComponent) this.result.getComponent(0);
+        if (r instanceof RessourceContainer && r2 instanceof RessourceContainer)
+            if (((RessourceContainer) r2).getID() == ((RessourceContainer) r).getID())
                 return true;
-        else
-        if(r instanceof ToolInstance&&r2 instanceof ToolInstance)
-            if(((ToolInstance) r2).getID()==((ToolInstance) r).getID())
-                return true;
+            else if (r instanceof ToolInstance && r2 instanceof ToolInstance)
+                if (((ToolInstance) r2).getID() == ((ToolInstance) r).getID())
+                    return true;
         return false;
     }
 
-    
-
-    /*
-    public boolean estDansResult(RessourceContainer r)
-    {
-        System.out.println("result !");
-        if(this.result.getComponentCount()==0)return false;
-        
-        System.out.println("ok!!");
-        
-        RessourceContainer r2= (RessourceContainer) this.result.getComponent(0);
-        System.out.println(r.getID()+" "+r2.getID());
-            if(((RessourceContainer) r2).getID()==((RessourceContainer) r).getID())
-                return true;
-        
-        return false;
-    }
-    */
-    
     public JPanel getGrille() {
         return grille;
     }
@@ -431,6 +404,5 @@ public class TableCraft extends JDialog {
     public void setResult(JPanel result) {
         this.result = result;
     }
-    
-    
+
 }

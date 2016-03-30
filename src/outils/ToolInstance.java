@@ -76,7 +76,6 @@ public class ToolInstance extends JButton implements MineElementInstance, Action
         Jeux.changeCursorTo();
     }
 
-    
     public boolean isSelect() {
         return select;
     }
@@ -101,6 +100,4 @@ public class ToolInstance extends JButton implements MineElementInstance, Action
         ID = iD;
     }
 
-    
-    
 }

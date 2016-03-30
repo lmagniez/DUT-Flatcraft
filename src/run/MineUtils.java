@@ -80,21 +80,21 @@ public class MineUtils {
     public static final ImageIcon PELLE_PIERRE = scaled("/textures/default_tool_stoneshovel.png");
     public static final ImageIcon PELLE_FER = scaled("/textures/default_tool_steelshovel.png");
     public static final ImageIcon PELLE_DIAMOND = scaled("/textures/default_tool_diamondshovel.png");
-    
-    public static final ImageIcon DIAMOND=scaled("/textures/default_diamond.png");
-    public static final ImageIcon IRON=scaled("/textures/default_steel_ingot.png");
-    public static final ImageIcon COAL=scaled("/textures/default_coal_lump.png");
+
+    public static final ImageIcon DIAMOND = scaled("/textures/default_diamond.png");
+    public static final ImageIcon IRON = scaled("/textures/default_steel_ingot.png");
+    public static final ImageIcon COAL = scaled("/textures/default_coal_lump.png");
 
     public static final ImageIcon MAIN = scaled("/textures/main.png");
-    
+
     public static final int NB_RESSOURCES = 13;
     public static final int NB_OUTILS = 13;
     public static final Ressource[] tabRessources = new Ressource[NB_RESSOURCES];
     public static final Tool[] tabOutils = new Tool[NB_OUTILS];
-    
+
     public static final DataFlavor MINE_FLAVOR = new DataFlavor(JComponent.class, "MineFlavor");
 
-   public static void prepareRessource() {
+    public static void prepareRessource() {
         tabRessources[0] = new Grass();
         tabRessources[1] = new Stone();
         tabRessources[2] = new Wood();
@@ -126,7 +126,6 @@ public class MineUtils {
         tabOutils[12] = new HacheDiamond();
     }
 
-   
     /**
      * Create a scaled up version of the original icon, to have a MineCraft
      * effect.

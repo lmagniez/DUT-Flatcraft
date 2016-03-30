@@ -37,22 +37,22 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
 
             if (i > taille-5 && i < taille) {
                 if (r < 0.03)
-                    col.add(new RessourceInstance(MineUtils.tabRessources[3])); // iron
+                    col.add(new RessourceInstance(MineUtils.tabRessources[3])); /* iron */
                 else if (r < 0.09)
-                    col.add(new RessourceInstance(MineUtils.tabRessources[7])); // coal
+                    col.add(new RessourceInstance(MineUtils.tabRessources[7])); /* coal */
                 else
-                    col.add(new RessourceInstance(MineUtils.tabRessources[1])); // stone
+                    col.add(new RessourceInstance(MineUtils.tabRessources[1])); /* stone */
             } else if (i > 0 && i <= taille-5) {
                 if (r < 0.02)
-                    col.add(new RessourceInstance(MineUtils.tabRessources[5])); // diamond
+                    col.add(new RessourceInstance(MineUtils.tabRessources[5])); /* diamond */
                 else if (r < 0.1)
-                    col.add(new RessourceInstance(MineUtils.tabRessources[3])); // iron
+                    col.add(new RessourceInstance(MineUtils.tabRessources[3])); /* iron */
                 else if (r < 0.17)
-                    col.add(new RessourceInstance(MineUtils.tabRessources[7])); // coal
+                    col.add(new RessourceInstance(MineUtils.tabRessources[7])); /* coal */
                 else
-                    col.add(new RessourceInstance(MineUtils.tabRessources[1])); // stone
+                    col.add(new RessourceInstance(MineUtils.tabRessources[1])); /* stone */
             } else if (i == 0)
-                col.add(new RessourceInstance(MineUtils.tabRessources[6])); // lava
+                col.add(new RessourceInstance(MineUtils.tabRessources[6])); /* lava */
 
         }
         sol(i);
@@ -65,15 +65,15 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
         int positionCreuse = button.col.size() - 1;
 
         if ((e.getModifiers() & ActionEvent.CTRL_MASK) == ActionEvent.CTRL_MASK) {
-            // DEPOSER
+            /* DEPOSER */
             Component[] components = Jeux.getInv().getComponents();
             for (int i = 0; i < components.length; i++) {
-                // On recupere l'element i de l'inventaire
+                /* On recupere l'element i de l'inventaire */
                 RessourceContainer elt = (RessourceContainer) Jeux.getInv().getComponent(i);
 
-                if (elt.isSelected())// est il selected? (1 seul possible)
+                if (elt.isSelected())/* est il selected? (1 seul possible) */
                 {
-                    // selected, on l'ajoute sur la map
+                    /* selected, on l'ajoute sur la map */
                     col.add(new RessourceInstance(elt.getRessource()));
                     setIcon(col.get(positionCreuse + 1).getType().getImage());
                     Jeux.getInv().afficher();
@@ -91,11 +91,11 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
             }
             Jeux.getInv().afficher();
         } else {
-            // CREUSER
+            /* CREUSER */
             for (int i = 1; i < Jeux.getOutils().getComponents().length; i++) {
                 ToolInstance outilsSelected = (ToolInstance) Jeux.getOutils().getComponent(i);
 
-                // lave
+                /* lave */
                 if ((outilsSelected.getOutils() instanceof MainOutils) && outilsSelected.isSelect()
                         && col.get(positionCreuse).getType() instanceof Lava) {
                     return;
@@ -109,16 +109,15 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                     Jeux.getOutils().repaint();
                     return;
                 }
-                // ----------------
 
-                // Si l'outil est selectionné
+                /* Si l'outil est selectionné */
                 if (outilsSelected.isSelect()) {
 
                     col.get(positionCreuse).setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1);
                     if (!(outilsSelected.getType() instanceof MainOutils))
                         outilsSelected.setVie(outilsSelected.getVie() - 1);
 
-                    // Retirer l'outil si vie =0
+                    /* Retirer l'outil si vie =0 */
                     if (outilsSelected.getVie() == 0) {
                         Jeux.getOutils().remove(outilsSelected);
                         ToolInstance main = (ToolInstance) Jeux.getOutils().getComponent(1);
@@ -126,7 +125,7 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                         Jeux.changeCursorTo();
                     }
 
-                    // Retire la ressource si vie=0
+                    /* Retire la ressource si vie=0 */
                     if (col.get(positionCreuse).getVie() <= 0) {
                         Jeux.getInv().ajoutinventaire(col.get(positionCreuse).getType(), 1);
                         col.remove(positionCreuse);
@@ -134,7 +133,7 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                         this.setToolTipText("Niveau: "+ (col.size()-taille) + "\n" + " Element : " + this.col.get(col.size()-1).getType().getNom());
                     }
 
-                    // il faut break quand on a trouvé l'outil selectionné
+                    /* il faut break quand on a trouvé l'outil selectionné */
                     break;
                 }
 

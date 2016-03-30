@@ -77,9 +77,11 @@ public class Jeux {
     public static void changeCursorTo() {
         Component[] components = Jeux.getOutils().getComponents();
 
-        for (int i = 1; i < components.length; i++) { // commence a 1 car le
-                                                      // premier element est le
-                                                      // bouton pour la table
+        for (int i = 1; i < components.length; i++) { /*
+                                                       * commence a 1 car le
+                                                       * premier element est le
+                                                       * bouton pour la table
+                                                       */
             ToolInstance tmp = (ToolInstance) Jeux.getOutils().getComponent(i);
             if (tmp.isSelect())
                 map.grid.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(tmp.getOutils().image.getImage(),

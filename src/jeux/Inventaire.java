@@ -23,8 +23,7 @@ public class Inventaire extends JPanel {
         this.setPreferredSize(new Dimension(80, 80));
         this.setVisible(true);
     }
-   
-    
+
     MouseListener mouselistener = new MouseAdapter() {
         @Override
         public void mousePressed(MouseEvent me) {
@@ -51,31 +50,25 @@ public class Inventaire extends JPanel {
         }
     }
 
-    
-    
-    public boolean estDansLInventaire(RessourceContainer r)
-    {
+    public boolean estDansLInventaire(RessourceContainer r) {
         RessourceContainer ressource1 = r;
         RessourceContainer ressource2;
         Component[] components = Jeux.getInv().getComponents();
         for (int i = 0; i < components.length; i++) {
             ressource2 = (RessourceContainer) (Jeux.getInv().getComponent(i));
-            if (ressource1.getID() == (ressource2.getID()))
-            {
+            if (ressource1.getID() == (ressource2.getID())) {
                 return true;
             }
         }
         return false;
     }
-    
+
     public void ajoutinventaire(Ressource r, int nb) {
         int i;
         Component[] components = Jeux.getInv().getComponents();
-        System.out.println("AJOUT INVENTAIRE");
         for (i = 0; i < components.length; i++) {
             RessourceContainer elt = (RessourceContainer) this.getComponent(i);
             if (elt.getRessource().getId().equals(r.getId()) && elt.getQuantity() < 64) {
-                System.out.println("Trouv�! ");
                 elt.setQuantity(elt.getQuantity() + nb);
                 this.revalidate();
                 this.repaint();
@@ -85,9 +78,9 @@ public class Inventaire extends JPanel {
         RessourceContainer c = new RessourceContainer(nb, r);
         c.addMouseListener(Jeux.mouselistener);
         c.setTransferHandler(c.createTransfertFrom());
-        
-        Jeux.getInv().setPreferredSize(new Dimension(i*90,80));
-        
+
+        Jeux.getInv().setPreferredSize(new Dimension(i * 90, 80));
+
         this.ajout(c);
         this.revalidate();
         this.repaint();
@@ -97,7 +90,6 @@ public class Inventaire extends JPanel {
     }
 
     public void supprimerInventaire(RessourceContainer r) {
-        System.out.println("SUPPRIMER INVENTAIRE");
         RessourceContainer ressource1 = r;
         RessourceContainer ressource2;
 
@@ -106,10 +98,11 @@ public class Inventaire extends JPanel {
 
             ressource2 = (RessourceContainer) (Jeux.getInv().getComponent(i));
 
-            if (ressource1.getID() == (ressource2.getID()))// trouvé, on
-                                                           // supprime
+            if (ressource1
+                    .getID() == (ressource2.getID()))/*
+                                                      * trouvé, on supprime
+                                                      */
             {
-                System.out.println("TROUVE !!");
                 Jeux.getInv().remove(i);
                 this.revalidate();
                 this.repaint();
@@ -138,38 +131,36 @@ public class Inventaire extends JPanel {
                     JPanel source = (JPanel) support.getComponent();
                     try {
 
-                        RessourceContainer comp = (RessourceContainer) support.getTransferable().getTransferData(MineUtils.MINE_FLAVOR);
+                        RessourceContainer comp = (RessourceContainer) support.getTransferable()
+                                .getTransferData(MineUtils.MINE_FLAVOR);
                         comp.addMouseListener(Jeux.mouselistener);
                         comp.setTransferHandler(((RessourceContainer) comp).createTransfertFrom());
 
                         Jeux.getInv().supprimerInventaire((RessourceContainer) comp);
                         Jeux.getTable().supprimerElement((RessourceContainer) comp);
                         Jeux.getInv().ajoutinventaire((RessourceContainer) comp);
-                        
-                        
-                        
-                        if(Jeux.getTable().estDansResult(comp)){
+
+                        if (Jeux.getTable().estDansResult(comp)) {
                             Jeux.getTable().getResult().removeAll();
-                            for(int i=0; i<9; i++)
-                            {
-                                JPanel element= ((JPanel) Jeux.getTable().getGrille().getComponent(i)); 
-                                if(element.getComponentCount()!=0){
+                            for (int i = 0; i < 9; i++) {
+                                JPanel element = ((JPanel) Jeux.getTable().getGrille().getComponent(i));
+                                if (element.getComponentCount() != 0) {
                                     RessourceContainer r = (RessourceContainer) element.getComponent(0);
-                                    if(r.getQuantity()==1)
+                                    if (r.getQuantity() == 1)
                                         element.removeAll();
                                     else
-                                        r.setQuantity(r.getQuantity()-1);
+                                        r.setQuantity(r.getQuantity() - 1);
                                 }
                             }
                             Jeux.getTable().revalidate();
                             Jeux.getTable().repaint();
                         }
-                        
+
                         source.revalidate();
                         source.repaint();
 
                         Jeux.getTable().creation();
-                        
+
                         return true;
 
                     } catch (Exception e) {

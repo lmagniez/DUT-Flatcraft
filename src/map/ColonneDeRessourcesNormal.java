@@ -12,11 +12,11 @@ public class ColonneDeRessourcesNormal extends ColonneDeRessources {
             r = (float) (Math.random() * 1);
             if (a >= index + 1) {
                 if (r < 0.08)
-                    col.add(new RessourceInstance(MineUtils.tabRessources[2])); // wood
+                    col.add(new RessourceInstance(MineUtils.tabRessources[2])); /* wood */
                 else
                     continue;
             } else if (a == 25)
-                col.add(new RessourceInstance(MineUtils.tabRessources[0])); // grass
+                col.add(new RessourceInstance(MineUtils.tabRessources[0])); /* grass */
             // -> sol
         }
     }
