@@ -16,11 +16,20 @@ import outils.MainOutils;
 import outils.ToolInstance;
 import run.MineUtils;
 
+/**
+ * Classe générant une colonne de ressource (représente une case sur la map
+ * @author  Vincent Valembois
+ * 
+ */
 public abstract class ColonneDeRessources extends JButton implements ActionListener {
     public ArrayList<RessourceInstance> col = new ArrayList<RessourceInstance>();
     public int taille=25;
     protected abstract void sol(int index);
 
+    /**
+     * Constructeur
+     * utilise la fonction create 
+     */
     public ColonneDeRessources() {
         create();
         this.setIcon(col.get(col.size() - 1).getType().getImage());
@@ -28,7 +37,10 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
         this.setToolTipText("Niveau: "+ (col.size()-taille) + "\n" + " Element : " + this.col.get(col.size()-1).getType().getNom());
         this.addActionListener(this);
     }
-
+    
+    /**
+     * Créé en fonction de la profondeur et de manière aléatoire un ensemble de RessourceInstance 
+     */
     private void create() {
         float r;
         int i;
@@ -58,6 +70,19 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
         sol(i);
     }
 
+    /**
+     * Déposer et creuser 
+     * Si on appui sur CTRL avec le clic sur la case, on dépose
+     * Sinon, on creuse (récupère ressourceContainer dans l'inventaire)
+     * 
+     * DEPOSER:
+     * Si on dépose la dernière ressource, le ressourceContainer disparait
+     * 
+     * CREUSER:
+     * Si on creuse dans la lave, l'outil équipé se brise
+     * Si l'outil n'a plus de vie, il se brise
+     * 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 

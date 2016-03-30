@@ -20,6 +20,10 @@ import bloc.RessourceContainer;
 import outils.ToolInstance;
 import run.MineUtils;
 
+/**
+ * Classe représentant la table de Craft
+ * JDialog qui s'ouvre en appuyant sur le bouton depuis la fenetre principale
+ */
 public class TableCraft extends JDialog {
 
     private JPanel grille;
@@ -35,14 +39,20 @@ public class TableCraft extends JDialog {
         prepare();
     }
 
+    /**
+     * Générer la table de craft
+     */
     public void prepare() {
+        //grille de craft
         grille = new JPanel();
         grille.setLayout(new GridLayout(3, 3));
 
+        //Jpanel correspondant au resultat du craft
         result = new JPanel();
         result.setPreferredSize(new Dimension(100, 100));
         result.add(new RessourceContainer(0, null));
 
+        //creation des 9 JPanel a inserer dans le JPanel principal
         for (int i = 0; i < 9; i++) {
             JPanel jp = new JPanel();
 
@@ -68,6 +78,10 @@ public class TableCraft extends JDialog {
 
     }
 
+    /**
+     * Supprimer un élément de la table de craft (en fonction de ID)
+     * @param r RessourceContainer à supprimer
+     */
     public void supprimerElement(RessourceContainer r) {
         RessourceContainer ressource1 = r;
         RessourceContainer ressource2;
@@ -94,7 +108,11 @@ public class TableCraft extends JDialog {
 
     }
 
-    /* Modifie la quantite de l'element a nb (dans la table de craft) */
+    /** 
+     * Modifie la quantite de l'element a nb (dans la table de craft) 
+     * @param r Element à modifier
+     * @param nb nombre à attribuer
+     */
     public void modifierElement(RessourceContainer r, int nb) {
         if (nb == 0)
             return;
@@ -124,6 +142,12 @@ public class TableCraft extends JDialog {
 
     }
 
+    /**
+     * TransfertTo vers la table de craft
+     * Peut venir de result -> On enleve 1 à chaque RessourceContainer de la table
+     * Peut venir de la table -> On partage en 2 les 2 ressources
+     * Vient de l'inventaire -> On récupère tout 
+     */
     private TransferHandler createTransfertTo() {
         return new TransferHandler() {
 
@@ -146,9 +170,10 @@ public class TableCraft extends JDialog {
                         nouvelle.addMouseListener(Jeux.mouselistener);
                         nouvelle.setTransferHandler(nouvelle.createTransfertFrom());
 
-                        // Rï¿½cupere ressource directement dans table de craft
+                        // Recupere ressource directement dans table de craft
                         if (estDansResult(origine)) {
 
+                            //Enleve 1 à chaque RessourceContainer
                             for (int i = 0; i < 9; i++) {
                                 JPanel element = ((JPanel) grille.getComponent(i));
                                 if (element.getComponentCount() != 0) {
@@ -163,13 +188,14 @@ public class TableCraft extends JDialog {
                             result.removeAll();
                             result.revalidate();
                             result.repaint();
-                            source.add(nouvelle);
+                            source.add(nouvelle);//ajouter la nouvelle ressource 
                             grille.revalidate();
                             grille.repaint();
 
                             return true;
                         }
 
+                        //on recupere la ressource d'un autre endroit
                         result.removeAll();
                         result.revalidate();
                         result.repaint();
@@ -183,13 +209,12 @@ public class TableCraft extends JDialog {
                         if (reste == 0)
                             return false;
 
-                        // modification: change la quantitï¿½ de l'origine
+                        // modification: change la quantite de l'origine
                         Jeux.getTable().modifierElement(origine, divise);
                         /*
                          * Si vient de l'inventaire ou de result, pas besoin de
                          * 2 le nouveau (on transfere tout)
                          */
-
                         if (!Jeux.getInv().estDansLInventaire(origine) && !estDansResult(origine))
                             nouvelle.setQuantity(reste);
 
@@ -227,6 +252,7 @@ public class TableCraft extends JDialog {
         };
     }
 
+    
     public static MouseListener listener = new MouseAdapter() {
         @Override
         public void mousePressed(MouseEvent me) {
@@ -257,10 +283,9 @@ public class TableCraft extends JDialog {
         }
     };
 
-    /*
-     * Pour les Outils
+    /**
+     * Lance la vérification des patterns. Si trouve un pattern, ajoute les mouselistener et transferthandler
      */
-
     public void creation() {
         result.removeAll();
         ToolInstance newoutil = construireOutils();
@@ -281,6 +306,9 @@ public class TableCraft extends JDialog {
         result.repaint();
     }
 
+    /**
+     * Vérification des patterns d'outils
+     */
     private ToolInstance construireOutils() {
         JPanel jp;
         RessourceContainer r;
@@ -324,8 +352,9 @@ public class TableCraft extends JDialog {
         return null;
     }
 
-    /*
-     * Pour les Ressources (Pick,WoodPlancks)
+    
+    /**
+     * Vérification des patterns de ressource
      */
     private RessourceContainer construireRessource() {
         JPanel jp;
@@ -373,6 +402,10 @@ public class TableCraft extends JDialog {
 
     }
 
+    /**
+     * Teste si la ressource est dans la case de résultat de craft (Vérifie en fonction de ID)
+     * @param r Ressource à vérifier
+     */
     public boolean estDansResult(JComponent r) {
         if (this.result.getComponentCount() == 0)
             return false;

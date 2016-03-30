@@ -17,6 +17,7 @@ public abstract class Ressource implements MineElement, Serializable {
     private int id;
     protected boolean changement = false;
 
+    
     public Ressource(String nom, ImageIcon image, int valeurVie, String p) {
         this.nom = nom;
         this.image = image;

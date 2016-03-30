@@ -7,12 +7,21 @@ import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+
+    /**
+    * Classe générant la map
+    * @author  Vincent Valembois
+    * 
+    */
 public class Map<T extends JComponent> {
     public JPanel grid;
-    private int row = 15;
-    private int col = 15;
+    private int row = 7;
+    private int col = 7;
     public static final int NOMBRE_RESSOURCES = 7;
 
+    /**
+     * Constructeur
+     */
     public Map() {
         grid = new JPanel();
         grid.setLayout(new BoxLayout(grid, BoxLayout.Y_AXIS));
@@ -20,7 +29,10 @@ public class Map<T extends JComponent> {
         create();
          
     }
-
+    
+    /**
+     * Générer la map selon les attributs row et col
+     */
     private void create() {
         int ligne = 0, coll = 0;
         int cells = row * col;

@@ -2,6 +2,11 @@ package bloc;
 
 import jeux.MineElementInstance;
 
+
+/**
+ * Ressource contenue dans les colonnes de ressources
+ * A changer en RessourceContainer quand on la creuse
+ */
 public class RessourceInstance implements MineElementInstance {
 
     private Ressource ressource;

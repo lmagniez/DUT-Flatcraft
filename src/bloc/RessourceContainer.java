@@ -17,7 +17,9 @@ import javax.swing.TransferHandler;
 
 import jeux.Prototype;
 import run.MineUtils;
-
+/**
+ * Ressource contenu dans l'inventaire, se génère lorsqu'on creuse ou lorsqu'on craft
+ */
 public class RessourceContainer extends JToggleButton implements Prototype {
 
     protected int id;
@@ -40,6 +42,9 @@ public class RessourceContainer extends JToggleButton implements Prototype {
 
     }
 
+    /**
+     * Ajouter une pastille avec la quantité restante pour la ressource
+     */
     @Override
     protected void paintComponent(Graphics g) {
         int qty = this.quantity;
@@ -84,6 +89,9 @@ public class RessourceContainer extends JToggleButton implements Prototype {
         return new RessourceContainer(this.quantity, this.ressource);
     }
 
+    /**
+     * TransferFrom récupère le ressourceContainer sans cloner
+     */
     public TransferHandler createTransfertFrom() {
         return new TransferHandler() {
 
