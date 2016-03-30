@@ -190,8 +190,6 @@ public class TableCraft extends JDialog {
                          * 2 le nouveau (on transfere tout)
                          */
 
-                        System.out.println(estDansResult(origine));
-
                         if (!Jeux.getInv().estDansLInventaire(origine) && !estDansResult(origine))
                             nouvelle.setQuantity(reste);
 
