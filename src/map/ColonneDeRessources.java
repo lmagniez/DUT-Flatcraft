@@ -76,7 +76,6 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                     /* selected, on l'ajoute sur la map */
                     col.add(new RessourceInstance(elt.getRessource()));
                     setIcon(col.get(positionCreuse + 1).getType().getImage());
-                    Jeux.getInv().afficher();
 
                     elt.setQuantity(elt.getQuantity() - 1);
                     if (elt.getQuantity() == 0)
@@ -89,7 +88,6 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                 }
 
             }
-            Jeux.getInv().afficher();
         } else {
             /* CREUSER */
             for (int i = 1; i < Jeux.getOutils().getComponents().length; i++) {

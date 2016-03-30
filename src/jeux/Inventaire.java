@@ -42,13 +42,6 @@ public class Inventaire extends JPanel {
         }
     }
 
-    public void afficher() {
-        Component[] components = this.getComponents();
-        for (int i = 0; i < components.length; i++) {
-            System.out.println(((RessourceContainer) this.getComponent(i)).isSelected());
-        }
-    }
-
     public boolean estDansLInventaire(RessourceContainer r) {
         RessourceContainer ressource1 = r;
         RessourceContainer ressource2;
