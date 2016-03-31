@@ -17,7 +17,7 @@ import outils.ToolInstance;
 import run.MineUtils;
 
 /**
- * Classe générant une colonne de ressource (représente une case sur la map
+ * Classe gï¿½nï¿½rant une colonne de ressource (reprï¿½sente une case sur la map
  * @author  Vincent Valembois
  * 
  */
@@ -39,7 +39,7 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
     }
     
     /**
-     * Créé en fonction de la profondeur et de manière aléatoire un ensemble de RessourceInstance 
+     * Crï¿½ï¿½ en fonction de la profondeur et de maniï¿½re alï¿½atoire un ensemble de RessourceInstance 
      */
     private void create() {
         float r;
@@ -70,15 +70,15 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
     }
 
     /**
-     * Déposer et creuser 
-     * Si on appui sur CTRL avec le clic sur la case, on dépose
-     * Sinon, on creuse (récupère ressourceContainer dans l'inventaire)
+     * Dï¿½poser et creuser 
+     * Si on appui sur CTRL avec le clic sur la case, on dï¿½pose
+     * Sinon, on creuse (rï¿½cupï¿½re ressourceContainer dans l'inventaire)
      * 
      * DEPOSER:
-     * Si on dépose la dernière ressource, le ressourceContainer disparait
+     * Si on dï¿½pose la derniï¿½re ressource, le ressourceContainer disparait
      * 
      * CREUSER:
-     * Si on creuse dans la lave, l'outil équipé se brise
+     * Si on creuse dans la lave, l'outil ï¿½quipï¿½ se brise
      * Si l'outil n'a plus de vie, il se brise
      * 
      */
@@ -100,8 +100,10 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                     /* selected, on l'ajoute sur la map */
                     col.add(new RessourceInstance(elt.getRessource()));
                     setIcon(col.get(positionCreuse + 1).getType().getImage());
-
+                    this.setToolTipText("Niveau: "+ (col.size()-taille) + "\n" + " Element : " + this.col.get(col.size()-1).getType().getNom());
+                    
                     elt.setQuantity(elt.getQuantity() - 1);
+                    
                     if (elt.getQuantity() == 0)
                         Jeux.getInv().remove(i);
                     Jeux.getInv().revalidate();
