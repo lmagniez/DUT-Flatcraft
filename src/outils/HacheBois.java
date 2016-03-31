@@ -4,6 +4,9 @@ import bloc.Ressource;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
+/**
+ * Classe pour Hache en Bois
+ */
 public class HacheBois extends Tool {
 
     public HacheBois() {

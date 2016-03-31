@@ -3,6 +3,9 @@ package outils;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
+/**
+ * Classe pour Hache en Pierre
+ */
 public class HachePierre extends Tool {
 
     public HachePierre() {

@@ -3,6 +3,9 @@ package outils;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
+/**
+ * Classe pour Hache en Diamand
+ */
 public class HacheDiamond extends Tool {
 
     public HacheDiamond() {

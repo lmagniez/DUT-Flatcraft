@@ -2,6 +2,9 @@ package bloc;
 
 import run.MineUtils;
 
+/**
+ * Ressource Baton
+ */
 public class Pick extends Ressource {
 
     public Pick() {

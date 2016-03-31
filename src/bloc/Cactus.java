@@ -2,6 +2,9 @@ package bloc;
 
 import run.MineUtils;
 
+/**
+ * Ressource Cactus
+ */
 public class Cactus extends Ressource {
 
     public Cactus() {

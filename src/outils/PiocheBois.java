@@ -3,6 +3,9 @@ package outils;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
+/**
+ * Classe pour Pioche en Bois
+ */
 public class PiocheBois extends Tool {
 
     public PiocheBois() {

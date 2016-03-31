@@ -2,6 +2,9 @@ package bloc;
 
 import run.MineUtils;
 
+/**
+ * Ressource Bois brut
+ */
 public class Wood extends Ressource {
 
     public Wood() {

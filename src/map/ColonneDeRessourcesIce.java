@@ -3,8 +3,15 @@ package map;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
+/**
+ * Classe pour generer un sol d'Hiver
+ */
 public class ColonneDeRessourcesIce extends ColonneDeRessources {
 
+    /**
+     * Fonction generant le sol a partir d'un index donné
+     * @param index (int)
+     */
     @Override
     protected void sol(int index) {
         float r;

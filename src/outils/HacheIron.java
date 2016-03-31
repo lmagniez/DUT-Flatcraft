@@ -3,6 +3,9 @@ package outils;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
+/**
+ * Classe pour Hache en Fer
+ */
 public class HacheIron extends Tool {
 
     public HacheIron() {

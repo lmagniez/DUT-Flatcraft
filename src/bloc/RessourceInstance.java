@@ -12,6 +12,10 @@ public class RessourceInstance implements MineElementInstance {
     private Ressource ressource;
     private double vie;
 
+    /**
+     * Constructeur
+     * @param r (Ressource)
+     */ 
     public RessourceInstance(Ressource r) {
         this.ressource = r;
         this.vie = r.getValeurVie();

@@ -3,6 +3,9 @@ package outils;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
+/**
+ * Classe pour Pelle en Pierre
+ */
 public class PellePierre extends Tool {
 
     public PellePierre() {

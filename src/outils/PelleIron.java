@@ -3,6 +3,9 @@ package outils;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
+/**
+ * Classe pour Pelle en Fer
+ */
 public class PelleIron extends Tool {
 
     public PelleIron() {

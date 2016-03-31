@@ -3,6 +3,9 @@ package outils;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
+/**
+ * Classe pour Pelle en diamand
+ */
 public class PelleDiamond extends Tool {
 
     public PelleDiamond() {

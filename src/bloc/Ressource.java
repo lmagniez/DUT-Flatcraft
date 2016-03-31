@@ -7,6 +7,9 @@ import javax.swing.ImageIcon;
 
 import jeux.MineElement;
 
+/**
+ * Ressource
+ */
 public abstract class Ressource implements MineElement, Serializable {
     protected ImageIcon image;
     private String nom;
@@ -17,26 +20,15 @@ public abstract class Ressource implements MineElement, Serializable {
     private int id;
     protected boolean changement = false;
 
-    
+    /**
+     * Constructeur ressource
+     * @param nom (String) , image (ImageIcon), valeurvie (int) , p (String)
+     */  
     public Ressource(String nom, ImageIcon image, int valeurVie, String p) {
         this.nom = nom;
         this.image = image;
         this.propriete = p;
         this.valeurVie = valeurVie;
-    }
-
-    public Ressource(String nom, ImageIcon image, int valeurVie, String p, boolean b) {
-        this.nom = nom;
-        this.image = image;
-        this.propriete = p;
-        this.valeurVie = valeurVie;
-        this.changement = b;
-    }
-
-    @Override
-    public String toString() {
-        return "Ressource [image=" + image + ", id=" + id + ", valeurVie=" + valeurVie + ", propriete=" + propriete
-                + ", pattern=" + pattern + "]";
     }
 
     public ImageIcon getImage() {

@@ -3,6 +3,9 @@ package outils;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
+/**
+ * Classe pour Pioche en Diamand
+ */
 public class PiocheDiamond extends Tool {
 
     public PiocheDiamond() {

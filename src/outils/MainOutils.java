@@ -2,6 +2,10 @@ package outils;
 
 import run.MineUtils;
 
+
+/**
+ * Classe pour la Main
+ */
 public class MainOutils extends Tool {
 
     public MainOutils() {

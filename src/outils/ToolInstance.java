@@ -14,6 +14,9 @@ import jeux.Jeux;
 import jeux.MineElement;
 import jeux.MineElementInstance;
 
+/**
+ * Classe ToolInstance
+ */
 public class ToolInstance extends JButton implements MineElementInstance, ActionListener {
 
     private Tool outils;
@@ -22,6 +25,10 @@ public class ToolInstance extends JButton implements MineElementInstance, Action
     private boolean select;
     private int ID;
 
+    /**
+     * Constructeur de ToolInstance
+     * @param outils (Tool)
+     */
     public ToolInstance(Tool t) {
         this.outils = t;
         this.coef = t.getCoef();
@@ -45,6 +52,10 @@ public class ToolInstance extends JButton implements MineElementInstance, Action
         this.vie = vie;
     }
 
+    /**
+     * Permet de peindre le la barre de vie de l'outils
+     * @param g (Graphics)
+     */
     @Override
     protected void paintComponent(Graphics g) {
         if (this.getVie() > 0) {
@@ -59,6 +70,10 @@ public class ToolInstance extends JButton implements MineElementInstance, Action
         }
     }
 
+    /**
+     * Permet de changer l'outils selectionne
+     * @param event (ActionEvent)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Component[] components = Jeux.getOutils().getComponents();

@@ -8,6 +8,9 @@ import bloc.Ressource;
 import bloc.RessourceInstance;
 import jeux.MineElement;
 
+/**
+ * Classe un Outil
+ */
 public class Tool implements MineElement {
     public ImageIcon image;
     private final int valeurVie;
@@ -16,6 +19,10 @@ public class Tool implements MineElement {
     public boolean select = false;
     protected ArrayList<Ressource> pattern = new ArrayList<>();
 
+    /**
+     * Construteur Outil
+     * @param image ( ImageIcon) , valeurvie (int) , coef (int) , selectionner (boolean)
+     */
     public Tool(ImageIcon image, int valeurVie, double d, boolean s) {
         super();
         this.image = image;
@@ -36,6 +43,11 @@ public class Tool implements MineElement {
         this.vie = vie;
     }
 
+    
+    /**
+     * Permet de reenvoyer une instance de l'outil
+     * @return ToolInstance
+     */
     @Override
     public ToolInstance newInstance() {
         return new ToolInstance(this);

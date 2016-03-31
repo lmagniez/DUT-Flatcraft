@@ -26,6 +26,9 @@ public class Jeux {
     private static TableCraft craft;
     private JFrame frame = new JFrame();
 
+    /**
+     * Constructeur Jeux 
+     */
     public Jeux() {
         super();
         MineUtils.prepareRessource();
@@ -53,6 +56,9 @@ public class Jeux {
         changeCursorTo();
     }
 
+    /**
+     * Fonction qui prepare la fenetre en placant les différents élément (map, outils , inventaire etc...)
+     */
     private void prepare() {
         frame.add(BorderLayout.WEST, MineUtils.scrollPane(outils));
         frame.add(BorderLayout.EAST, MineUtils.scrollPane(map.grid));
@@ -74,6 +80,9 @@ public class Jeux {
         return craft;
     }
 
+    /**
+     * Fonction qui change le curseur de la souris dans la map
+     */
     public static void changeCursorTo() {
         Component[] components = Jeux.getOutils().getComponents();
 
@@ -89,6 +98,9 @@ public class Jeux {
         }
     }
 
+    /**
+     * MouseListener qui permet de placer un bloc sur la map
+     */
     public static MouseListener mouselistener = new MouseAdapter() {
         @Override
         public void mousePressed(MouseEvent me) {

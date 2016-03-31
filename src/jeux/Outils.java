@@ -6,6 +6,10 @@ import javax.swing.JPanel;
 import outils.ToolInstance;
 import run.MineUtils;
 
+/**
+ * Classe Outils 
+ * Contient des ToolsInstance
+ */
 public class Outils extends JPanel {
 
     public Outils() {

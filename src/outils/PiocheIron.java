@@ -3,6 +3,9 @@ package outils;
 import bloc.RessourceInstance;
 import run.MineUtils;
 
+/**
+ * Classe pour Pioche en Fer
+ */
 public class PiocheIron extends Tool {
 
     public PiocheIron() {
