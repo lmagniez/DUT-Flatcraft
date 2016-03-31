@@ -15,8 +15,8 @@ import javax.swing.JPanel;
     */
 public class Map<T extends JComponent> {
     public JPanel grid;
-    private int row = 7;
-    private int col = 7;
+    private int row = 10;
+    private int col = 10;
     public static final int NOMBRE_RESSOURCES = 7;
 
     /**
@@ -27,7 +27,6 @@ public class Map<T extends JComponent> {
         grid.setLayout(new BoxLayout(grid, BoxLayout.Y_AXIS));
         grid.setSize(new Dimension(80, 75));
         create();
-         
     }
     
     /**

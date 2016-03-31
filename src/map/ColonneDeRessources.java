@@ -65,7 +65,6 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                     col.add(new RessourceInstance(MineUtils.tabRessources[1])); /* stone */
             } else if (i == 0)
                 col.add(new RessourceInstance(MineUtils.tabRessources[6])); /* lava */
-
         }
         sol(i);
     }
@@ -163,7 +162,6 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
             }
             Jeux.getOutils().revalidate();
             Jeux.getOutils().repaint();
-
         }
     }
 
