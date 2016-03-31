@@ -13,7 +13,7 @@ import jeux.MineElement;
 public abstract class Ressource implements MineElement, Serializable {
     protected ImageIcon image;
     private String nom;
-    private final int valeurVie;
+    private final float valeurVie;
     private String propriete;
     protected ArrayList<Ressource> pattern = new ArrayList<>();
     protected int nbGenere = 1;
@@ -47,7 +47,7 @@ public abstract class Ressource implements MineElement, Serializable {
         this.propriete = propriete;
     }
 
-    public int getValeurVie() {
+    public float getValeurVie() {
         return valeurVie;
     }
 
@@ -75,5 +75,7 @@ public abstract class Ressource implements MineElement, Serializable {
     public String getNom() {
         return nom;
     }
+    
+    
 
 }
