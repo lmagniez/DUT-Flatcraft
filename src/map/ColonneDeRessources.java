@@ -160,25 +160,30 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                         col.get(positionCreuse).setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1);
 
                     }
+
                     /* Ressource Pioche */
-                    else if ("pioche".equals(col.get(positionCreuse).getType().getPropriete())
-                            && (outilsSelected.getOutils() instanceof PiocheBois
-                                    || outilsSelected.getOutils() instanceof PiocheIron
-                                    || outilsSelected.getOutils() instanceof PiocheDiamond)) {
-                        if (!(outilsSelected.getType() instanceof MainOutils))
+                    else if ("pioche".equals(col.get(positionCreuse).getType().getPropriete())) {
+                        if ((outilsSelected.getOutils() instanceof PiocheBois
+                                || outilsSelected.getOutils() instanceof PiocheIron
+                                || outilsSelected.getOutils() instanceof PiocheDiamond)) {
                             outilsSelected.setVie(outilsSelected.getVie() - 0.5);
-                        col.get(positionCreuse)
-                                .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1.5);
+                            col.get(positionCreuse)
+                                    .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1.5);
+                        } else
+                            col.get(positionCreuse)
+                                    .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 0.5);
                     }
                     /* Si l'outil est Hache */
-                    else if ("hache".equals(col.get(positionCreuse).getType().getPropriete())
-                            && (outilsSelected.getOutils() instanceof HacheBois
-                                    || outilsSelected.getOutils() instanceof HacheIron
-                                    || outilsSelected.getOutils() instanceof HacheDiamond)) {
-                        if (!(outilsSelected.getType() instanceof MainOutils))
+                    else if ("hache".equals(col.get(positionCreuse).getType().getPropriete())) {
+                        if ((outilsSelected.getOutils() instanceof HacheBois
+                                || outilsSelected.getOutils() instanceof HacheIron
+                                || outilsSelected.getOutils() instanceof HacheDiamond)) {
                             outilsSelected.setVie(outilsSelected.getVie() - 0.5);
-                        col.get(positionCreuse)
-                                .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1.5);
+                            col.get(positionCreuse)
+                                    .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1.5);
+                        } else
+                            col.get(positionCreuse)
+                                    .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 0.7);
                     }
                     /* Mauvais outils pour mauvaise ressource */
                     else if (!(outilsSelected.getType() instanceof MainOutils))
@@ -210,7 +215,5 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                 Jeux.getOutils().repaint();
             }
         }
-
     }
-
 }
