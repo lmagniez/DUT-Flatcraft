@@ -67,7 +67,7 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                 else
                     col.add(new RessourceInstance(MineUtils.tabRessources[1])); /* stone */
             } else if (i > 0 && i <= taille - 5) {
-                if (r < 0.02)
+                if (r < 0.04)
                     col.add(new RessourceInstance(MineUtils.tabRessources[5])); /* diamond */
                 else if (r < 0.1)
                     col.add(new RessourceInstance(MineUtils.tabRessources[3])); /* iron */
@@ -147,49 +147,8 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
 
                 /* Si l'outil est selectionné */
                 if (outilsSelected.isSelect()) {
-                    /* Ressource All */
-                    if ("All".equals(col.get(positionCreuse).getType().getPropriete())) {
-                        if (outilsSelected.getOutils() instanceof PelleBois
-                                || outilsSelected.getOutils() instanceof PelleIron
-                                || outilsSelected.getOutils() instanceof PelleDiamond) {
-                            outilsSelected.setVie(outilsSelected.getVie() - 0.5);
-                            col.get(positionCreuse)
-                                    .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1.5);
-                        } else if (!(outilsSelected.getType() instanceof MainOutils))
-                            outilsSelected.setVie(outilsSelected.getVie() - 0.5);
-                        col.get(positionCreuse).setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1);
-
-                    }
-
-                    /* Ressource Pioche */
-                    else if ("pioche".equals(col.get(positionCreuse).getType().getPropriete())) {
-                        if ((outilsSelected.getOutils() instanceof PiocheBois
-                                || outilsSelected.getOutils() instanceof PiocheIron
-                                || outilsSelected.getOutils() instanceof PiocheDiamond)) {
-                            outilsSelected.setVie(outilsSelected.getVie() - 0.5);
-                            col.get(positionCreuse)
-                                    .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1.5);
-                        } else
-                            col.get(positionCreuse)
-                                    .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 0.5);
-                    }
-                    /* Si l'outil est Hache */
-                    else if ("hache".equals(col.get(positionCreuse).getType().getPropriete())) {
-                        if ((outilsSelected.getOutils() instanceof HacheBois
-                                || outilsSelected.getOutils() instanceof HacheIron
-                                || outilsSelected.getOutils() instanceof HacheDiamond)) {
-                            outilsSelected.setVie(outilsSelected.getVie() - 0.5);
-                            col.get(positionCreuse)
-                                    .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1.5);
-                        } else
-                            col.get(positionCreuse)
-                                    .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 0.7);
-                    }
-                    /* Mauvais outils pour mauvaise ressource */
-                    else if (!(outilsSelected.getType() instanceof MainOutils))
-                        outilsSelected.setVie(outilsSelected.getVie() - 1.5);
-                    col.get(positionCreuse).setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1);
-
+                    this.gererVie(outilsSelected,positionCreuse);
+                    
                     /* Retirer l'outil si vie =0 */
                     if (outilsSelected.getVie() <= 0) {
                         Jeux.getOutils().remove(outilsSelected);
@@ -215,5 +174,53 @@ public abstract class ColonneDeRessources extends JButton implements ActionListe
                 Jeux.getOutils().repaint();
             }
         }
+    }
+    
+    public void gererVie(ToolInstance outilsSelected,int positionCreuse){
+        /* Ressource All */
+        if ("All".equals(col.get(positionCreuse).getType().getPropriete())) {
+            if (outilsSelected.getOutils() instanceof PelleBois
+                    || outilsSelected.getOutils() instanceof PelleIron
+                    || outilsSelected.getOutils() instanceof PelleDiamond) {
+                outilsSelected.setVie(outilsSelected.getVie() - 0.5);
+                col.get(positionCreuse)
+                        .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1.5);
+            } else if (!(outilsSelected.getType() instanceof MainOutils))
+                outilsSelected.setVie(outilsSelected.getVie() - 0.5);
+            col.get(positionCreuse).setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1);
+
+        }
+
+        /* Ressource Pioche */
+        else if ("pioche".equals(col.get(positionCreuse).getType().getPropriete())) {
+            if ((outilsSelected.getOutils() instanceof PiocheBois
+                    || outilsSelected.getOutils() instanceof PiocheIron
+                    || outilsSelected.getOutils() instanceof PiocheDiamond)) {
+                outilsSelected.setVie(outilsSelected.getVie() - 0.5);
+                col.get(positionCreuse)
+                        .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1.5);
+            } else
+                col.get(positionCreuse)
+                        .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 0.05);
+        }
+        
+        /* Si l'outil est Hache */
+        else if ("hache".equals(col.get(positionCreuse).getType().getPropriete())) {
+            if ((outilsSelected.getOutils() instanceof HacheBois
+                    || outilsSelected.getOutils() instanceof HacheIron
+                    || outilsSelected.getOutils() instanceof HacheDiamond)) {
+                outilsSelected.setVie(outilsSelected.getVie() - 0.5);
+                col.get(positionCreuse)
+                        .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1.5);
+            } else
+                col.get(positionCreuse)
+                        .setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1);
+        }
+        
+        /* Mauvais outils pour mauvaise ressource */
+        else if (!(outilsSelected.getType() instanceof MainOutils))
+            outilsSelected.setVie(outilsSelected.getVie() - 1.5);
+        col.get(positionCreuse).setVie(col.get(positionCreuse).getVie() - outilsSelected.getCoef() * 1);
+
     }
 }

@@ -9,14 +9,14 @@ import javax.swing.JPanel;
 
 
     /**
-    * Classe générant la map
+    * Classe gï¿½nï¿½rant la map
     * @author  Vincent Valembois
     * 
     */
 public class Map<T extends JComponent> {
     public JPanel grid;
-    private int row = 10;
-    private int col = 10;
+    private int row = 15;
+    private int col = 15;
     public static final int NOMBRE_RESSOURCES = 7;
 
     /**
@@ -30,7 +30,7 @@ public class Map<T extends JComponent> {
     }
     
     /**
-     * Générer la map selon les attributs row et col
+     * Gï¿½nï¿½rer la map selon les attributs row et col
      */
     private void create() {
         int ligne = 0, coll = 0;
