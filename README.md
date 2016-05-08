@@ -220,32 +220,32 @@ On doit pouvoir jouer à votre jeu.
 
 Une note de fonctionnalité sera établie selon les critères suivants :
 
-- [ ] Il est possible de creuser le monde pour découvrir de nouvelles ressources
-- [ ] Il est possible d'utiliser plusieurs outils pour creuser (au moins 2)
-- [ ] Il est possible de transformer des ressources pour créer de nouvelles ressources ou outils (table de craft)
-- [ ] Il est possible de déposer des ressources sur monde
-- [ ] Les ressources sont disposées correctement dans le monde
-- [ ]  Le temps nécessaires à l'obtention d'une ressource dépend des ressources et des outils utilisés
-- [ ] Aucun bug visible n'apparait lors d'un test rapide de l'application
+- [x] Il est possible de creuser le monde pour découvrir de nouvelles ressources
+- [x] Il est possible d'utiliser plusieurs outils pour creuser (au moins 2)
+- [x] Il est possible de transformer des ressources pour créer de nouvelles ressources ou outils (table de craft)
+- [x] Il est possible de déposer des ressources sur monde
+- [x] Les ressources sont disposées correctement dans le monde
+- [x] Le temps nécessaires à l'obtention d'une ressource dépend des ressources et des outils utilisés
+- [x] Aucun bug visible n'apparait lors d'un test rapide de l'application
 - [ ] Le fonctionnement de l'application est intuitif (on ne reste jamais bloqué)
-- [ ] La gestion des ressources et des outils est avancée
+- [x] La gestion des ressources et des outils est avancée
 
 Une note de conception orientée objet sera établie selon les critères suivants :
 
-- [ ] Le principe d'encapsulation est respecté dans toutes les classes
-- [ ] La délégation et l'héritage sont utilisés correctement
-- [ ] Le polymorphisme est préféré aux structures conditionnelles.
-- [ ] Plusieurs patrons de conception sont utilisés (au moins 3 différents)
-- [ ] Un diagramme de classe résumant la conception du programme est disponible
+- [x] Le principe d'encapsulation est respecté dans toutes les classes
+- [x] La délégation et l'héritage sont utilisés correctement
+- [x] Le polymorphisme est préféré aux structures conditionnelles.
+- [x] Plusieurs patrons de conception sont utilisés (au moins 3 différents)
+- [x] Un diagramme de classe résumant la conception du programme est disponible
 
 Une note de travail collaboratif  sera établie selon les critères suivants :
 
-- [ ] Le dépôt git contient au moins 10 commits, répartis sur les 3 semaines de travail.
-- [ ] Les deux membres du binôme sont auteurs de ces commits.
-- [ ] Au moins un ticket a été créé et fermé lors du développement.
+- [x] Le dépôt git contient au moins 10 commits, répartis sur les 3 semaines de travail.
+- [x] Les deux membres du binôme sont auteurs de ces commits.
+- [x] Au moins un ticket a été créé et fermé lors du développement.
 
 Une note de présentation complètera cela :
 
-- [ ] Présence d'un texte résumant le fonctionnement spécifique du jeu
-- [ ] Code source correctement indenté
-- [ ] Commentaires Javadoc pour les méthodes publiques
+- [x] Présence d'un texte résumant le fonctionnement spécifique du jeu
+- [x] Code source correctement indenté
+- [x] Commentaires Javadoc pour les méthodes publiques
